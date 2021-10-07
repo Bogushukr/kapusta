@@ -3,10 +3,6 @@ import React from 'react'
 
 const SectionIncome = () => {
     return (
-        // <div>
-        //     <Link to='/expense' />
-        //     <Link to='/income' />
-        // </div>
         <>
             <Calendar />
             <form onSubmit={handleSubmit}>
