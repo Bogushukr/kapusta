@@ -2,6 +2,7 @@ import React, { Component, Suspense } from 'react';
 import Balance from './Components/Balance';
 import Container from './Components/Container/Container';
 import HeaderPage from './Components/HeaderPage/HeaderPage';
+import Formik from './Components/RegisterForm/RegisterForm';
 
 class App extends Component {
   // componentDidMount() {
@@ -12,7 +13,7 @@ class App extends Component {
     return (
       <Container>
         <HeaderPage />
-
+        <Formik onSubmit={data => console.log(data)} />
         <Suspense fallback={<p>Загружаем...</p>}>
           {/* <Switch>
             <PublicRoute exact path="/" component={HomeView} />
