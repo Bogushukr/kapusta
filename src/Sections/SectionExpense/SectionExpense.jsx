@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import TableSection from '../../Components/TableSection/TableSection'
+import expenseOperations from '../../Redux/Operations/'
 
 const INITIAL_STATE = {
     description: '',
@@ -6,7 +10,7 @@ const INITIAL_STATE = {
     sum: ''
 }
 
-export default class SectionExpense extends Component {
+class SectionExpense extends Component {
 
     static defaultProps = {}
 
@@ -19,7 +23,7 @@ export default class SectionExpense extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        this.props.onSubmit( {...this.state} )
+        this.props.onAddExpense( {...this.state} )
         this.reset()
     }
 
@@ -29,7 +33,7 @@ export default class SectionExpense extends Component {
         const { description, category, sum } = this.state
         return (
             <>
-                <Calendar />
+                {/* <Calendar /> */}
                 <form onSubmit={this.handleSubmit}>
                     <input type='text' placeholder='Описание товара' name='description' value={description} onChange={this.handleChange} required/>
                     <p>
@@ -40,13 +44,19 @@ export default class SectionExpense extends Component {
                         </select>
                     </p>
                     <input placeholder='0.00' value={sum} onChange={this.handleChange} onChange={this.handleChange} required/>
-                    <Calculator />
+                    {/* <Calculator /> */}
                     <button type='submit'>Ввод</button>
                     <button>Очистить</button>
-                    <TableSection />
-                    <Summary />
+                    <TableSection description={description} category={category} sum={sum}/>
+                    {/* <Summary /> */}
                 </form>
             </>
         )
     }
 }
+
+const mapDispatchToProps = {
+    onAddExpense: expenseOperations.addExpense,
+}
+
+export default connect(null, mapDispatchToProps)(SectionExpense)
