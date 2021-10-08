@@ -1,49 +1,59 @@
-import React, { Component, Suspense } from 'react';
-import Balance from './Components/Balance';
+import React, { useEffect, Suspense, lazy } from 'react';
+import { Switch } from 'react-router-dom';
+import { authOperations } from './Redux/auth';
+import { useDispatch } from 'react-redux';
+
+// import Balance from './Components/Balance';
+// import Formik from './Components/RegisterForm/RegisterForm';
 import Container from './Components/Container/Container';
-import HeaderPage from './Components/HeaderPage/HeaderPage';
-import Formik from './Components/RegisterForm/RegisterForm';
+import PrivateRoute from './Components/PrivateRoute';
+import PublicRoute from './Components/PublicRoute';
+import AppBar from './Components/AppBar/AppBar';
+import Spinner from './Components/Spinner';
 
-class App extends Component {
-  // componentDidMount() {
-  //   this.props.onGetCurrentUser();
-  // }
+// import HeaderPage from './Components/HeaderPage/HeaderPage';
 
-  render() {
-    return (
-      <Container>
-        <HeaderPage />
-        <Formik onSubmit={data => console.log(data)} />
-        <Suspense fallback={<p>Загружаем...</p>}>
-          {/* <Switch>
-            <PublicRoute exact path="/" component={HomeView} />
-            <PublicRoute
-              path="/register"
-              restricted
-              redirectTo="/todos"
-              component={RegisterView}
-            />
-            <PublicRoute
-              path="/login"
-              restricted
-              redirectTo="/todos"
-              component={LoginView}
-            />
-            <PrivateRoute
-              path="/todos"
-              redirectTo="/login"
-              component={TodosView}
-            />
-          </Switch> */}
-        </Suspense>
-        <Balance />
-      </Container>
-    );
-  }
-}
+const LoginPage = lazy(() => import('./Pages/LoginPage'));
+const RegisterPage = lazy(() => import('./Pages/RegisterPage'));
+const HomePage = lazy(() => import('./Pages/HomePage/HomePage'));
+
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
+
+  return (
+    <Container>
+      {/* <HeaderPage /> */}
+      <AppBar />
+      <Suspense fallback={<Spinner />}>
+        <Switch>
+          <PublicRoute
+            exact
+            path="/"
+            restricted
+            redirectTo="/home"
+            component={LoginPage}
+          />
+          <PublicRoute
+            path="/register"
+            restricted
+            redirectTo="/home"
+            component={RegisterPage}
+          />
+          <PrivateRoute path="/home" redirectTo="/" component={HomePage} />
+        </Switch>
+      </Suspense>
+    </Container>
+  );
+};
+
+export default App;
 
 // const mapDispatchToProps = {
 //   onGetCurrentUser: authOperations.getCurrentUser,
 // };
 // export default connect(null, mapDispatchToProps)(App);
-export default App;
+// export default App;

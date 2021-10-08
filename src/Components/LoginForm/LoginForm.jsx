@@ -4,9 +4,6 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object({
-  name: Yup.string()
-    .min(1, 'Must be 1 characters or more')
-    .max(20, 'Must be 20 characters or less'),
   email: Yup.string()
     .email('Invalid email address')
     .required('это обязательное поле'),
@@ -16,29 +13,18 @@ const validationSchema = Yup.object({
     .required('это обязательное поле'),
 });
 
-export default function RegisterForm({ handleSubmitRegister }) {
+export default function LoginForm({ handleSubmitLogin }) {
   return (
     <Formik
-      initialValues={{ name: '', email: '', password: '' }}
+      initialValues={{ email: '', password: '' }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        handleSubmitRegister = handleSubmitRegister(values);
+        handleSubmitLogin = handleSubmitLogin(values);
         setSubmitting(false);
         resetForm();
       }}
     >
       <Form autoComplete="off">
-        <label htmlFor="name">Ваше имя: </label>
-        <br />
-        <Field
-          type="name"
-          name="name"
-          placeholder="your name"
-          onChenge="submit"
-        />
-        <br />
-        <ErrorMessage name="name" />
-        <br />
         <label htmlFor="email">Электронная почта: </label>
         <br />
         <Field
@@ -61,9 +47,9 @@ export default function RegisterForm({ handleSubmitRegister }) {
         <br />
         <ErrorMessage name="password" />
         <br />
-        <button type="submit">Регистрация</button>
-        <NavLink to="/" exact>
-          Войти
+        <button type="submit">Войти</button>
+        <NavLink to="/register" exact>
+          Регистрация
         </NavLink>
       </Form>
     </Formik>
