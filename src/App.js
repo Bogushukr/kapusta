@@ -9,6 +9,7 @@ import Container from './Components/Container/Container';
 import PrivateRoute from './Components/PrivateRoute';
 import PublicRoute from './Components/PublicRoute';
 import AppBar from './Components/AppBar/AppBar';
+import Spinner from './Components/Spinner';
 
 // import HeaderPage from './Components/HeaderPage/HeaderPage';
 
@@ -27,7 +28,7 @@ const App = () => {
     <Container>
       {/* <HeaderPage /> */}
       <AppBar />
-      <Suspense fallback={<p>Загружаем...</p>}>
+      <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRoute
             exact
