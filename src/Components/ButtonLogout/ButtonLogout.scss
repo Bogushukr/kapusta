@@ -1,8 +1,43 @@
+@import '../../styles/main.scss';
 .userLogin {
   display: flex;
   justify-content: right;
   align-items: center;
 }
-.user-avatar {
+.userAvatar {
   margin-right: 15px;
+}
+.userName {
+  font-family: $font-family;
+  color: $user-info-color;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  margin-right: 15px;
+}
+.userLogout {
+  font-family: $font-family;
+  color: $user-info-color;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+}
+.userLogout:hover,
+.userLogout:focus {
+  cursor: pointer;
+}
+.userName::after {
+  display: inline-block;
+  vertical-align: middle;
+  content: '';
+  width: 2px;
+  height: 24px;
+  height: 36px;
+  margin-left: 15px;
+  background-color: #e0e5eb;
 }

@@ -1,6 +1,9 @@
 import React from 'react';
 
+import Media from 'react-media';
+
 import CurrentDate from '../CurrentDate/CurrentDate';
+import ModalBalance from '../ModalBalance/ModalBalance';
 import './Balance.scss';
 
 // import { authSelectors } from '../../redux/Selectors';
@@ -10,37 +13,67 @@ const Balance = () => {
   //   const balance = {};
 
   return (
-    <div className="balance">
-      <h2 className="toReport"> </h2>
-      <a href="google.com" className="toReportsLink">
-        Перейти к отчетам
-      </a>
-      <p className="balanceSetting">Баланс:</p>
-      <div className="setBalanceForm">
-        <input
-          type="text"
-          className="balanceState"
-          placeholder=" 00.00 UAH"
-        ></input>
-        <button type="sumbit" className="setBalanceButton">
-          Подтвердить
-        </button>
-      </div>
-      <div className="modal">
-        <span className="balanceModal"></span>
-      </div>
+    <Media
+      queries={{
+        small: { maxWidth: 767 },
+        medium: { minWidth: 768, maxWidth: 1279 },
+        large: { minWidth: 1280 },
+      }}
+    >
+      {matches => (
+        <div className="balance wrapper">
+          {matches.small && (
+            <h2 className="toReport">
+              <a href="/" className="toReportsLink">
+                Перейти к отчетам
+              </a>
+            </h2>
+          )}
 
-      <CurrentDate />
+          <div className="balanceInfo">
+            <p className="balanceSetting">Баланс:</p>
+            <div className="setBalanceForm">
+              <input
+                type="text"
+                className="balanceState"
+                placeholder=" 00.00 UAH"
+              ></input>
+              <button type="sumbit" className="setBalanceButton">
+                Подтвердить
+              </button>
 
-      <section className="Summary">
-        <a href="/" className="consumptionButton">
-          расход
-        </a>
-        <a href="/" className="incomeButton">
-          доход
-        </a>
-      </section>
-    </div>
+              {matches.medium && (
+                <h2 className="toReport">
+                  <a href="/" className="toReportsLink">
+                    Перейти к отчетам
+                  </a>
+                </h2>
+              )}
+              {matches.large && (
+                <h2 className="toReport">
+                  <a href="/" className="toReportsLink">
+                    Перейти к отчетам
+                  </a>
+                </h2>
+              )}
+            </div>
+          </div>
+
+          {/* render if balance = 0 */}
+          <ModalBalance />
+
+          {matches.small && <CurrentDate />}
+          <section className="summary">
+            <a href="/" className="consumptionButton">
+              расход
+            </a>
+            <a href="/" className="incomeButton">
+              доход
+            </a>
+          </section>
+        </div>
+      )}
+    </Media>
   );
 };
 
