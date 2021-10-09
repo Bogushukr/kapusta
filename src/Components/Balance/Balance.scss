@@ -9,7 +9,7 @@
   height: 286px;
   background-color: $background-dark;
 
-  border-bottom-left-radius: 50%;
+  border-bottom-left-radius: 110px;
 }
 .toReport {
   text-align: center;
@@ -151,7 +151,7 @@
   color: $background-light;
 }
 
-@media (min-width: $bp-tablet) {
+@media screen and (min-width: $bp-tablet) {
   .wrapper {
     width: 768px;
   }
@@ -212,11 +212,12 @@
   }
 }
 
-@media (min-width: $bp-desktop) {
+@media screen and (min-width: $bp-desktop) {
   .balanceInfo {
     display: flex;
     align-items: baseline;
-    justify-content: center;
+    justify-content: flex-end;
+    padding-right: 110px;
   }
   .balanceSetting {
     margin-right: 40px;
@@ -226,5 +227,9 @@
   }
   .summary {
     margin-left: 110px;
+  }
+  .consumptionButton,
+  .incomeButton {
+    margin-top: 10px;
   }
 }

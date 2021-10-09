@@ -22,10 +22,17 @@
 
   display: inline-block;
 }
-@media (min-width: $bp-tablet) and (max-width: $bp-desktop) {
+@media screen and (min-width: $bp-tablet) and (max-width: $bp-desktop) {
   .balanceModal {
     z-index: 9999999;
     position: absolute;
-    right: 150px;
+    right: 170px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .balanceModal {
+    z-index: 9999999;
+    position: absolute;
+    right: 50px;
   }
 }

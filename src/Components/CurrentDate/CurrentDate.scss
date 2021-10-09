@@ -4,9 +4,7 @@
   position: relative;
   margin-top: 50px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend %flex-a-j;
 
   font-family: $font-family;
   font-size: 12px;
@@ -25,4 +23,20 @@
   height: 20px;
   margin-right: 10px;
   background: url('../../Icons/calendar.svg');
+}
+@media screen and (min-width: $bp-tablet) {
+  .currentDate {
+    display: inline-flex;
+    margin-top: 30px;
+    margin-left: 80px;
+    text-align: left;
+  }
+}
+@media screen and (min-width: $bp-desktop) {
+  .currentDate {
+    display: inline-flex;
+    margin-top: 35px;
+    margin-left: 130px;
+    text-align: left;
+  }
 }

@@ -8,3 +8,9 @@
   justify-content: space-between;
   align-items: center;
 }
+@media screen and (min-width: $bp-tablet) {
+  .header {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}

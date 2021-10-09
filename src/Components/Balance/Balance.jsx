@@ -71,6 +71,8 @@ const Balance = () => {
               доход
             </a>
           </section>
+          {matches.medium && <CurrentDate />}
+          {matches.large && <CurrentDate />}
         </div>
       )}
     </Media>
