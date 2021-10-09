@@ -8,16 +8,16 @@ const addExpenseError = createAction('expenses/addError')
 // const fetchTasksSuccess = createAction('tasks/fetchSuccess')
 // const fetchTasksError = createAction('tasks/fetchError')
 
-// const removeTaskRequest = createAction('tasks/removeRequest')
-// const removeTaskSuccess = createAction('tasks/removeSuccess')
-// const removeTaskError = createAction('tasks/removeError')
+const removeExpenseRequest = createAction('expenses/removeRequest')
+const removeExpenseSuccess = createAction('expenses/removeSuccess')
+const removeExpenseError = createAction('expenses/removeError')
 
 // const toggleCompletedRequest = createAction('tasks/toggleCompletedRequest')
 // const toggleCompletedSuccess = createAction('tasks/toggleCompletedSuccess')
 // const toggleCompletedError = createAction('tasks/toggleCompletedError')
 
 // const changeFilter = createAction('tasks/changeFilter')
-
+// eslint-disable-next-line
 export default {
     addExpenseRequest,
     addExpenseSuccess,
@@ -25,9 +25,9 @@ export default {
 //   fetchTasksRequest,
 //   fetchTasksSuccess,
 //   fetchTasksError,
-//   removeTaskRequest,
-//   removeTaskSuccess,
-//   removeTaskError,
+    removeExpenseRequest,
+    removeExpenseSuccess,
+    removeExpenseError,
 //   toggleCompletedRequest,
 //   toggleCompletedSuccess,
 //   toggleCompletedError,

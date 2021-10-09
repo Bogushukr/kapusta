@@ -8,7 +8,7 @@ const addExpense = description => dispatch => {
       .then(({ data }) => dispatch(expenseActions.addExpenseSuccess(data)))
       .catch(error => dispatch(expenseActions.addExpenseError(error)))
   }
-
+// eslint-disable-next-line
 export default {
     addExpense
 }

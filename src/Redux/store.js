@@ -1,3 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit'
 
-import 
+import expensesReducer from './Reducers/expenseReducer'
+
+const store = configureStore({
+    reducer: {expenses: expensesReducer}
+})
+
+export default store
