@@ -1,0 +1,51 @@
+.formContainer {
+  width: 1060px;
+  height: 579px;
+  background: #ffffff;
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  border-radius: 0px 30px 30px 30px;
+  margin: 0 110px 83px 110px;
+  padding-top: 189px;
+}
+
+.enterBTN {
+  width: 125px;
+  height: 44px;
+  /* left: 885px;
+  top: 221px; */
+  border: 2px solid #f5f6fb;
+  border-radius: 16px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-right: 15px;
+}
+
+.enterBTN:hover {
+  background: #ff751d;
+  color: #ffffff;
+}
+
+.clearBTN {
+  width: 125px;
+  height: 44px;
+  /* left: 885px;
+    top: 221px; */
+  border: 2px solid #f5f6fb;
+  border-radius: 16px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.clearBTN:hover {
+  background: #ff751d;
+  color: #ffffff;
+}

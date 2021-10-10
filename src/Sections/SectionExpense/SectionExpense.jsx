@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import TableSection from '../../Components/TableSection/TableSection'
 import expenseOperations from '../../Redux/Operations/expenseOperations'
 
+import styles from './SectionExpense.module.css'
+
 const INITIAL_STATE = {
     description: '',
     category: '',
@@ -32,7 +34,7 @@ class SectionExpense extends Component {
     render() {
         const { description, category, sum } = this.state
         return (
-            <>
+            <div className={styles.formContainer}>
                 {/* <Calendar /> */}
                 <form onSubmit={this.handleSubmit}>
                     <input type='text' placeholder='Описание товара' name='description' value={description} onChange={this.handleChange} required/>
@@ -54,12 +56,12 @@ class SectionExpense extends Component {
                     </p>
                     <input placeholder='0.00' name='sum' value={sum} onChange={this.handleChange} required/>
                     {/* <Calculator /> */}
-                    <button type='submit'>Ввод</button>
-                    <button>Очистить</button>
+                    <button type='submit' className={styles.enterBTN}>Ввод</button>
+                    <button className={styles.clearBTN}>Очистить</button>
                     <TableSection description={description} category={category} sum={sum}/>
                     {/* <Summary /> */}
                 </form>
-            </>
+            </div>
         )
     }
 }
