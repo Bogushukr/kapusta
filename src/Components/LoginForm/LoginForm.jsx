@@ -7,12 +7,18 @@ import './LoginForm.scss';
 
 const validationSchema = Yup.object({
   email: Yup.string()
-    .email('Invalid email address')
-    .required(<p className="formLog_ErrorMessage">это обязательное поле</p>),
+    .email(<p className="formReg_ErrorMessage">Invalid email address</p>)
+    .required(<p className="formReg_ErrorMessage">это обязательное поле</p>),
   password: Yup.string()
-    .min(6, 'Must be 6 characters or more')
-    .max(20, 'Must be 20 characters or less')
-    .required(<p className="formLog_ErrorMessage">это обязательное поле</p>),
+    .min(
+      6,
+      <p className="formReg_ErrorMessage">Must be 6 characters or more</p>,
+    )
+    .max(
+      20,
+      <p className="formReg_ErrorMessage">Must be 20 characters or less</p>,
+    )
+    .required(<p className="formReg_ErrorMessage">это обязательное поле</p>),
 });
 
 export default function LoginForm({ handleSubmitLogin }) {
@@ -55,8 +61,8 @@ export default function LoginForm({ handleSubmitLogin }) {
           <Field
             type="password"
             name="password"
-            placeholder="******"
-            className="formLog_placeholder"
+            placeholder="••••••••"
+            className="formLog_placeholder password"
           />
           <ErrorMessage name="password" />
         </div>

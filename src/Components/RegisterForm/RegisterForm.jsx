@@ -7,15 +7,27 @@ import './RegisterForm.scss';
 
 const validationSchema = Yup.object({
   name: Yup.string()
-    .min(1, 'Must be 1 characters or more')
-    .max(20, 'Must be 20 characters or less')
+    .min(
+      1,
+      <p className="formReg_ErrorMessage">Must be 1 characters or more</p>,
+    )
+    .max(
+      20,
+      <p className="formReg_ErrorMessage">Must be 20 characters or less</p>,
+    )
     .required(<p className="formReg_ErrorMessage">это обязательное поле</p>),
   email: Yup.string()
-    .email('Invalid email address')
+    .email(<p className="formReg_ErrorMessage">Invalid email address</p>)
     .required(<p className="formReg_ErrorMessage">это обязательное поле</p>),
   password: Yup.string()
-    .min(6, 'Must be 6 characters or more')
-    .max(20, 'Must be 20 characters or less')
+    .min(
+      6,
+      <p className="formReg_ErrorMessage">Must be 6 characters or more</p>,
+    )
+    .max(
+      20,
+      <p className="formReg_ErrorMessage">Must be 20 characters or less</p>,
+    )
     .required(<p className="formReg_ErrorMessage">это обязательное поле</p>),
 });
 
@@ -70,8 +82,8 @@ export default function RegisterForm({ handleSubmitRegister }) {
           <Field
             type="password"
             name="password"
-            placeholder="******"
-            className="formReg_placeholder"
+            placeholder="••••••••"
+            className="formReg_placeholder password"
           />
           <ErrorMessage name="password" />
         </div>
