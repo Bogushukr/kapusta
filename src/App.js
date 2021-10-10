@@ -16,6 +16,7 @@ import Spinner from './Components/Spinner';
 const LoginPage = lazy(() => import('./Pages/LoginPage'));
 const RegisterPage = lazy(() => import('./Pages/RegisterPage'));
 const HomePage = lazy(() => import('./Pages/HomePage/HomePage'));
+const ReportPage = lazy(() => import('./Pages/ReportPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -44,6 +45,13 @@ const App = () => {
             component={RegisterPage}
           />
           <PrivateRoute path="/home" redirectTo="/" component={HomePage} />
+          <PublicRoute
+            exact
+            path="/report"
+            restricted
+            redirectTo="/"
+            component={ReportPage}
+          />
         </Switch>
       </Suspense>
     </Container>

@@ -1,0 +1,16 @@
+@import '../../styles/main.scss';
+
+.recharts-label-list {
+  transform: translate(0, -18px);
+}
+
+.recharts-label {
+  fill: $chart-icon-fill;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+}
+
+.recharts-cartesian-axis-tick {
+  transform: translate(0, 6px);
+}
