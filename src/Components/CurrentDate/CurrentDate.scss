@@ -1,0 +1,42 @@
+@import '../../styles/main.scss';
+.currentDate {
+  display: block;
+  position: relative;
+  margin-top: 50px;
+
+  @extend %flex-a-j;
+
+  font-family: $font-family;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+
+  color: $calendar-icon-fill;
+  text-align: center;
+}
+.currentDate::before {
+  display: inline-block;
+  content: '';
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background: url('../../Icons/calendar.svg');
+}
+@media screen and (min-width: $bp-tablet) {
+  .currentDate {
+    display: inline-flex;
+    margin-top: 30px;
+    margin-left: 80px;
+    text-align: left;
+  }
+}
+@media screen and (min-width: $bp-desktop) {
+  .currentDate {
+    display: inline-flex;
+    margin-top: 35px;
+    margin-left: 130px;
+    text-align: left;
+  }
+}

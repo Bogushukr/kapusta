@@ -1,0 +1,16 @@
+@import '../../styles/main.scss';
+.header {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #ffffff;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (min-width: $bp-tablet) {
+  .header {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}

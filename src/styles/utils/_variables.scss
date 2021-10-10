@@ -1,0 +1,44 @@
+//fonts
+$font-family: 'Roboto', sans-serif;
+
+//colors
+$main-font-color: #000000;
+$secondary-font-color: rgba(82, 85, 95, 0.7);
+$user-info-color: #52555f;
+
+$background-light: #ffffff;
+$background-dark: #f5f6fb;
+
+$positive-value-color: #407946;
+$negative-value-color: #e7192e;
+
+$remove-icon-fill: #52555f;
+$calendar-icon-fill: #52555f;
+$chart-icon-fill: #52555f;
+$logout-icon-fill: #cbccd0;
+
+$consumption-image-fill: #071f41;
+$consumption-image-bg: #f5f6fb;
+$active-consumption-image-fill: #ff751d;
+$active-consumption-image-bg: #ffdac0;
+
+$chart-color-dark: #ff751d;
+$chart-color-dark: #fed9bf;
+
+$arrow-fill: #fb7c2f;
+$dropdown-arrow-fill: #c7ccdc;
+
+$modal-bg-start-color: #1d346a;
+$modal-bg-end-color: #031634;
+$modal-font-color: #ffffff;
+
+$active-button-color: #ff751d;
+//background: linear-gradient(117.84deg, #1D346A 2.84%, #031634 67.28%);
+
+/* shadow 1 */
+//box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+
+//breakpoints
+$bp-mobile: 320px;
+$bp-tablet: 768px;
+$bp-desktop: 1279px;

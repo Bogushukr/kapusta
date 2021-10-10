@@ -1,0 +1,201 @@
+@import '../../styles/main.scss';
+.formReg {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  position: absolute;
+
+  background: $background-light;
+  /* shadow 1 */
+
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  border-radius: 30px;
+
+  @include for-size(mobile) {
+    padding: 40px 18px 53px 18px;
+    width: 300px;
+  }
+  @include for-size(tablet) {
+    padding: 50px 85px 53px 85px;
+    width: 436px;
+  }
+  @include for-size(mobile-tablet) {
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  @include for-size(desktop) {
+    left: 57%;
+    top: 21%;
+  }
+}
+.formReg_text.google {
+  @include for-size(mobile-only) {
+    text-align: center;
+  }
+}
+.formReg_text {
+  margin-top: 0;
+
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+
+  color: #52555f;
+
+  @include for-size(mobile) {
+    margin-bottom: 24px;
+    font-size: 10px;
+    line-height: 1.2;
+  }
+  @include for-size(tablet) {
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 1.17;
+  }
+}
+.formReg_redStar {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: normal;
+  /* identical to box height */
+
+  letter-spacing: 0.04em;
+
+  color: #eb5757;
+
+  @include for-size(mobile) {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+  @include for-size(tablet) {
+    font-size: 12px;
+    line-height: 1.17;
+  }
+}
+.formReg_label {
+  margin-bottom: 10px;
+
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: normal;
+  /* identical to box height */
+
+  letter-spacing: 0.04em;
+
+  color: #000000;
+
+  @include for-size(mobile) {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+  @include for-size(tablet) {
+    font-size: 12px;
+    line-height: 1.17;
+  }
+}
+.formReg_input {
+  margin-bottom: 30px;
+}
+.formReg_input_last {
+  margin-bottom: 40px;
+}
+.formReg_placeholder {
+  &::-webkit-input-placeholder {
+    color: #a6abb9;
+  }
+  width: 266px;
+
+  margin-bottom: 4px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  padding-left: 20px;
+
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.04em;
+
+  color: #000000;
+
+  background: #f6f7fb;
+  border-radius: 30px;
+  border-style: inherit;
+
+  &.password {
+    font-size: 44px;
+    line-height: 1.23;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+.formReg_ErrorMessage {
+  margin-top: 0;
+  margin-bottom: -12px;
+
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: normal;
+  /* identical to box height */
+
+  letter-spacing: 0.04em;
+
+  /* Red */
+
+  color: #eb5757;
+
+  @include for-size(mobile) {
+    font-size: 8px;
+    line-height: 1.25;
+  }
+  @include for-size(tablet) {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+}
+.formReg_footer {
+  display: flex;
+}
+.formReg_btn.last {
+  margin-left: 15px;
+}
+.formReg_btn {
+  justify-content: center;
+
+  width: 125px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.17;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: #52555f;
+  background-color: #f5f6fb;
+  border-radius: 16px;
+  border-style: inherit;
+
+  &:hover,
+  &:focus {
+    color: $background-light;
+    background-color: #ff751d;
+  }
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.formReg_NavLink {
+  text-decoration: none;
+}
