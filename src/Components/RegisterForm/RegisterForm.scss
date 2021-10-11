@@ -49,12 +49,12 @@
   @include for-size(mobile) {
     margin-bottom: 24px;
     font-size: 10px;
-    line-height: 12px;
+    line-height: 1.2;
   }
   @include for-size(tablet) {
     margin-bottom: 20px;
     font-size: 12px;
-    line-height: 14px;
+    line-height: 1.17;
   }
 }
 .formReg_redStar {
@@ -69,11 +69,11 @@
 
   @include for-size(mobile) {
     font-size: 10px;
-    line-height: 12px;
+    line-height: 1.2;
   }
   @include for-size(tablet) {
     font-size: 12px;
-    line-height: 14px;
+    line-height: 1.17;
   }
 }
 .formReg_label {
@@ -90,11 +90,11 @@
 
   @include for-size(mobile) {
     font-size: 10px;
-    line-height: 12px;
+    line-height: 1.2;
   }
   @include for-size(tablet) {
     font-size: 12px;
-    line-height: 14px;
+    line-height: 1.17;
   }
 }
 .formReg_input {
@@ -104,6 +104,11 @@
   margin-bottom: 40px;
 }
 .formReg_placeholder {
+  &::-webkit-input-placeholder {
+    color: #a6abb9;
+  }
+  width: 266px;
+
   margin-bottom: 4px;
   padding-top: 17px;
   padding-bottom: 17px;
@@ -113,15 +118,21 @@
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 1.14;
   letter-spacing: 0.04em;
 
-  color: #a6abb9;
+  color: #000000;
 
   background: #f6f7fb;
   border-radius: 30px;
   border-style: inherit;
-  width: 266px;
+
+  &.password {
+    font-size: 44px;
+    line-height: 1.23;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
 }
 .formReg_ErrorMessage {
   margin-top: 0;
@@ -140,11 +151,11 @@
 
   @include for-size(mobile) {
     font-size: 8px;
-    line-height: 10px;
+    line-height: 1.25;
   }
   @include for-size(tablet) {
     font-size: 10px;
-    line-height: 12px;
+    line-height: 1.2;
   }
 }
 .formReg_footer {
@@ -164,7 +175,7 @@
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 1.17;
   display: flex;
   align-items: center;
   text-align: center;
