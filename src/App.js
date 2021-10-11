@@ -1,17 +1,17 @@
 import React, { useEffect, Suspense, lazy } from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import { authOperations } from './Redux/auth';
 import { useDispatch } from 'react-redux';
 // import { connect } from 'react-redux';
 // import Balance from './Components/Balance';
 // import Formik from './Components/RegisterForm/RegisterForm';
-// import Container from './Components/Container/Container';
+import Container from './Components/Container/Container';
 import PrivateRoute from './Router/PrivateRoute';
 import PublicRoute from './Router/PublicRoute';
 import AppBar from './Components/AppBar/AppBar';
 import Spinner from './Components/Spinner';
 // import HeaderPage from './Components/HeaderPage/HeaderPage';
-import routes from './Router/routes'
+// import routes from './Router/routes'
 
 const LoginPage = lazy(() => import('./Pages/LoginPage'));
 const RegisterPage = lazy(() => import('./Pages/RegisterPage'));
@@ -61,10 +61,6 @@ const App = () => {
 
 export default App;
 
-
-// const mapDispatchToProps = {
-//   onGetCurrentUser: authOperations.getCurrentUser,
-// };
+// const mapDispatchToProps = {onGetCurrentUser: authOperations.getCurrentUser,};
 // export default connect(null, mapDispatchToProps)(App);
-// export default App;
 
