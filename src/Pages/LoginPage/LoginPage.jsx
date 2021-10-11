@@ -19,7 +19,26 @@ const LoginPage = () => {
     console.log('handleSubmitLogin', { email, password });
   };
 
-  return <LoginForm handleSubmitLogin={handleSubmitLogin} />;
+  const googleSubmitLogin = response => {
+    try {
+      const { email, googleId } = response.profileObj;
+      const data = {
+        email,
+        password: googleId,
+      };
+      // onLogin({ email, googleId });
+      console.log(data);
+    } catch (error) {
+      new Error(response.error);
+    }
+  };
+
+  return (
+    <LoginForm
+      handleSubmitLogin={handleSubmitLogin}
+      responseGoogle={googleSubmitLogin}
+    />
+  );
 };
 
 export default LoginPage;
