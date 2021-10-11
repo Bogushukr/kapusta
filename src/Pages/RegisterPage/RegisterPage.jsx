@@ -28,7 +28,27 @@ const RegisterPage = () => {
     console.log('handleSubmitRegister = ', { name, email, password });
   };
 
-  return <RegisterForm handleSubmitRegister={handleSubmitRegister} />;
+  const googleSubmitRegister = response => {
+    try {
+      const { name, email, googleId } = response.profileObj;
+      const data = {
+        name,
+        email,
+        password: googleId,
+      };
+      // onRegister(data);
+      console.log(data);
+    } catch (error) {
+      new Error(response.error);
+    }
+  };
+
+  return (
+    <RegisterForm
+      handleSubmitRegister={handleSubmitRegister}
+      responseGoogle={googleSubmitRegister}
+    />
+  );
 };
 
 export default RegisterPage;
