@@ -1,0 +1,38 @@
+@import '../../styles/main.scss';
+
+.wrapper {
+  @media screen and(max-width: $bp-tablet  ) {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+  @media screen and(min-width: $bp-tablet  ) and(max-width: $bp-desktop  ) {
+    padding-left: 52px;
+    padding-right: 52px;
+  }
+  @media screen and(min-width: $bp-desktop  ) {
+    padding-left: 110px;
+    padding-right: 110px;
+  }
+
+  & .menu {
+    @media screen and(max-width: $bp-tablet  ) {
+      margin-bottom: 25px;
+    }
+    @media screen and(min-width: $bp-tablet  ) {
+      margin-bottom: 30px;
+      padding-top: 20px;
+      padding-bottom: 30px;
+
+      background: #ffffff;
+      box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+      border-radius: 30px;
+    }
+  }
+  & .timetable {
+    @media screen and(min-width: $bp-tablet  ) {
+      background: #ffffff;
+      box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+      border-radius: 30px;
+    }
+  }
+}

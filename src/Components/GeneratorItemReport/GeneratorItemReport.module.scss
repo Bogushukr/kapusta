@@ -1,0 +1,69 @@
+@import '../../styles/main.scss';
+
+.list {
+  position: relative;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow: hidden;
+  justify-content: center;
+  margin: auto;
+  @media screen and(min-width: 768px) {
+    width: 668px;
+  }
+}
+.item {
+  list-style-type: none;
+  position: relative;
+  min-height: 98px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+
+  @media screen and(max-width: $bp-tablet - 1px) {
+    width: 0;
+    flex-basis: calc(100% / 3 - 7px);
+
+    &:not(:nth-child(3n)) {
+      margin-right: calc(100% / 3 - (100% / 3 - 10px));
+    }
+    &:nth-child(1):after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 600%;
+
+      position: absolute;
+      top: 116%;
+
+      background: #e0e5eb;
+    }
+
+    &:nth-child(n + 4) {
+      margin-top: 20px;
+    }
+
+    &:nth-child(3n + 4):after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 600%;
+
+      position: absolute;
+      top: 116%;
+      left: -150%;
+
+      background: #e0e5eb;
+    }
+  }
+  @media screen and(min-width: $bp-tablet - 1px) {
+    flex-basis: calc(100% / 6 - 15px);
+    max-width: 122px;
+
+    &:not(:nth-child(6n)) {
+      margin-right: calc(100% / 6 - (100% / 6 - 15px));
+    }
+  }
+}
+@media screen and(max-width: 767px) {
+}
