@@ -10,6 +10,7 @@ import PrivateRoute from './Components/PrivateRoute';
 import PublicRoute from './Components/PublicRoute';
 import AppBar from './Components/AppBar/AppBar';
 import Spinner from './Components/Spinner';
+// import UserLogout from './Components/UserLogout';
 
 // import HeaderPage from './Components/HeaderPage/HeaderPage';
 
@@ -27,6 +28,7 @@ const App = () => {
   return (
     <Container>
       {/* <HeaderPage /> */}
+      {/* <UserLogout /> */}
       <AppBar />
       <Suspense fallback={<Spinner />}>
         <Switch>
