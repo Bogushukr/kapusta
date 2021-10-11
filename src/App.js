@@ -52,32 +52,3 @@ const App = () => {
 
 // eslint-disable-next-line
 export default App
-
-// class App extends Component {
-  // componentDidMount() {this.props.onGetCurrentUser();}
-//   render() {
-//     return (
-//       <BrowserRouter>
-//         {/* <Container> */}
-//           {/* <HeaderPage /> */}
-//           {/* <Formik onSubmit={data => console.log(data)} /> */}
-//           <Suspense fallback={<p>Загружаем...</p>}>
-//             <Switch>
-//               {/* <PublicRoute exact path="/" component={StatisticsPage} /> */}
-//               {routes.map(
-//                 route => route.private
-//                   ? <PrivateRoute key={route.label} {...route} />
-//                   : <PublicRoute key={route.label} {...route} />
-//               )}
-//             </Switch>
-//           </Suspense>
-//           {/* <Balance /> */}
-//         {/* </Container> */}
-//       </BrowserRouter>
-//     )
-//   }
-// }
-
-// const mapDispatchToProps = {onGetCurrentUser: authOperations.getCurrentUser,};
-// export default connect(null, mapDispatchToProps)(App);
-
