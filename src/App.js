@@ -16,72 +16,50 @@ import routes from './Router/routes'
 const LoginPage = lazy(() => import('./Pages/LoginPage'));
 const RegisterPage = lazy(() => import('./Pages/RegisterPage'));
 const HomePage = lazy(() => import('./Pages/HomePage/HomePage'));
+const ReportPage = lazy(() => import('./Pages/ReportPage'));
 
-class App extends Component{
 
-  // componentDidMount() {this.props.onGetCurrentUser();}
+const App = () => {
+  const dispatch = useDispatch();
 
-  render() {
-    return (
-      <BrowserRouter>
-        {/* <Container> */}
-          {/* <HeaderPage /> */}
-          {/* <Formik onSubmit={data => console.log(data)} /> */}
-          <Suspense fallback={<p>Загружаем...</p>}>
-            <Switch>
-              {/* <PublicRoute exact path="/" component={StatisticsPage} /> */}
-              {routes.map(
-                route => route.private
-                  ? <PrivateRoute key={route.label} {...route} />
-                  : <PublicRoute key={route.label} {...route} />
-              )}
-            </Switch>
-          </Suspense>
-          {/* <Balance /> */}
-        {/* </Container> */}
-      </BrowserRouter>
-    )
-  }
-}
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
 
-// const App = () => {
-//   const dispatch = useDispatch();
+  return (
+    <Container>
+      {/* <HeaderPage /> */}
+      <AppBar />
+      <Suspense fallback={<Spinner />}>
+        <Switch>
+          <PublicRoute
+            exact
+            path="/"
+            restricted
+            redirectTo="/home"
+            component={LoginPage}
+          />
+          <PublicRoute
+            path="/register"
+            restricted
+            redirectTo="/home"
+            component={RegisterPage}
+          />
+          <PrivateRoute path="/home" redirectTo="/" component={HomePage} />
+          <PublicRoute
+            exact
+            path="/report"
+            restricted
+            redirectTo="/"
+            component={ReportPage}
+          />
+        </Switch>
+      </Suspense>
+    </Container>
+  );
+};
 
-//   useEffect(() => {
-//     dispatch(authOperations.getCurrentUser());
-//   }, [dispatch]);
-
-//   return (
-//     <Container>
-//       {/* <HeaderPage /> */}
-//       <AppBar />
-//       <Suspense fallback={<Spinner />}>
-//         <Switch>
-//           <PublicRoute
-//             exact
-//             path="/"
-//             restricted
-//             redirectTo="/home"
-//             component={LoginPage}
-//           />
-//           <PublicRoute
-//             path="/register"
-//             restricted
-//             redirectTo="/home"
-//             component={RegisterPage}
-//           />
-//           <PrivateRoute path="/home" redirectTo="/" component={HomePage} />
-//         </Switch>
-//       </Suspense>
-//     </Container>
-//   );
-// };
-
-// const mapDispatchToProps = {onGetCurrentUser: authOperations.getCurrentUser,};
-// export default connect(null, mapDispatchToProps)(App);
-
-// eslint-disable-next-line
-export default App
+export default App;
 
 
 // const mapDispatchToProps = {
