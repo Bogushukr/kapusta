@@ -16,6 +16,8 @@ import Spinner from './Components/Spinner';
 const LoginPage = lazy(() => import('./Pages/LoginPage'));
 const RegisterPage = lazy(() => import('./Pages/RegisterPage'));
 const HomePage = lazy(() => import('./Pages/HomePage/HomePage'));
+const ReportPage = lazy(() => import('./Pages/ReportPage'));
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const App = () => {
       {/* <HeaderPage /> */}
       <AppBar />
       <Suspense fallback={<Spinner />}>
-        <Switch>       
+        <Switch>
           <PublicRoute
             exact
             path="/"
@@ -44,11 +46,24 @@ const App = () => {
             component={RegisterPage}
           />
           <PrivateRoute path="/home" redirectTo="/" component={HomePage} />
+          <PublicRoute
+            exact
+            path="/report"
+            restricted
+            redirectTo="/"
+            component={ReportPage}
+          />
         </Switch>
       </Suspense>
     </Container>
   );
 };
 
+
 // eslint-disable-next-line
 export default App
+
+// const mapDispatchToProps = {onGetCurrentUser: authOperations.getCurrentUser,};
+// export default connect(null, mapDispatchToProps)(App);
+
+

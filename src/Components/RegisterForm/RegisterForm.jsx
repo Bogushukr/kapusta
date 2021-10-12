@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import ButtonGoogle from '../ButtonGoogle';
 
 import './RegisterForm.scss';
 
@@ -12,8 +13,8 @@ const validationSchema = Yup.object({
       <p className="formReg_ErrorMessage">Must be 1 characters or more</p>,
     )
     .max(
-      20,
-      <p className="formReg_ErrorMessage">Must be 20 characters or less</p>,
+      30,
+      <p className="formReg_ErrorMessage">Must be 30 characters or less</p>,
     )
     .required(<p className="formReg_ErrorMessage">это обязательное поле</p>),
   email: Yup.string()
@@ -31,7 +32,7 @@ const validationSchema = Yup.object({
     .required(<p className="formReg_ErrorMessage">это обязательное поле</p>),
 });
 
-export default function RegisterForm({ handleSubmitRegister }) {
+export default function RegisterForm({ handleSubmitRegister, responseGoogle }) {
   return (
     <Formik
       initialValues={{ name: '', email: '', password: '' }}
@@ -46,7 +47,7 @@ export default function RegisterForm({ handleSubmitRegister }) {
         <p className="formReg_text google">
           Вы можете авторизоваться с помощью Google Account:
         </p>
-        {/* Здесь должен быть батон Гугл */}
+        <ButtonGoogle responseGoogle={responseGoogle} />
         <p className="formReg_text ">
           Или зайти с помощью e-mail и пароля, предварительно
           зарегистрировавшись:

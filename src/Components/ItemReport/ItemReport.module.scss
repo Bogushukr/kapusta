@@ -1,0 +1,35 @@
+@import '../../styles/main.scss';
+
+.svg {
+  width: 56px;
+  height: 56px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  // не могу использувать _variables
+  &:hover {
+    --color1: #ffdac0;
+    --color2: #ff751d;
+  }
+}
+
+// не могу использувать _variables
+.svg__action {
+  --color1: #ffdac0;
+  --color2: #ff751d;
+}
+
+.span {
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $user-info-color;
+}
+
+.btn {
+  width: 100%;
+  background: none;
+  border: none;
+}
