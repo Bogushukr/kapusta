@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logOut } from '../../Redux/auth';
+import logOut from '../../Redux/auth/auth-operations';
 
 import Modal from '../Modal/Modal';
 
 const UserLogout = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const logoutModal = () => dispatch(logOut());
+  const logoutModal = () => dispatch(logOut());
 
   const [setOpenModal, setShowModal] = useState(false);
 
@@ -22,7 +22,7 @@ const UserLogout = () => {
       {setOpenModal && (
         <Modal
           text={'Вы действительно хотите выйти?'}
-          // handleConfirmClick={logoutModal}
+          handleConfirmClick={logoutModal}
           handleRejectClick={toggleModal}
           onModalClose={toggleModal}
         />
