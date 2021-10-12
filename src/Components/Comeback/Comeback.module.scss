@@ -1,0 +1,35 @@
+.comebackSvg {
+  width: 24px;
+  height: 24px;
+  @media screen and(min-width: 768px) {
+    margin-right: 15px;
+  }
+}
+
+.wrapper {
+  max-width: 175px;
+  @media screen and(max-width: 768px) {
+    max-width: 24px;
+  }
+}
+
+.link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+
+  color: rgba(82, 85, 95, 0.7);
+}
+
+.text {
+  @media screen and(max-width: 768px) {
+    display: none;
+  }
+}
