@@ -2,24 +2,37 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import ButtonGoogle from '../ButtonGoogle';
 
 import './RegisterForm.scss';
 
 const validationSchema = Yup.object({
   name: Yup.string()
-    .min(1, 'Must be 1 characters or more')
-    .max(20, 'Must be 20 characters or less')
+    .min(
+      1,
+      <p className="formReg_ErrorMessage">Must be 1 characters or more</p>,
+    )
+    .max(
+      30,
+      <p className="formReg_ErrorMessage">Must be 30 characters or less</p>,
+    )
     .required(<p className="formReg_ErrorMessage">это обязательное поле</p>),
   email: Yup.string()
-    .email('Invalid email address')
+    .email(<p className="formReg_ErrorMessage">Invalid email address</p>)
     .required(<p className="formReg_ErrorMessage">это обязательное поле</p>),
   password: Yup.string()
-    .min(6, 'Must be 6 characters or more')
-    .max(20, 'Must be 20 characters or less')
+    .min(
+      6,
+      <p className="formReg_ErrorMessage">Must be 6 characters or more</p>,
+    )
+    .max(
+      20,
+      <p className="formReg_ErrorMessage">Must be 20 characters or less</p>,
+    )
     .required(<p className="formReg_ErrorMessage">это обязательное поле</p>),
 });
 
-export default function RegisterForm({ handleSubmitRegister }) {
+export default function RegisterForm({ handleSubmitRegister, responseGoogle }) {
   return (
     <Formik
       initialValues={{ name: '', email: '', password: '' }}
@@ -34,7 +47,7 @@ export default function RegisterForm({ handleSubmitRegister }) {
         <p className="formReg_text google">
           Вы можете авторизоваться с помощью Google Account:
         </p>
-        {/* Здесь должен быть батон Гугл */}
+        <ButtonGoogle responseGoogle={responseGoogle} />
         <p className="formReg_text ">
           Или зайти с помощью e-mail и пароля, предварительно
           зарегистрировавшись:
@@ -70,8 +83,8 @@ export default function RegisterForm({ handleSubmitRegister }) {
           <Field
             type="password"
             name="password"
-            placeholder="******"
-            className="formReg_placeholder"
+            placeholder="••••••••"
+            className="formReg_placeholder password"
           />
           <ErrorMessage name="password" />
         </div>
