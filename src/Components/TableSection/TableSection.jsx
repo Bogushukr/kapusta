@@ -1,4 +1,4 @@
-import styles from './TableSection.module.scss'
+import styles from './TableSection.module.css'
 
 const TableSection = ( {description, category, sum} ) => {
     return (

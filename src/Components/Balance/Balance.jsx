@@ -63,14 +63,14 @@ const Balance = () => {
           <ModalBalance />
 
           {matches.small && <CurrentDate />}
-          <section className="summary">
+          {/* <section className="summary">
             <a href="/" className="consumptionButton">
               расход
             </a>
             <a href="/" className="incomeButton">
               доход
             </a>
-          </section>
+          </section> */}
           {matches.medium && <CurrentDate />}
           {matches.large && <CurrentDate />}
         </div>

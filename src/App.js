@@ -59,8 +59,11 @@ const App = () => {
   );
 };
 
-export default App;
+
+// eslint-disable-next-line
+export default App
 
 // const mapDispatchToProps = {onGetCurrentUser: authOperations.getCurrentUser,};
 // export default connect(null, mapDispatchToProps)(App);
+
 
