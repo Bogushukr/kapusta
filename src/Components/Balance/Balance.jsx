@@ -7,8 +7,10 @@ import { useSelector, useDispatch } from 'react-redux';
 // import expenseActions from '../../Redux/Actions';
 import CurrentDate from '../CurrentDate/CurrentDate';
 import ModalBalance from '../ModalBalance/ModalBalance';
-import './Balance.scss';
+import ReportsNav from '../ReportsNav/ReportsNav';
+import BalanceInfo from '../BalanceInfo/BalanceInfo';
 
+import './Balance.scss';
 const Balance = () => {
   const balance = 0;
   // const balance = useSelector(getTotalBalance);
@@ -37,56 +39,24 @@ const Balance = () => {
       {matches => (
         <div className="balance wrapper">
           {matches.small && (
-            <h2 className="toReport">
-              <a href="/" className="toReportsLink">
-                Перейти к отчетам
-              </a>
-            </h2>
+            <div classname="balanceWrapper">
+              <ReportsNav />
+              <BalanceInfo />
+            </div>
           )}
 
-          <div className="balanceInfo">
-            <div>
-              {/* <form onSubmit={onhandleSubmit} className="setBalanceForm"></form> */}
-              <form className="setBalanceForm">
-                <p className="balanceSetting">Баланс:</p>
-                <label htmlFor="balance" className="balanceLabel">
-                  {balance === 0 ? (
-                    <>
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="00.00 UAH"
-                        // onChange={onHandleChange}
-                        className="balanceState"
-                      />
-                      <button className="setBalanceButton">Подтвердить</button>
-                    </>
-                  ) : (
-                    <>
-                      <p className="balanceState">{balance.toFixed(2)} UAH</p>
-                      <button className="setBalanceButton" disabled>
-                        Подтвердить
-                      </button>
-                    </>
-                  )}
-                </label>
-              </form>
+          {matches.medium && (
+            <div classname="balanceWrapper">
+              <BalanceInfo />
+              <ReportsNav />
             </div>
-            {matches.medium && (
-              <h2 className="toReport">
-                <a href="/" className="toReportsLink">
-                  Перейти к отчетам
-                </a>
-              </h2>
-            )}
-            {matches.large && (
-              <h2 className="toReport">
-                <a href="/" className="toReportsLink">
-                  Перейти к отчетам
-                </a>
-              </h2>
-            )}
-          </div>
+          )}
+          {matches.large && (
+            <div classname="balanceWrapper">
+              <BalanceInfo />
+              <ReportsNav />
+            </div>
+          )}
 
           {balance <= 0 && <ModalBalance />}
 
