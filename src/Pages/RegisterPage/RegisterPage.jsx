@@ -18,6 +18,22 @@ const RegisterPage = () => {
     onRegister({ name, email, password });
     console.log('handleSubmitRegister = ', { name, email, password });
   };
+
+    const googleSubmitRegister = response => {
+    try {
+      const { name, email, googleId } = response.profileObj;
+      const data = {
+        name,
+        email,
+        password: googleId,
+      };
+      // onRegister(data);
+      console.log(data);
+    } catch (error) {
+      new Error(response.error);
+    }
+  };
+  
   return (
     <div className="register_page">
       <div className="register_hero">

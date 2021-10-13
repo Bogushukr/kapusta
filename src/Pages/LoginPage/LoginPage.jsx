@@ -18,6 +18,21 @@ const LoginPage = () => {
     onLogin({ email, password });
     console.log('handleSubmitLogin', { email, password });
   };
+
+  const googleSubmitLogin = response => {
+    try {
+      const { email, googleId } = response.profileObj;
+      const data = {
+        email,
+        password: googleId,
+      };
+      // onLogin({ email, googleId });
+      console.log(data);
+    } catch (error) {
+      new Error(response.error);
+    }
+  };
+  
   return (
     <div className="login_page">
       <div className="login_hero">
