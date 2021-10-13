@@ -1,0 +1,40 @@
+@import '../../styles/main.scss';
+.toReports {
+  display: flex;
+  align-items: baseline;
+  padding-top: 30px;
+  margin: 0;
+}
+.toReport {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.toReportsLink {
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $secondary-font-color;
+
+  font-size: 12px;
+  font-family: $font-family;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.toReport::after {
+  display: block;
+  content: '';
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+  background: url('../../Icons/bar_chart.svg');
+}
+@media screen and (min-width: $bp-tablet) {
+  .toReport {
+    padding-top: 0;
+    margin-left: 117px;
+  }
+}

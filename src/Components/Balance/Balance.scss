@@ -31,14 +31,14 @@
   letter-spacing: 0.04em;
   text-decoration: none;
 
-  &::after {
-    display: inline-block;
-    content: '';
-    width: 24px;
-    height: 24px;
-    margin-left: 15px;
-    background: url('../../Icons/bar_chart.svg');
-  }
+  // &::after {
+  //   display: inline-block;
+  //   content: '';
+  //   width: 24px;
+  //   height: 24px;
+  //   margin-left: 15px;
+  //   background: url('../../Icons/bar_chart.svg');
+  // }
 }
 
 .balanceSetting {
