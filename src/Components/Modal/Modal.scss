@@ -1,0 +1,84 @@
+@import '../../styles/main.scss';
+
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.modalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 194px;
+  max-width: 380px;
+  width: 100%;
+
+  text-align: center;
+  background-color: $background-light;
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.modalContent p {
+  margin: 50px 0 20px;
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  color: $user-info-color;
+}
+.closeIcon {
+  display: block;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px 20px 0 0;
+  display: inline-block;
+  text-align: right;
+  background: url('../../Icons/close.svg') no-repeat;
+}
+.closeIcon:hover,
+.closeIcon:focus {
+  cursor: pointer;
+}
+.confirm,
+.reject {
+  width: 125px;
+  height: 44px;
+  border-radius: 16px;
+  border: none;
+  text-transform: uppercase;
+}
+.confirm {
+  margin-right: 15px;
+}
+.confirm {
+  background-color: $active-button-color;
+  color: $modal-font-color;
+}
+.reject {
+  background-color: $background-light;
+  color: $user-info-color;
+  border: 3px solid $button-border-color;
+}
+.confirm:hover,
+.confirm:focus {
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reject:hover,
+.reject:focus {
+  background-color: $active-button-color;
+  color: $modal-font-color;
+  border: none;
+  cursor: pointer;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}

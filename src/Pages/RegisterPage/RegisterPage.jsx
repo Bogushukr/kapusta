@@ -18,7 +18,6 @@ const RegisterPage = () => {
     onRegister({ name, email, password });
     console.log('handleSubmitRegister = ', { name, email, password });
   };
-
   return (
     <div className="register_page">
       <div className="register_hero">
@@ -31,7 +30,9 @@ const RegisterPage = () => {
           <span className="register_hero-title-pic under" />
         </div>
       </div>
-      <RegisterForm handleSubmitRegister={handleSubmitRegister} />
+       <RegisterForm handleSubmitRegister={handleSubmitRegister}
+         responseGoogle={googleSubmitRegister}
+       />
     </div>
   );
 };

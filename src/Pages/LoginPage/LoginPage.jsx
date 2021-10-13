@@ -18,7 +18,6 @@ const LoginPage = () => {
     onLogin({ email, password });
     console.log('handleSubmitLogin', { email, password });
   };
-
   return (
     <div className="login_page">
       <div className="login_hero">
@@ -31,7 +30,9 @@ const LoginPage = () => {
           <span className="login_hero-title-pic under" />
         </div>
       </div>
-      <LoginForm handleSubmitLogin={handleSubmitLogin} />
+        <LoginForm handleSubmitLogin={handleSubmitLogin}
+          responseGoogle={googleSubmitLogin}
+        />
     </div>
   );
 };

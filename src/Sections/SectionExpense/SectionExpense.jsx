@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import TableSection from '../../Components/TableSection/TableSection'
 import expenseOperations from '../../Redux/Operations/expenseOperations'
+// import CurrentDate from '../../Components/CurrentDate/'
 
 import styles from './SectionExpense.module.css'
 
@@ -35,32 +36,37 @@ class SectionExpense extends Component {
         const { description, category, sum } = this.state
         return (
             <div className={styles.formContainer}>
-                {/* <Calendar /> */}
-                <form onSubmit={this.handleSubmit}>
-                    <input type='text' placeholder='Описание товара' name='description' value={description} onChange={this.handleChange} required/>
-                    <p>
-                        <select size='1' name='category' value={category} onChange={this.handleChange} required>
-                            <option value='' defaultValue>Категория товара</option>
-                            <option>Транспорт</option>
-                            <option>Продукты</option>
-                            <option>Здоровье</option>
-                            <option>Алкоголь</option>
-                            <option>Развлечения</option>
-                            <option>Все для дома</option>
-                            <option>Техника</option>
-                            <option>Комуналка, связь</option>
-                            <option>Спорт, хобби</option>
-                            <option>Образование</option>
-                            <option>Прочее</option>
-                        </select>
-                    </p>
-                    <input placeholder='0.00' name='sum' value={sum} onChange={this.handleChange} required/>
-                    {/* <Calculator /> */}
-                    <button type='submit' className={styles.enterBTN}>Ввод</button>
-                    <button className={styles.clearBTN}>Очистить</button>
-                    <TableSection description={description} category={category} sum={sum}/>
-                    {/* <Summary /> */}
+                <form onSubmit={this.handleSubmit} className={styles.formBody}>
+                    {/* <CurrentDate /> */}
+                    <div className={styles.formFieldsWrp}>
+                        <div className={styles.formFields}>
+                            <input type='text' placeholder='Описание товара' name='description' 
+                                value={description} onChange={this.handleChange} className={styles.formDescription} required/>
+                            <select size='1' name='category' value={category} onChange={this.handleChange} className={styles.formCategory} required>
+                                <option value='' defaultValue>Категория товара</option>
+                                <option>Транспорт</option>
+                                <option>Продукты</option>
+                                <option>Здоровье</option>
+                                <option>Алкоголь</option>
+                                <option>Развлечения</option>
+                                <option>Все для дома</option>
+                                <option>Техника</option>
+                                <option>Комуналка, связь</option>
+                                <option>Спорт, хобби</option>
+                                <option>Образование</option>
+                                <option>Прочее</option>
+                            </select>
+                            <input placeholder='0.00' name='sum' value={sum} onChange={this.handleChange} className={styles.formSum} required/>
+                            {/* <Calculator /> */}
+                        </div>
+                    </div>
+                    <div className={styles.buttonsWrp}>
+                        <button type='submit' className={styles.enterBTN}>Ввод</button>
+                        <button className={styles.clearBTN}>Очистить</button>
+                    </div>
                 </form>
+                <TableSection description={description} category={category} sum={sum}/>
+                {/* <Summary /> */}
             </div>
         )
     }

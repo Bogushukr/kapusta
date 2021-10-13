@@ -10,6 +10,7 @@ import PrivateRoute from './Router/PrivateRoute';
 import PublicRoute from './Router/PublicRoute';
 import AppBar from './Components/AppBar/AppBar';
 import Spinner from './Components/Spinner';
+// import UserLogout from './Components/UserLogout';
 // import HeaderPage from './Components/HeaderPage/HeaderPage';
 // import routes from './Router/routes'
 
@@ -29,6 +30,7 @@ const App = () => {
   return (
     <Container>
       {/* <HeaderPage /> */}
+      {/* <UserLogout /> */}
       <AppBar />
       <Suspense fallback={<Spinner />}>
         <Switch>
@@ -59,8 +61,11 @@ const App = () => {
   );
 };
 
-export default App;
+
+// eslint-disable-next-line
+export default App
 
 // const mapDispatchToProps = {onGetCurrentUser: authOperations.getCurrentUser,};
 // export default connect(null, mapDispatchToProps)(App);
+
 
