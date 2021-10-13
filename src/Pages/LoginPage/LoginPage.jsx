@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import LoginForm from '../../Components/LoginForm';
 import { authOperations } from '../../Redux/auth';
-// import style from "./LoginPage.module.css";
+import './LoginPage.scss';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -18,26 +18,22 @@ const LoginPage = () => {
     onLogin({ email, password });
     console.log('handleSubmitLogin', { email, password });
   };
-
-  const googleSubmitLogin = response => {
-    try {
-      const { email, googleId } = response.profileObj;
-      const data = {
-        email,
-        password: googleId,
-      };
-      // onLogin({ email, googleId });
-      console.log(data);
-    } catch (error) {
-      new Error(response.error);
-    }
-  };
-
   return (
-    <LoginForm
-      handleSubmitLogin={handleSubmitLogin}
-      responseGoogle={googleSubmitLogin}
-    />
+    <div className="login_page">
+      <div className="login_hero">
+        <div className="login_hero-img"></div>
+        <div className="login_hero-img_footer"></div>
+        <div className="login_hero-textBox">
+          <span className="login_hero-title-pic above" />
+          <h1 className="login_hero-title">Kapusta</h1>
+          <p className="login_hero-text">Smart Finance</p>
+          <span className="login_hero-title-pic under" />
+        </div>
+      </div>
+        <LoginForm handleSubmitLogin={handleSubmitLogin}
+          responseGoogle={googleSubmitLogin}
+        />
+    </div>
   );
 };
 
