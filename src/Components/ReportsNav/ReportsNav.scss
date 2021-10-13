@@ -29,12 +29,11 @@
   content: '';
   width: 24px;
   height: 24px;
-  margin: 0 auto;
+  margin: 0 0 0 15px;
   background: url('../../Icons/bar_chart.svg');
 }
 @media screen and (min-width: $bp-tablet) {
   .toReport {
     padding-top: 0;
-    margin-left: 117px;
   }
 }
