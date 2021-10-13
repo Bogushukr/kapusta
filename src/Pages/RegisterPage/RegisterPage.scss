@@ -1,0 +1,198 @@
+@import '../../styles/main.scss';
+.register_page {
+  position: relative;
+  width: 100%;
+  @include for-size(mobile) {
+    min-height: 800px;
+  }
+  @include for-size(tablet) {
+    min-height: 968px;
+  }
+  @include for-size(desktop) {
+    height: 100%;
+  }
+}
+.register_hero {
+  width: 100%;
+  border-radius: 0 0 0 60px;
+  background: #f5f6fb;
+
+  @include for-size(mobile) {
+    height: 286px;
+  }
+  @include for-size(tablet) {
+    height: 526px;
+  }
+  @include for-size(desktop) {
+    height: 66%;
+  }
+}
+.register_hero-img {
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include for-size(mobile) {
+    position: fixed;
+    width: 83px;
+    height: 89px;
+    left: 354px;
+    top: 193px;
+
+    background-image: url('../../Icons/cabbage/cabbage_mob.svg');
+  }
+  @include for-size(tablet) {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: contain;
+    background-image: url('../../Icons/cabbage/cabbage_tabl.svg');
+    left: 10px;
+    top: 28px;
+  }
+  @include for-size(desktop) {
+    background-image: url('../../Icons/cabbage/cabbage.svg');
+  }
+}
+.register_hero-textBox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  @include for-size(mobile) {
+    padding-top: 86px;
+    padding-left: 49px;
+  }
+  @include for-size(tablet) {
+    padding-top: 90px;
+    padding-left: 171px;
+  }
+  @include for-size(desktop) {
+    padding-top: 308px;
+    padding-left: 230px;
+  }
+}
+.register_hero-title-pic {
+  position: absolute;
+  background: #000000;
+
+  @include for-size(mobile) {
+    width: 3.98px;
+    height: 6.46px;
+  }
+  @include for-size(tablet) {
+    width: 6.66px;
+    height: 10.82px;
+  }
+  @include for-size(desktop) {
+    width: 8px;
+    height: 13px;
+  }
+}
+.register_hero-title-pic.above {
+  @include for-size(mobile) {
+    left: 174.01px;
+    top: calc(144.74px - 56px);
+  }
+  @include for-size(tablet) {
+    left: 380.38px;
+    top: calc(150.59px - 56px);
+  }
+  @include for-size(desktop) {
+    left: 487px;
+    top: calc(459px - 56px);
+  }
+}
+.register_hero-title-pic.under {
+  @include for-size(mobile) {
+    left: 174.01px;
+    top: calc(178.04px - 56.6px);
+  }
+  @include for-size(tablet) {
+    left: 380.38px;
+    top: calc(206.37px - 56px);
+  }
+  @include for-size(desktop) {
+    left: 487px;
+    top: calc(392px - 56px);
+  }
+}
+.register_hero-title {
+  margin-top: 0;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+
+  color: #000000;
+  @include for-size(mobile) {
+    margin-bottom: 14px;
+    font-size: 50px;
+    line-height: 0.7;
+  }
+  @include for-size(tablet) {
+    margin-bottom: 20px;
+    font-size: 83px;
+    line-height: 0.73;
+  }
+  @include for-size(desktop) {
+    margin-bottom: 0;
+    font-size: 102px;
+    line-height: 1.18;
+  }
+}
+.register_hero-text {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+
+  text-transform: uppercase;
+  color: #52555f;
+
+  @include for-size(mobile) {
+    padding-left: 11px;
+
+    font-size: 13px;
+    line-height: 1.15;
+    letter-spacing: 0.15em;
+  }
+  @include for-size(tablet) {
+    padding-left: 54px;
+
+    font-size: 16px;
+    line-height: 1.19;
+    letter-spacing: 0.18em;
+  }
+  @include for-size(desktop) {
+    padding-left: 72px;
+  }
+}
+.register_hero-img_footer {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include for-size(mobile) {
+    width: 83px;
+    height: 89px;
+    left: 10.94%;
+    top: 89.6%;
+
+    background-image: url('../../Icons/cabbage/cabbage_mob_footer.svg');
+  }
+  @include for-size(tablet) {
+    width: 183px;
+    height: 142px;
+    position: absolute;
+    background-size: contain;
+    background-image: url('../../Icons/cabbage/cabbage_footer.svg');
+    left: 13%;
+    top: 80%;
+  }
+  @include for-size(desktop) {
+    left: 18%;
+    top: 76%;
+  }
+}
