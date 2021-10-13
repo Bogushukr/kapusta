@@ -47,8 +47,10 @@ class SectionIncome extends Component {
                         <input placeholder='0.00' name='sum' value={sum} onChange={this.handleChange} className={styles.formSum} required/>
                         {/* <Calculator /> */}
                     </div>
-                    <button type='submit' className={styles.enterBTN}>Ввод</button>
-                    <button className={styles.clearBTN}>Очистить</button>
+                    <div className={styles.buttonsWrp}>
+                        <button type='submit' className={styles.enterBTN}>Ввод</button>
+                        <button className={styles.clearBTN}>Очистить</button>
+                    </div>
                 </form>
                 <TableSection description={description} category={category} sum={sum}/>
                 {/* <Summary /> */}
