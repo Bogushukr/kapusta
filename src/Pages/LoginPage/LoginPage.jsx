@@ -26,13 +26,12 @@ const LoginPage = () => {
         email,
         password: googleId,
       };
-      // onLogin({ email, googleId });
-      console.log(data);
+      onLogin(data);
     } catch (error) {
       new Error(response.error);
     }
   };
-  
+
   return (
     <div className="login_page">
       <div className="login_hero">
@@ -45,9 +44,10 @@ const LoginPage = () => {
           <span className="login_hero-title-pic under" />
         </div>
       </div>
-        <LoginForm handleSubmitLogin={handleSubmitLogin}
-          responseGoogle={googleSubmitLogin}
-        />
+      <LoginForm
+        handleSubmitLogin={handleSubmitLogin}
+        responseGoogle={googleSubmitLogin}
+      />
     </div>
   );
 };

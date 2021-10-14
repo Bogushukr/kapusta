@@ -1,12 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors, authOperations } from '../../Redux/auth';
-import UserAvatar from '../../Icons/userAvatar.svg';
-import style from './UserMenu.module.css';
+import style from './UserMenu.module.scss';
 import Modal from '../Modal/Modal';
 
 const UserMenu = () => {
   const name = useSelector(authSelectors.getUsername);
+  const avatarName = name.split('') || ' ';
+  const firstAvatarLetter = avatarName[0].toUpperCase();
   const dispatch = useDispatch();
   const logOut = useCallback(() => {
     dispatch(authOperations.logOut());
@@ -19,9 +20,11 @@ const UserMenu = () => {
   };
   return (
     <div className={style.container}>
-      <img src={UserAvatar} alt="" width="32" className={style.avatar} />
-      <span className={style.name}>Welcome, {name}</span>
-      <button type="button" onClick={toggleModal}>
+      <div className={style.avatar}>
+        <span className={style.firstLetter}>{firstAvatarLetter}</span>
+      </div>
+      <span className={style.name}>{name}</span>
+      <button className={style.userLogout} type="button" onClick={toggleModal}>
         Выйти
       </button>
       {setOpenModal && (
