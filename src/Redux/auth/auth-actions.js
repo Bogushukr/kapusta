@@ -16,6 +16,11 @@ const getCurrentUserRequest = createAction("auth/getCurrentUserRequest");
 const getCurrentUserSuccess = createAction("auth/getCurrentUserSuccess");
 const getCurrentUserError = createAction("auth/getCurrentUserError");
 
+const setBalanceRequest = createAction('setBalanceRequest');
+const setBalanceSuccess = createAction('setBalanceSuccess');
+const setBalanceError = createAction('setBalanceError');
+
+
 export default {
   registerRequest,
   registerSuccess,
@@ -29,4 +34,7 @@ export default {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  setBalanceRequest,
+  setBalanceSuccess,
+  setBalanceError,
 };
