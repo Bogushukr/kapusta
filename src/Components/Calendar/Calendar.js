@@ -13,10 +13,9 @@ const Calendar = () => {
     return (
       <DatePicker
         selected={startDate}
-        onChange={(date) => {
+        onChange={(date) => 
           setStartDate(date)
-          
-        }}
+        }
         customInput={<ExampleCustomInput />}
         dateFormat='dd.MM.yyyy'
       />
