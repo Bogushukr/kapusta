@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
 
 import TableSection from '../../Components/TableSection/TableSection'
+import Calendar from '../../Components/Calendar/Calendar'
 
 import styles from './SectionIncome.module.css'
 
@@ -34,7 +35,7 @@ class SectionIncome extends Component {
         const { description, category, sum } = this.state
         return (
             <div className={styles.formContainer}>
-                {/* <Calendar /> */}
+                <div className={styles.datePickerWrp}><Calendar /></div> 
                 <form onSubmit={this.handleSubmit} className={styles.formBody}>
                     <div className={styles.formFields}>
                         <input type='text' placeholder='Описание дохода' name='description' 

@@ -1,0 +1,31 @@
+.datePickerBTN {
+  background-color: transparent;
+  border: transparent;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.datePickerBTN::before {
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  content: '';
+  width: 20px;
+  height: 19px;
+  margin: 0 10px 0 0;
+  background: url('../../Icons/calendar.svg');
+  background-repeat: no-repeat;
+}
+
+/* ========================================== Tablet =========================================== */
+
+@media screen and (min-width: 768px) {
+  .datePickerBTN {
+    margin: 0 0 0 30px;
+  }
+}
