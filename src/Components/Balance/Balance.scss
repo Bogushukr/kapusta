@@ -1,8 +1,4 @@
 @import '../../styles/main.scss';
-.wrapper {
-  width: 1320px;
-}
-
 .balance {
   display: block;
   width: 100%;
@@ -11,109 +7,10 @@
 
   border-bottom-left-radius: 110px;
 }
-.toReport {
-  text-align: center;
-  padding-top: 37px;
-  margin: 0;
-}
-.toReportsLink {
-  text-align: center;
-
+.userBalance {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
-  color: $secondary-font-color;
-
-  font-size: 12px;
-  font-family: $font-family;
-  font-weight: 400;
-  line-height: 14px;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-
-  // &::after {
-  //   display: inline-block;
-  //   content: '';
-  //   width: 24px;
-  //   height: 24px;
-  //   margin-left: 15px;
-  //   background: url('../../Icons/bar_chart.svg');
-  // }
-}
-
-.balanceSetting {
-  display: block;
-  text-align: center;
-  font-family: $font-family;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 14px;
-  letter-spacing: 0.02em;
-
-  color: $secondary-font-color;
-  margin: 40px auto 10px;
-}
-.balanceLabel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 6px;
-}
-.balanceState {
-  @extend %flex-a-j;
-  color: $main-font-color;
-  cursor: pointer;
-  font-family: $font-family;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 14px;
-  letter-spacing: 0.02em;
-  text-align: center;
-  width: 125px;
-  height: 44px;
-  border: 3px solid $background-light;
-
-  border-top-left-radius: 22px;
-  border-bottom-left-radius: 22px;
-  background-color: $background-dark;
-  border-right: 2px solid $background-light;
-
-  &::placeholder {
-    color: $main-font-color;
-  }
-}
-
-.setBalanceButton {
-  color: $secondary-font-color;
-
-  width: 125px;
-  height: 44px;
-  padding-left: 17px;
-  border: 3px solid $background-light;
-
-  border-top-right-radius: 22px;
-  border-bottom-right-radius: 22px;
-  background-color: $background-dark;
-  border-left: 1px solid $background-light;
-
-  text-transform: uppercase;
-  text-align: left;
-
-  font-family: $font-family;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 14px;
-  letter-spacing: 0.02em;
-  text-align: left;
-
-  &:hover {
-    background-color: $active-button-color;
-    color: $background-light;
-    border: none;
-    cursor: pointer;
-  }
 }
 .summary {
   display: flex;
@@ -169,13 +66,15 @@
   .balanceInfo {
     display: flex;
     align-items: baseline;
-    justify-content: center;
     padding-top: 40px;
   }
   .setBalanceForm {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+  }
+  .toReports {
+    padding: 0;
   }
   .summary {
     position: relative;
@@ -186,7 +85,8 @@
   }
   .balanceSetting {
     margin-right: 20px;
-    margin-left: 50px;
+    margin-left: 100px;
+    margin-top: 0;
   }
   .consumptionButton,
   .incomeButton {
@@ -209,15 +109,13 @@
   }
   .balanceState {
     margin-right: 15px;
-    margin-left: 15px;
   }
   .toReport {
     padding-top: 0;
-    margin-left: 117px;
   }
-  input .balanceState {
-    position: relative;
-  }
+  // input .balanceState {
+  //   position: relative;
+  // }
 }
 
 @media screen and (min-width: $bp-desktop) {
@@ -230,9 +128,9 @@
   .balanceSetting {
     margin-right: 40px;
   }
-  .setBalanceButton {
-    margin-right: 200px;
-  }
+  // .setBalanceButton {
+  //   margin-right: 200px;
+  // }
   .summary {
     margin-left: 110px;
   }
