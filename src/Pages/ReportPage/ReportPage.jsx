@@ -5,6 +5,8 @@ import GeneratorScheduleReport from '../../Components/GeneratorScheduleReport/';
 import MonthPIcker from '../../Components/MonthPIcker';
 import Comeback from '../../Components/Comeback';
 
+import Summary from '../../Components/Summary'
+
 // import Balance from '../../Components/Balance';
 import Icon from '../../Icons/comeback.svg';
 import s from './ReportPage.module.scss';
@@ -20,6 +22,7 @@ class ReportPage extends Component {
       <>
         <div className={s.wrapper}>
           <Comeback />
+          <Summary />
           <MonthPIcker
           />
           <div className={s.menu}>

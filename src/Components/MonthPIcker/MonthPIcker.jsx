@@ -5,34 +5,7 @@ import {reportActions} from '../../Redux/report/'
 import s from './MonthPIcker.module.scss';
 import Icons from '../../Icons/IconsPicker.svg';
 
-const arrMonthUK = [
-  'Січень',
-  'Лютий',
-  'Март',
-  'Квітень',
-  'Травень',
-  'Червень',
-  'Липень',
-  'Серпень',
-  'Вересень',
-  'Жовтень',
-  'Листопад',
-  'Грудень',
-];
-const arrMonthRU = [
-  "Январь",
-   "Февраль",
-   "Март",
-   "Апрель",
-   "Май",
-   "Июнь",
-   "Июль",
-   "Август",
-   "Сентябрь",
-   "Октябрь",
-   "Ноябрь",
-   "Декабрь", 
-];
+import { arrMonthRU } from '../../Utils/arrMonth'
 
 const MonthPIcker = ({ year, month, HandleMonthdown, HandleMonthUp }) => {
   const activeMonth = arrMonthRU[month];
