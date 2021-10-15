@@ -1,7 +1,8 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import './BalanceInfo.scss';
 import ModalBalance from '../ModalBalance/ModalBalance';
+import { authSelectors, authOperations } from '../../Redux/auth';
+import { useSelector, useDispatch, useEffect } from 'react-redux';
 
 const BalanceInfo = () => {
   const balance = 0;
@@ -21,7 +22,8 @@ const BalanceInfo = () => {
   // };
   return (
     <div className="balanceInfo">
-      <form className="setBalanceForm">
+      {/* <form className="setBalanceForm" onSubmit={onSubmit}> */}
+      <form className="setBalanceForm" onSubmit>
         <p className="balanceSetting">Баланс:</p>
         <label htmlFor="balance" className="balanceLabel">
           {balance === 0 ? (
@@ -38,7 +40,8 @@ const BalanceInfo = () => {
             </>
           ) : (
             <>
-              <p className="balanceState">{balance.toFixed(2)} UAH</p>
+              {/* <p className="balanceState">{balance.toFixed(2)} UAH</p> */}
+              <p className="balanceState">{`${balance}`} UAH</p>
               <button className="setBalanceButton" disabled>
                 Подтвердить
               </button>

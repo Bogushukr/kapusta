@@ -1,8 +1,13 @@
 @import '../../styles/main.scss';
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
 .currentDate {
   display: block;
   position: relative;
-  margin-top: 50px;
+  margin-top: 35px;
 
   @extend %flex-a-j;
 
@@ -19,6 +24,7 @@
 .currentDate::before {
   display: inline-block;
   content: '';
+  vertical-align: middle;
   width: 20px;
   height: 20px;
   margin-right: 10px;

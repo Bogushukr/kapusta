@@ -10,7 +10,7 @@
 .userBalance {
   display: flex;
   align-items: baseline;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .toReports {
   @extend %flex-a-j;
@@ -37,7 +37,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 6px;
 }
 .balanceState {
   @extend %flex-a-j;
@@ -54,6 +53,7 @@
   height: 44px;
   border: 3px solid $background-light;
 
+  position: relative;
   border-top-left-radius: 22px;
   border-bottom-left-radius: 22px;
   background-color: $background-dark;
@@ -93,6 +93,8 @@
     color: $background-light;
     border: none;
     cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 input[type='number']::-webkit-outer-spin-button,
@@ -169,6 +171,7 @@ input[type='number']:focus {
   }
   .toReports {
     padding: 0;
+    margin: 0 50px 0 0;
   }
   .summary {
     position: relative;
@@ -176,6 +179,7 @@ input[type='number']:focus {
     justify-content: flex-start;
     align-items: flex-start;
     margin-left: 50px;
+    margin-top: -450px;
   }
   .balanceSetting {
     margin-right: 20px;
@@ -207,9 +211,6 @@ input[type='number']:focus {
   .toReport {
     padding-top: 0;
   }
-  // input .balanceState {
-  //   position: relative;
-  // }
 }
 
 @media screen and (min-width: $bp-desktop) {
@@ -222,11 +223,13 @@ input[type='number']:focus {
   .balanceSetting {
     margin-right: 40px;
   }
-  // .setBalanceButton {
-  //   margin-right: 200px;
-  // }
+  .toReports {
+    padding: 0;
+    margin: 0 110px 0 0;
+  }
   .summary {
     margin-left: 110px;
+    margin-top: -440px;
   }
   .consumptionButton,
   .incomeButton {

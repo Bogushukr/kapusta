@@ -10,17 +10,13 @@
 .userBalance {
   display: flex;
   align-items: baseline;
-  justify-content: center;
+  justify-content: space-between;
 }
 .summary {
   display: flex;
   justify-content: baseline;
   justify-content: end;
   align-items: flex-end;
-
-  position: absolute;
-  left: 0;
-  bottom: 0;
 }
 .consumptionButton,
 .incomeButton {
@@ -53,6 +49,8 @@
 .incomeButton:focus {
   background-color: $active-button-color;
   color: $background-light;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media screen and (min-width: $bp-tablet) {
@@ -66,7 +64,7 @@
   .balanceInfo {
     display: flex;
     align-items: baseline;
-    padding-top: 40px;
+    padding-top: 25px;
   }
   .setBalanceForm {
     display: flex;
@@ -77,7 +75,7 @@
     padding: 0;
   }
   .summary {
-    position: relative;
+    // position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -85,7 +83,7 @@
   }
   .balanceSetting {
     margin-right: 20px;
-    margin-left: 100px;
+    margin-left: 120px;
     margin-top: 0;
   }
   .consumptionButton,
@@ -127,10 +125,9 @@
   }
   .balanceSetting {
     margin-right: 40px;
+    margin-left: 440px;
+    margin-top: 0;
   }
-  // .setBalanceButton {
-  //   margin-right: 200px;
-  // }
   .summary {
     margin-left: 110px;
   }
