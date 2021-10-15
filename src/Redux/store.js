@@ -8,11 +8,12 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist"
-import storage from "redux-persist/lib/storage"
-
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import { expenseReducer } from './Reducers'
-import { authReducer } from "./auth"
+import { reportReducer } from "./report";
+import { authReducer } from "./auth";
+
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -32,6 +33,7 @@ const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     transactions: expenseReducer,
+    report: reportReducer,
   },
   middleware: middleware,
   devTools: process.env.NODE_ENV === "development",

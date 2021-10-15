@@ -1,27 +1,26 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import './BalanceInfo.scss';
 import ModalBalance from '../ModalBalance/ModalBalance';
+import { authSelectors, authOperations } from '../../Redux/auth';
+import { useSelector, useDispatch } from 'react-redux';
 
 const BalanceInfo = () => {
-  const balance = 0;
-  // const balance = useSelector(getTotalBalance);
+  const balance = useSelector(authSelectors.getUserBalance);
+  const dispatch = useDispatch();
+  const [sum, setBalance] = useState('');
+  const onHandleChange = e => setBalance(e.currentTarget.value);
 
-  // const dispatch = useDispatch();
-  // const [sum, setSum] = useState('');
+  useEffect(() => {
+    setBalance(balance);
+  }, [balance]);
+  const onSubmit = event => {
+    event.preventDefault();
+    dispatch(authOperations.setBalance(sum));
+  };
 
-  // const onHandleChange = event => setSum(event.currentTarget.value);
-  // useEffect(() => {
-  //   setSum(balance);
-  // });
-
-  // const onhandleSubmit = event => {
-  //   event.preventDefault();
-  //   console.log(balance);
-  // };
   return (
     <div className="balanceInfo">
-      <form className="setBalanceForm">
+      <form className="setBalanceForm" onSubmit={onSubmit}>
         <p className="balanceSetting">Баланс:</p>
         <label htmlFor="balance" className="balanceLabel">
           {balance === 0 ? (
@@ -29,8 +28,9 @@ const BalanceInfo = () => {
               <input
                 type="number"
                 name="name"
+                pattern="\d+(\.\d{2})?"
                 placeholder="00.00 UAH"
-                // onChange={onHandleChange}
+                onChange={onHandleChange}
                 className="balanceState"
               />
               {balance <= 0 && <ModalBalance />}
@@ -38,7 +38,8 @@ const BalanceInfo = () => {
             </>
           ) : (
             <>
-              <p className="balanceState">{balance.toFixed(2)} UAH</p>
+              {/* <p className="balanceState">{balance.toFixed(2)} UAH</p> */}
+              <p className="balanceState">{balance}UAH</p>
               <button className="setBalanceButton" disabled>
                 Подтвердить
               </button>

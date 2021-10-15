@@ -3,32 +3,29 @@
 .balanceModal {
   z-index: 9999999;
   position: absolute;
-  top: 60px;
+  top: 220px;
   left: 0;
   bottom: 0;
   right: 0;
   width: 290px;
   height: 165px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   background: url('../../Icons/modal-comment.svg') no-repeat;
 
   display: inline-block;
 }
 @media screen and (min-width: $bp-tablet) and (max-width: $bp-desktop) {
-  .modal {
-    position: relative;
-  }
   .balanceModal {
-    top: 104px;
-    left: -160px;
+    top: 125px;
+    left: 165px;
+    margin: 0;
   }
 }
 @media screen and (min-width: 1280px) {
-  .modal {
-    position: relative;
-  }
   .balanceModal {
-    top: 104px;
-    left: -160px;
+    top: 125px;
+    left: 505px;
+    margin: 0;
   }
 }

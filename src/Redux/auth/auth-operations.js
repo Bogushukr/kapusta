@@ -65,7 +65,7 @@ const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
 
   try {
-    await axios.get('/users/logout');
+    await axios.post('/users/logout');
 
     token.unset();
     dispatch(authActions.logoutSuccess());
@@ -105,4 +105,19 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-export default { register, logIn, logOut, getCurrentUser };
+/*
+ * PATCH @ /users/balance
+ * headers:
+ *    Authorization: Bearer token
+ */
+
+const setBalance = balance => dispatch => {
+  dispatch(authActions.setBalanceRequest());
+
+  axios
+    .patch('/setBalance', { balance })
+    .then(({ data }) => dispatch(authActions.setBalanceSuccess(data)))
+    .catch(error => dispatch(authActions.setBalanceError(error.message)));
+};
+
+export default { register, logIn, logOut, getCurrentUser, setBalance };

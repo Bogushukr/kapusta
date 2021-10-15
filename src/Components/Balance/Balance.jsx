@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Media from 'react-media';
-import { useSelector, useDispatch } from 'react-redux';
 
-// import { getTotalBalance } from '../../Redux/auth';
-// import expenseActions from '../../Redux/Actions';
 import CurrentDate from '../CurrentDate/CurrentDate';
 import ReportsNav from '../ReportsNav/ReportsNav';
 import BalanceInfo from '../BalanceInfo/BalanceInfo';
