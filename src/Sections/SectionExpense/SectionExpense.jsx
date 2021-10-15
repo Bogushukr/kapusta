@@ -10,24 +10,46 @@ import styles from './SectionExpense.module.css'
 const INITIAL_STATE = {
     description: '',
     category: '',
-    sum: ''
+    sum: '',
+    items: []
 }
 
 class SectionExpense extends Component {
 
+    constructor() {
+        super()
+        this.state = {...INITIAL_STATE}
+    }
+
     static defaultProps = {}
 
-    state = {...INITIAL_STATE}
+    // state = {...INITIAL_STATE}
 
     handleChange = e => {
         const {name, value} = e.target
         this.setState({[name]: value})
+        console.log('state in handleChange: ', this.state);
     }
 
     handleSubmit = e => {
         e.preventDefault()
-        this.props.onAddExpense( {...this.state} )
-        this.reset()
+        let items = [...this.state.items]
+        items.push({
+            description: this.state.description,
+            category: this.state.category,
+            sum: this.state.sum,
+        })
+        this.setState({
+            items,
+            description: '',
+            category: '',
+            sum: '',
+        })
+        console.log('items in handleSubmit: ', items)
+        // this.props.items(itemsNew)
+        // this.props.onAddExpense( {...this.state} )
+        console.log('state.items:', this.state.items)
+        // this.reset()
     }
 
     reset = () => this.setState( {...INITIAL_STATE} )
@@ -37,7 +59,7 @@ class SectionExpense extends Component {
         return (
             <div className={styles.formContainer}>
                 <div className={styles.datePickerWrp}><Calendar /></div> 
-                <div className={styles.calendarFormWrp}>                                   
+                {/* <div className={styles.calendarFormWrp}>                                    */}
                     <form onSubmit={this.handleSubmit} className={styles.formBody}>                    
                         <div className={styles.formFieldsWrp}>
                             <div className={styles.formFields}>
@@ -66,13 +88,18 @@ class SectionExpense extends Component {
                             <button className={styles.clearBTN}>Очистить</button>
                         </div>
                     </form>
-                </div>
-                <TableSection description={description} category={category} sum={sum}/>
+                {/* </div> */}
+                <TableSection items={this.state.items}/>
+                {/* <TableSection description={description} category={category} sum={sum}/> */}
                 {/* <Summary /> */}
             </div>
         )
     }
 }
+
+// const mapStateToProps = (state, props) => ({
+//     items: state.items
+// })
 
 const mapDispatchToProps = {
     onAddExpense: expenseOperations.addExpense,

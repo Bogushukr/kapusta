@@ -1,5 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import expensesReducer from './Reducers/expenseReducer'
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
 import {
   persistStore,
   persistReducer,
@@ -11,8 +10,10 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { expenseReducer } from './Reducers'
 import { reportReducer } from "./report";
 import { authReducer } from "./auth";
+
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -28,13 +29,10 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
-// const store = configureStore({
-//    reducer: {expenses: expensesReducer}
-//})
-
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    transactions: expenseReducer,
     report: reportReducer,
   },
   middleware: middleware,
