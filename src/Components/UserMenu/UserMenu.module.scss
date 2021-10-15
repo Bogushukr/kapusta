@@ -17,7 +17,7 @@
 
 .firstLetter {
   font-family: $font-family;
-  color: #52555f;
+  color: $user-info-color;
   font-weight: 700;
   font-size: 12px;
   line-height: 14px;
@@ -25,10 +25,8 @@
 }
 
 .name {
-  /* font-weight: 700;
-  margin-right: 12px; */
-  font-family: 'Roboto', sans-serif;
-  color: #52555f;
+  font-family: $font-family;
+  color: $user-info-color;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -49,8 +47,8 @@
 }
 
 .userLogout {
-  font-family: 'Roboto', sans-serif;
-  color: #52555f;
+  font-family: $font-family;
+  color: $user-info-color;
   background-color: transparent;
   font-size: 12px;
   font-style: normal;

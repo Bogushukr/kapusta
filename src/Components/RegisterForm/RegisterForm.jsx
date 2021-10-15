@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import ButtonGoogle from '../ButtonGoogle';
@@ -89,11 +89,11 @@ export default function RegisterForm({ handleSubmitRegister, responseGoogle }) {
           <ErrorMessage name="password" />
         </div>
         <div className="formReg_footer">
-          <NavLink to="/" exact className="formReg_NavLink">
+          {/* <NavLink to="/" exact className="formReg_NavLink">
             <button type="button" className="formReg_btn">
               Войти
             </button>
-          </NavLink>
+          </NavLink> */}
           <button type="submit" className="formReg_btn last">
             Регистрация
           </button>

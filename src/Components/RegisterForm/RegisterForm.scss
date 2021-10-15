@@ -166,10 +166,12 @@
 }
 .formReg_footer {
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
-.formReg_btn.last {
-  margin-left: 15px;
-}
+// .formReg_btn.last {
+//   margin-left: 15px;
+// }
 .formReg_btn {
   justify-content: center;
 
