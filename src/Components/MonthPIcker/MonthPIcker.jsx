@@ -1,4 +1,6 @@
-import { Component } from 'react';
+import { connect } from 'react-redux'
+
+import {reportActions} from '../../Redux/report/'
 
 import s from './MonthPIcker.module.scss';
 import Icons from '../../Icons/IconsPicker.svg';
@@ -17,14 +19,14 @@ const arrMonth = [
   'Листопад',
   'Грудень',
 ];
-const MonthPIcker = ({ year, month, onHandleMonthdown, onHandleMonthUp }) => {
+const MonthPIcker = ({ year, month, HandleMonthdown, HandleMonthUp }) => {
   const activeMonth = arrMonth[month];
   return (
     <>
       <div className={s.blockDiv}>
         <span className={s.title}>Текущий период:</span>
         <div className={s.wrapper}>
-          <div className={s.prevMth} onClick={onHandleMonthdown}>
+          <div className={s.prevMth} onClick={HandleMonthdown}>
             <svg className={s.svg}>
               <use xlinkHref={`${Icons}#icon-leftArrow`} />
             </svg>
@@ -33,7 +35,7 @@ const MonthPIcker = ({ year, month, onHandleMonthdown, onHandleMonthUp }) => {
             <span style={{ marginRight: 5 }}>{year}</span>
             <span>{activeMonth}</span>
           </div>
-          <div className={s.nextMth} onClick={onHandleMonthUp}>
+          <div className={s.nextMth} onClick={HandleMonthUp}>
             <svg className={s.svg}>
               <use xlinkHref={`${Icons}#icon-rightArrow`} />
             </svg>
@@ -44,4 +46,19 @@ const MonthPIcker = ({ year, month, onHandleMonthdown, onHandleMonthUp }) => {
   );
 };
 
-export default MonthPIcker;
+const mapStateToProps = state => {
+  return {
+    year: state.report.date.currentReportYear,
+    month: state.report.date.currentReportMonth
+  }
+
+}
+
+const mapDispatchProps = dispatch => {
+  return {
+    HandleMonthUp: () => dispatch(reportActions.incrementMonthPicker(1)),
+    HandleMonthdown: () => dispatch(reportActions.dectementMonthPicker(1))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchProps)(MonthPIcker);
