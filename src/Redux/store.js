@@ -11,7 +11,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-// import { contactReduser } from "./contact";
+import { reportReducer } from "./report";
 import { authReducer } from "./auth";
 
 const middleware = [
@@ -35,7 +35,7 @@ const authPersistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    // contacts: contactReduser,
+    report: reportReducer,
   },
   middleware: middleware,
   devTools: process.env.NODE_ENV === "development",
