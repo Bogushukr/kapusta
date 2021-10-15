@@ -1,0 +1,66 @@
+@import '../../styles/main.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.avatar {
+  display: flex;
+  background-color: #f5f6fa;
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  border-radius: 50%;
+  align-items: center;
+}
+
+.firstLetter {
+  font-family: $font-family;
+  color: #52555f;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  margin: auto;
+}
+
+.name {
+  /* font-weight: 700;
+  margin-right: 12px; */
+  font-family: 'Roboto', sans-serif;
+  color: #52555f;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  margin-right: 15px;
+}
+
+.name::after {
+  display: inline-block;
+  vertical-align: middle;
+  content: '';
+  width: 2px;
+  height: 24px;
+  height: 36px;
+  margin-left: 15px;
+  background-color: #e0e5eb;
+}
+
+.userLogout {
+  font-family: 'Roboto', sans-serif;
+  color: #52555f;
+  background-color: transparent;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  border: none;
+  text-decoration: underline;
+}
+.userLogout:hover,
+.userLogout:focus {
+  cursor: pointer;
+}

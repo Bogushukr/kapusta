@@ -19,7 +19,7 @@ const RegisterPage = () => {
     console.log('handleSubmitRegister = ', { name, email, password });
   };
 
-    const googleSubmitRegister = response => {
+  const googleSubmitRegister = response => {
     try {
       const { name, email, googleId } = response.profileObj;
       const data = {
@@ -27,13 +27,12 @@ const RegisterPage = () => {
         email,
         password: googleId,
       };
-      // onRegister(data);
-      console.log(data);
+      onRegister(data);
     } catch (error) {
       new Error(response.error);
     }
   };
-  
+
   return (
     <div className="register_page">
       <div className="register_hero">
@@ -46,9 +45,10 @@ const RegisterPage = () => {
           <span className="register_hero-title-pic under" />
         </div>
       </div>
-       <RegisterForm handleSubmitRegister={handleSubmitRegister}
-         responseGoogle={googleSubmitRegister}
-       />
+      <RegisterForm
+        handleSubmitRegister={handleSubmitRegister}
+        responseGoogle={googleSubmitRegister}
+      />
     </div>
   );
 };
