@@ -1,87 +1,78 @@
+import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { reportActions } from '../../Redux/report/';
-import { arrMonthRU } from '../../Utils/arrMonth'
+import { arrMonthRU } from '../../Utils/arrMonth';
+
+import { fetchReportCashInSixMonth, fetchReportCashOutSixMonth} from '../../Redux/report/report-operations';
+import { cashOutSixMonth, cashInSixMonth } from '../../Redux/report/report-selectors'
 
 import s from './Summary.module.scss';
 
-const n = Number('01');
-console.log(n === 1);
+class Summary extends Component {
+  state = {
+    cashIncome: this.props.cashIncome,
+  };
+  static defaultProps = {
+    cashOutSixMonth: null,
+    cashInSixMonth: null
+  };
 
-const obj = [
-  {
-    id: new Date(),
-    month: '01',
-    year: '2001',
-    value: '16000',
-  },
-  {
-    id: new Date(),
-    month: '02',
-    year: '2001',
-    value: '16000',
-  },
-  {
-    id: new Date(),
-    month: '03',
-    year: '2001',
-    value: '16000',
-  },
-  {
-    id: new Date(),
-    month: '04',
-    year: '2001',
-    value: '16000',
-  },
-  {
-    id: new Date(),
-    month: '05',
-    year: '2001',
-    value: '16000',
-  },
-  {
-    id: new Date(),
-    month: '06',
-    year: '2001',
-    value: '16000',
-  },
-];
+  componentDidMount() {
+    
+    this.props.onfetchReportCashInSixMonth()
+    this.props.onfetchReportCashOutSixMonth()
+  }
+  btn = ()  => {
+    console.log(this.props.cashInSixMonth, this.props.cashOutSixMonth);
+    
+  }
 
-const Summary = () => {
-  return (
-    <>
-      <div className={s.wrapper}>
-        
-        <span className={s.title}>Сводка</span>
-        <ul className={s.list}>
-          {obj.map(({ id, month, value }) => {
-            return (
-              <li
-                key={id}
-                className={s.item}
-              >
-                <span className={s.text}>{arrMonthRU[Number(month)]}</span>
-                <span  className={s.text}>{value}</span>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </>
-  );
-};
+  render() {
+    const {cashInSixMonth, cashOutSixMonth} = this.props
+    const {cashIncome} = this.state
+    
+    return (
+      <>
+      <button type="button" onClick={this.btn}></button>
+        <div className={s.wrapper}>
+          <span className={s.title}>Сводка</span>
+          <ul className={s.list}>
+            {cashOutSixMonth && !cashIncome && cashOutSixMonth.map(({ Total: value, _id: {month} }) => {
+              return (
+                <li key={month}   className={s.item}>
+                  <span className={s.text}>{arrMonthRU[Number(month)]}</span>
+                  <span className={s.text}>{value}</span>
+                
+                </li>
+              );
+            })}
+            {cashOutSixMonth && cashIncome && cashInSixMonth.map(({ Total: value, _id: {month} }) => {
+              return (
+                <li key={month}  className={s.item}>
+                  <span className={s.text}>{arrMonthRU[Number(month)]}</span>
+                  <span className={s.text}>{value}</span>
+                
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </>
+    );
+  }
+}
 
 const mapStateToProps = state => {
   return {
-    // year: state.report.date.currentReportYear,
-    // month: state.report.date.currentReportMonth
+    cashOutSixMonth: cashOutSixMonth(state),
+    cashInSixMonth: cashInSixMonth(state)
   };
 };
 
 const mapDispatchProps = dispatch => {
   return {
-    // HandleMonthUp: () => dispatch(reportActions.incrementMonthPicker(1)),
-    // HandleMonthdown: () => dispatch(reportActions.dectementMonthPicker(1))
+    onfetchReportCashInSixMonth: () => dispatch(fetchReportCashInSixMonth()),
+    onfetchReportCashOutSixMonth: () => dispatch(fetchReportCashOutSixMonth()),
   };
 };
 
