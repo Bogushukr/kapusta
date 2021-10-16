@@ -30,7 +30,6 @@ class ReportPage extends Component {
   
     return (
       <>
-      <p>{this.state.year}{this.state.month}</p>
       <button type="button" onClick={this.handleClick}/>
         <div className={s.wrapper}>
           <Comeback />

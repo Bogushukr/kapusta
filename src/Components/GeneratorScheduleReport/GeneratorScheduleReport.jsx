@@ -78,6 +78,7 @@ class GeneratorScheduleReport extends Component {
       tabletimeWidth = this.state.data.length * 90;
     }
 
+
     return (
       <Media
         queries={{

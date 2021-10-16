@@ -18,6 +18,15 @@ import {
   fetchReportCashOutSixMonthRequest,
   fetchReportCashOutSixMonthSuccess,
   fetchReportCashOutSixMonthError,
+
+  fetchReportCashInOneMonthRequest,
+  fetchReportCashInOneMonthSuccess,
+  fetchReportCashInOneMonthError,
+
+  fetchReportCashOutOneMonthRequest,
+  fetchReportCashOutOneMonthSuccess,
+  fetchReportCashOutOneMonthError,
+
 } from './report-actions';
 import { incrementData, dectementData } from './report-operations';
 
@@ -63,11 +72,24 @@ const cashInSixMonth = createReducer([], {
 
 const cashOutSixMonth = createReducer([], {
   [fetchReportCashOutSixMonthSuccess]: (_, { payload }) => payload,
+  [fetchReportCashInOneMonthError]: (_, { payload }) => {
+    return null;
+  },
+});
+
+const cashInOneMonth = createReducer([], {
+  [fetchReportCashInOneMonthSuccess]: (_, { payload }) => payload,
   [fetchReportCashOutSixMonthError]: (_, { payload }) => {
     return null;
   },
 });
 
+const cashOutOneMonth = createReducer([], {
+  [fetchReportCashOutOneMonthSuccess]: (_, { payload }) => payload,
+  [fetchReportCashOutOneMonthError]: (_, { payload }) => {
+    return null;
+  },
+});
 
 const loading = createReducer(false, {
   [fetchAllTransactionRequest]: () => true,
@@ -82,6 +104,17 @@ const loading = createReducer(false, {
   [fetchReportCashOutSixMonthRequest]: () => true,
   [fetchReportCashOutSixMonthSuccess]: () => false,
   [fetchReportCashOutSixMonthError]: () => false,
+
+  
+  [fetchReportCashInOneMonthRequest]: () => true,
+  [fetchReportCashInOneMonthSuccess]: () => false,
+  [fetchReportCashInOneMonthError]: () => false,
+
+  [fetchReportCashOutOneMonthRequest]: () => true,
+  [fetchReportCashOutOneMonthSuccess]: () => false,
+  [fetchReportCashOutOneMonthError]: () => false,
+
+
 });
 
 const reportReducer = combineReducers({
@@ -90,7 +123,9 @@ const reportReducer = combineReducers({
   loading,
   test,
   cashInSixMonth, 
-  cashOutSixMonth
+  cashOutSixMonth,
+  cashInOneMonth,
+  cashOutOneMonth
 });
 
 export default reportReducer;

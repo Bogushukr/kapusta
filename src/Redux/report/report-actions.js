@@ -12,6 +12,15 @@ export const fetchReportCashOutSixMonthRequest = createAction("report/getCashOut
 export const fetchReportCashOutSixMonthSuccess = createAction("report/getCashOutSixMonthSuccess");
 export const fetchReportCashOutSixMonthError = createAction("report/getCashOutSixMonthError");
 
+export const fetchReportCashInOneMonthRequest = createAction("report/getCashOutSixMonthRequest");
+export const fetchReportCashInOneMonthSuccess = createAction("report/getCashOutSixMonthSuccess");
+export const fetchReportCashInOneMonthError = createAction("report/getCashOutSixMonthError");
+
+export const fetchReportCashOutOneMonthRequest = createAction("report/getCashOutSixMonthRequest");
+export const fetchReportCashOutOneMonthSuccess = createAction("report/getCashOutSixMonthSuccess");
+export const fetchReportCashOutOneMonthError = createAction("report/getCashOutSixMonthError");
+
+
 export const testRequest = createAction("report/testRequest");
  
 export const incrementMonthPicker = createAction("report/IncrementMonthPicker")
@@ -32,5 +41,13 @@ export default {
     fetchReportCashOutSixMonthRequest,
     fetchReportCashOutSixMonthSuccess,
     fetchReportCashOutSixMonthError,
+
+    fetchReportCashInOneMonthRequest,
+    fetchReportCashInOneMonthSuccess,
+    fetchReportCashInOneMonthError,
+
+    fetchReportCashOutOneMonthRequest,
+    fetchReportCashOutOneMonthSuccess,
+    fetchReportCashOutOneMonthError,
     testRequest
 }
