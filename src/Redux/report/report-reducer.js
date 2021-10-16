@@ -36,19 +36,10 @@ const date = createReducer(reportData, {
   [dectementMonthPicker]: dectementData,
 });
 
-const transactions = {
-  allTran: [],
-  asd: ' 1232123123',
-};
-
 const report = createReducer((reportData, []), {
   [incrementMonthPicker]: incrementData,
   [dectementMonthPicker]: dectementData,
   [fetchAllTransactionSuccess]: (_, { payload }) => {
-    console.log('123');
-
-    console.log(report.asd);
-
     return {
       allTran: payload,
     };
