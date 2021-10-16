@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import RegisterForm from '../../Components/RegisterForm';
 import { authOperations } from '../../Redux/auth';
@@ -16,7 +16,6 @@ const RegisterPage = () => {
 
   const handleSubmitRegister = ({ name, email, password }) => {
     onRegister({ name, email, password });
-    console.log('handleSubmitRegister = ', { name, email, password });
   };
 
   const googleSubmitRegister = response => {
