@@ -115,7 +115,7 @@ const setBalance = balance => dispatch => {
   dispatch(authActions.setBalanceRequest());
 
   axios
-    .patch('/setBalance', { balance })
+    .patch('/users/setBalance', { balance })
     .then(({ data }) => dispatch(authActions.setBalanceSuccess(data)))
     .catch(error => dispatch(authActions.setBalanceError(error.message)));
 };
