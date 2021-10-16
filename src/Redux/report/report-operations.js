@@ -13,6 +13,9 @@ import {
   fetchReportCashInOneMonthRequest,
   fetchReportCashInOneMonthSuccess,
   fetchReportCashInOneMonthError,
+  fetchReportCashOutOneMonthRequest,
+  fetchReportCashOutOneMonthSuccess,
+  fetchReportCashOutOneMonthError,
 } from './report-actions';
 
 export const incrementData = (state, { payload }) => {
@@ -79,14 +82,24 @@ export const fetchReportCashInSixMonth = () => async dispatch => {
 };
 
 
-export const fetchReportCashOneInMonth = () => async dispatch => {
-  console.log('asd');
+export const fetchReportCashInOneMonth = ({year, month}) => async dispatch => {
   dispatch(fetchReportCashInOneMonthRequest());
   try {
-    const { data } = await axios.get('/reports/cash-out/');
+    const { data } = await axios.get(`/reports/cash-in/${year}/${month}`);
 
-    dispatch(fetchReportCashInOneMonthSuccess(data));
+    dispatch(fetchReportCashInOneMonthSuccess(data.data));
   } catch (error) {
     dispatch(fetchReportCashInOneMonthError(error.message));
+  }
+};
+
+export const fetchReportCashOutOneMonth = ({year, month}) => async dispatch => {
+  dispatch(fetchReportCashOutOneMonthRequest());
+  try {
+    const { data } = await axios.get(`/reports/cash-out/${year}/${month}`);
+
+    dispatch(fetchReportCashOutOneMonthSuccess(data.data));
+  } catch (error) {
+    dispatch(fetchReportCashOutOneMonthError(error.message));
   }
 };

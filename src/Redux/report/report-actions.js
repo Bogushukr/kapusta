@@ -12,13 +12,13 @@ export const fetchReportCashOutSixMonthRequest = createAction("report/getCashOut
 export const fetchReportCashOutSixMonthSuccess = createAction("report/getCashOutSixMonthSuccess");
 export const fetchReportCashOutSixMonthError = createAction("report/getCashOutSixMonthError");
 
-export const fetchReportCashInOneMonthRequest = createAction("report/getCashOutSixMonthRequest");
-export const fetchReportCashInOneMonthSuccess = createAction("report/getCashOutSixMonthSuccess");
-export const fetchReportCashInOneMonthError = createAction("report/getCashOutSixMonthError");
+export const fetchReportCashInOneMonthRequest = createAction("report/getCashInOneMonthRequest");
+export const fetchReportCashInOneMonthSuccess = createAction("report/getCashInOneMonthSuccess");
+export const fetchReportCashInOneMonthError = createAction("report/getCashInOneMonthError");
 
-export const fetchReportCashOutOneMonthRequest = createAction("report/getCashOutSixMonthRequest");
-export const fetchReportCashOutOneMonthSuccess = createAction("report/getCashOutSixMonthSuccess");
-export const fetchReportCashOutOneMonthError = createAction("report/getCashOutSixMonthError");
+export const fetchReportCashOutOneMonthRequest = createAction("report/getCashOutOneMonthRequest");
+export const fetchReportCashOutOneMonthSuccess = createAction("report/getCashOutOneMonthSuccess");
+export const fetchReportCashOutOneMonthError = createAction("report/getCashOutOneMonthError");
 
 
 export const testRequest = createAction("report/testRequest");
@@ -26,9 +26,13 @@ export const testRequest = createAction("report/testRequest");
 export const incrementMonthPicker = createAction("report/IncrementMonthPicker")
 export const dectementMonthPicker = createAction("report/DectementMonthPicker")
 
+export const PickerCash = createAction("report/PickerCash")
+
 export default {
     incrementMonthPicker,
     dectementMonthPicker,
+
+    PickerCash,
 
     fetchAllTransactionRequest,
     fetchAllTransactionSuccess,
@@ -49,5 +53,6 @@ export default {
     fetchReportCashOutOneMonthRequest,
     fetchReportCashOutOneMonthSuccess,
     fetchReportCashOutOneMonthError,
+    
     testRequest
 }

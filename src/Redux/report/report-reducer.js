@@ -6,7 +6,8 @@ import {
   testRequest,
   incrementMonthPicker,
   dectementMonthPicker,
-  
+  PickerCash,
+
   fetchAllTransactionRequest,
   fetchAllTransactionSuccess,
   fetchAllTransactionError,
@@ -45,6 +46,14 @@ const date = createReducer(reportData, {
   [dectementMonthPicker]: dectementData,
 });
 
+const stateCash = true
+
+const cashIncomeReducer = createReducer(stateCash, {
+  [PickerCash]: (state, _) => {
+    return !state
+  }
+});
+
 const report = createReducer((reportData, []), {
   [incrementMonthPicker]: incrementData,
   [dectementMonthPicker]: dectementData,
@@ -72,14 +81,14 @@ const cashInSixMonth = createReducer([], {
 
 const cashOutSixMonth = createReducer([], {
   [fetchReportCashOutSixMonthSuccess]: (_, { payload }) => payload,
-  [fetchReportCashInOneMonthError]: (_, { payload }) => {
+  [fetchReportCashOutSixMonthError]: (_, { payload }) => {
     return null;
   },
 });
 
 const cashInOneMonth = createReducer([], {
   [fetchReportCashInOneMonthSuccess]: (_, { payload }) => payload,
-  [fetchReportCashOutSixMonthError]: (_, { payload }) => {
+  [fetchReportCashInOneMonthError]: (_, { payload }) => {
     return null;
   },
 });
@@ -125,7 +134,8 @@ const reportReducer = combineReducers({
   cashInSixMonth, 
   cashOutSixMonth,
   cashInOneMonth,
-  cashOutOneMonth
+  cashOutOneMonth,
+  cashIncomeReducer,
 });
 
 export default reportReducer;

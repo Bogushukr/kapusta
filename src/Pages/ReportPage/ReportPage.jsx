@@ -6,10 +6,11 @@ import GeneratorItemReport from '../../Components/GeneratorItemReport';
 import GeneratorScheduleReport from '../../Components/GeneratorScheduleReport/';
 import MonthPIcker from '../../Components/MonthPIcker';
 import Comeback from '../../Components/Comeback';
+import PickerExpensesIncome from '../../Components/PickerExpensesIncome'
 
 import Summary from '../../Components/Summary'
 
-import {getAllTransactions} from '../../Redux/report/report-operations'
+import {fetchReportCashOneInMonth, fetchReportCashOutOneMonth} from '../../Redux/report/report-operations'
 import { testRequest } from '../../Redux/report/report-actions'
 
 // import Balance from '../../Components/Balance';
@@ -20,24 +21,20 @@ class ReportPage extends Component {
   constructor(props) {
     super(props);
     this.handleClick = props.handleClick.bind(this);
-    this.state = { 
-      year: props.year,
-      month: props.month,
-    };
   }
 
   render() {
+    
   
     return (
       <>
       <button type="button" onClick={this.handleClick}/>
         <div className={s.wrapper}>
           <Comeback />
-          <Summary />
-          <MonthPIcker
-          />
+          <MonthPIcker />
           <div className={s.menu}>
-            <GeneratorItemReport />
+          <PickerExpensesIncome />
+            <GeneratorItemReport/>
           </div>
           <div className={s.timetable}>
             <GeneratorScheduleReport />
@@ -48,21 +45,15 @@ class ReportPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    year: state.report.date.currentReportYear,
-    month: state.report.date.currentReportMonth
-  }
 
-}
 
 const mapDispatchProps = dispatch => {
   return {
-    handleClick: () => dispatch(getAllTransactions())
+    handleClick: () => dispatch(fetchReportCashOutOneMonth())
     // handleClick: () => dispatch(fetchReportCashSixMonth())
     // HandleMonthUp: () => dispatch(reportActions.incrementMonthPicker(1)),
     // HandleMonthdown: () => dispatch(reportActions.dectementMonthPicker(1))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchProps)(ReportPage);
+export default connect(null, mapDispatchProps)(ReportPage);
