@@ -16,7 +16,6 @@ const LoginPage = () => {
 
   const handleSubmitLogin = ({ email, password }) => {
     onLogin({ email, password });
-    console.log('handleSubmitLogin', { email, password });
   };
 
   const googleSubmitLogin = response => {
