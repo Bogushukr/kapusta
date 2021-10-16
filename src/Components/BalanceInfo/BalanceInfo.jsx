@@ -5,22 +5,26 @@ import { authSelectors, authOperations } from '../../Redux/auth';
 import { useSelector, useDispatch } from 'react-redux';
 
 const BalanceInfo = () => {
-  const balance = useSelector(authSelectors.getUserBalance);
-  const dispatch = useDispatch();
-  const [sum, setBalance] = useState('');
-  const onHandleChange = e => setBalance(e.currentTarget.value);
+  const balance = 10000;
+  // const balance = useSelector(authSelectors.getUserBalance);
 
-  useEffect(() => {
-    setBalance(balance);
-  }, [balance]);
-  const onSubmit = event => {
-    event.preventDefault();
-    dispatch(authOperations.setBalance(sum));
-  };
+  // const dispatch = useDispatch();
+  // const [sum, setBalance] = useState('');
+  // const onHandleChange = e => setBalance(e.currentTarget.value);
+
+  // useEffect(() => {
+  //   setBalance(balance);
+  // }, [balance]);
+  // const onSubmit = event => {
+  //   event.preventDefault();
+  //   dispatch(authOperations.setBalance(sum));
+  // };
 
   return (
     <div className="balanceInfo">
-      <form className="setBalanceForm" onSubmit={onSubmit}>
+      <form className="setBalanceForm">
+        {/* <form className="setBalanceForm" onSubmit={onSubmit}> */}
+
         <p className="balanceSetting">Баланс:</p>
         <label htmlFor="balance" className="balanceLabel">
           {balance === 0 ? (
@@ -30,7 +34,7 @@ const BalanceInfo = () => {
                 name="name"
                 pattern="\d+(\.\d{2})?"
                 placeholder="00.00 UAH"
-                onChange={onHandleChange}
+                // onChange={onHandleChange}
                 className="balanceState"
               />
               {balance <= 0 && <ModalBalance />}
@@ -39,8 +43,10 @@ const BalanceInfo = () => {
           ) : (
             <>
               {/* <p className="balanceState">{balance.toFixed(2)} UAH</p> */}
-              <p className="balanceState">{balance}UAH</p>
-              <button className="setBalanceButton" disabled>
+              <p className="balanceState balanceStateDisabled">
+                {balance}.00 UAH
+              </p>
+              <button className="setBalanceButtonDisabled" disabled>
                 Подтвердить
               </button>
             </>
