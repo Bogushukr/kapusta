@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { arrMonthRU } from '../../Utils/arrMonth';
+import { numberWithSpace } from '../../Utils/numberWithSpace'
 
 import { fetchReportCashInSixMonth, fetchReportCashOutSixMonth} from '../../Redux/report/report-operations';
 import { cashOutSixMonth, cashInSixMonth } from '../../Redux/report/report-selectors'
@@ -22,10 +23,6 @@ class Summary extends Component {
     this.props.onfetchReportCashInSixMonth()
     this.props.onfetchReportCashOutSixMonth()
   }
-  btn = ()  => {
-    console.log(this.props.cashInSixMonth, this.props.cashOutSixMonth);
-    
-  }
 
   render() {
     const {cashInSixMonth, cashOutSixMonth} = this.props
@@ -33,15 +30,15 @@ class Summary extends Component {
     
     return (
       <>
-      <button type="button" onClick={this.btn}></button>
         <div className={s.wrapper}>
           <span className={s.title}>Сводка</span>
           <ul className={s.list}>
             {cashOutSixMonth && !cashIncome && cashOutSixMonth.map(({ Total: value, _id: {month} }) => {
               return (
                 <li key={month}   className={s.item}>
+
                   <span className={s.text}>{arrMonthRU[Number(month)]}</span>
-                  <span className={s.text}>{value}</span>
+                  <span className={s.text}>{numberWithSpace(value)}</span>
                 
                 </li>
               );
