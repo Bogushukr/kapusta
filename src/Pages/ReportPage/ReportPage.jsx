@@ -1,15 +1,21 @@
 import { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import GeneratorItemReport from '../../Components/GeneratorItemReport';
 import GeneratorScheduleReport from '../../Components/GeneratorScheduleReport/';
 import MonthPIcker from '../../Components/MonthPIcker';
 import Comeback from '../../Components/Comeback';
-import PickerExpensesIncome from '../../Components/PickerExpensesIncome'
+import PickerExpensesIncome from '../../Components/PickerExpensesIncome';
+import CurrentCash from '../../Components/CurrentCash';
 
-import {fetchReportCashOutSixMonth, fetchReportCashInSixMonth, fetchReportCashInOneMonth, fetchReportCashOutOneMonth } from '../../Redux/report/report-operations'
+import {
+  fetchReportCashOutSixMonth,
+  fetchReportCashInSixMonth,
+  fetchReportCashInOneMonth,
+  fetchReportCashOutOneMonth,
+} from '../../Redux/report/report-operations';
 
-import Summary from '../../Components/Summary'
+import Summary from '../../Components/Summary';
 // import Balance from '../../Components/Balance';
 import Icon from '../../Icons/comeback.svg';
 import s from './ReportPage.module.scss';
@@ -21,19 +27,17 @@ class ReportPage extends Component {
   }
 
   render() {
-    
-  
     return (
       <>
-      <button type="button" onClick={this.handleClick}/>
         <div className={s.wrapper}>
-        <Summary cashIncome={true}/>
-        <Summary cashIncome={false}/>
+          <div className={s.currentCash}>
+            <CurrentCash />
+          </div>
           <Comeback />
           <MonthPIcker />
           <div className={s.menu}>
-          <PickerExpensesIncome />
-            <GeneratorItemReport/>
+            <PickerExpensesIncome />
+            <GeneratorItemReport />
           </div>
           <div className={s.timetable}>
             <GeneratorScheduleReport />
@@ -43,8 +47,6 @@ class ReportPage extends Component {
     );
   }
 }
-
-
 
 const mapStateToProps = state => {
   return {
@@ -56,8 +58,8 @@ const mapStateToProps = state => {
 
 const mapDispatchProps = dispatch => {
   return {
-    handleClick: () => dispatch(fetchReportCashOutSixMonth())
-  }
-}
+    handleClick: () => dispatch(fetchReportCashOutSixMonth()),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchProps)(ReportPage);
