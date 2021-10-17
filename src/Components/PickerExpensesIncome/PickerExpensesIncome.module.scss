@@ -25,3 +25,20 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.curentMth {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.142;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: #000000;
+}
+
+.svg {
+  width: 5px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+}
