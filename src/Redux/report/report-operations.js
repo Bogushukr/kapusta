@@ -60,11 +60,11 @@ export const fetchReportCashOutSixMonth = () => async dispatch => {
 
   try {
     const { data } = await axios.get('/reports/cash-out/last-six-month');
-    const obj = data
+    const obj = data.data
     if (Array.isArray(obj)) {
       dispatch(fetchReportCashOutSixMonthSuccess(obj));
     } else {
-      dispatch(fetchReportCashOutSixMonthSuccess(null));
+      dispatch(fetchReportCashOutSixMonthSuccess(obj.result));
     }
   } catch (error) {
     dispatch(fetchReportCashOutSixMonthError(error.message));
@@ -75,8 +75,12 @@ export const fetchReportCashInSixMonth = () => async dispatch => {
   dispatch(fetchReportCashInSixMonthRequest());
   try {
     const { data } = await axios.get('/reports/cash-in/last-six-month');
-    console.log(Array.isArray(data.data));
-    dispatch(fetchReportCashInSixMonthSuccess(data.data));
+    const obj = data.data
+    if (Array.isArray(obj)) {
+      dispatch(fetchReportCashInSixMonthSuccess(obj));
+    } else {
+      dispatch(fetchReportCashInSixMonthSuccess(obj.result));
+    }
   } catch (error) {
     dispatch(fetchReportCashInSixMonthError(error.message));
   }
@@ -86,7 +90,7 @@ export const fetchReportCashInSixMonth = () => async dispatch => {
 export const fetchReportCashInOneMonth = ({year, month}) => async dispatch => {
   dispatch(fetchReportCashInOneMonthRequest());
   try {
-    const { data } = await axios.get(`/reports/cash-in/${year}/${month}`);
+    const { data } = await axios.get(`/reports/cash-in/${year}/${month + 1}`);
 
     dispatch(fetchReportCashInOneMonthSuccess(data.data));
   } catch (error) {
@@ -97,7 +101,7 @@ export const fetchReportCashInOneMonth = ({year, month}) => async dispatch => {
 export const fetchReportCashOutOneMonth = ({year, month}) => async dispatch => {
   dispatch(fetchReportCashOutOneMonthRequest());
   try {
-    const { data } = await axios.get(`/reports/cash-out/${year}/${month}`);
+    const { data } = await axios.get(`/reports/cash-out/${year}/${month + 1}`);
 
     dispatch(fetchReportCashOutOneMonthSuccess(data.data));
   } catch (error) {
