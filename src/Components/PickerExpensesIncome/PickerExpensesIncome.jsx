@@ -6,8 +6,6 @@ import s from './PickerExpensesIncome.module.scss';
 import Icons from '../../Icons/IconsPicker.svg';
 
 const PickerExpensesIncome = ({cashIncome, HandleСash}) => {
-  console.log(cashIncome);
-  
   return (
     <>
       <div className={s.blockDiv}>

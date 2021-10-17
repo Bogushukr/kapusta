@@ -4,45 +4,22 @@ import Icons from '../../Icons/IconsReport.svg';
 import s from './ItemReport.module.scss';
 import { numberWithSpace } from '../../Utils/numberWithSpace';
 
-const ItemReport = ({
-  chapter,
-  value,
-  text,
-  idx,
-  idxA,
-  setActiveIdx,
-}) => {
-  let svgArr = true;
-  console.log(`до: ${svgArr}`);
+const ItemReport = ({ chapter, value, text, idx, idxA, setActiveIdx }) => {
+  const arrSvg = [
+    'Транспорт',
+    'Продукты',
+    'Здоровье',
+    'Алкоголь',
+    'Развлечения',
+    'Всё для дома',
+    'Техника',
+    'Коммуналка, связь',
+    'Спорт, хобби',
+    'Образование',
+    'Прочее',
+  ];
+  const svgIcon = arrSvg.indexOf(chapter);
 
-  switch (chapter) {
-    case 'Транспорт':
-      break;
-    case 'Продукты':
-      break;
-    case 'Здоровье':
-      break;
-    case 'Алкоголь':
-      break;
-    case 'Развлечения':
-      break;
-    case 'Всё для дома':
-      break;
-    case 'Техника':
-      break;
-    case 'Коммуналка, связь':
-      break;
-    case 'Спорт, хобби':
-      break;
-    case 'Образование':
-      break;
-    case 'Прочее':
-      break;
-    default:
-      svgArr = false;
-  }
-
-  console.log(`после: ${svgArr}`);
 
   let optionClasses = [s.svg];
   if (idx === idxA) {
@@ -58,7 +35,7 @@ const ItemReport = ({
     >
       <span className={s.span}>{numberWithSpace(value)}</span>
       <svg className={optionClasses.join(' ')}>
-        <use xlinkHref={`${Icons}#icon-${svgArr ? chapter : 'defaultSvg'}`} />
+        <use xlinkHref={`${Icons}#icon-${svgIcon !== -1 ? chapter : 'defaultSvg'}`} />
       </svg>
       <span className={s.span}>{text}</span>
     </button>
