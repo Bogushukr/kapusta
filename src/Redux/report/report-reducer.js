@@ -6,7 +6,8 @@ import {
   testRequest,
   incrementMonthPicker,
   dectementMonthPicker,
-  
+  PickerCash,
+
   fetchAllTransactionRequest,
   fetchAllTransactionSuccess,
   fetchAllTransactionError,
@@ -18,6 +19,15 @@ import {
   fetchReportCashOutSixMonthRequest,
   fetchReportCashOutSixMonthSuccess,
   fetchReportCashOutSixMonthError,
+
+  fetchReportCashInOneMonthRequest,
+  fetchReportCashInOneMonthSuccess,
+  fetchReportCashInOneMonthError,
+
+  fetchReportCashOutOneMonthRequest,
+  fetchReportCashOutOneMonthSuccess,
+  fetchReportCashOutOneMonthError,
+
 } from './report-actions';
 import { incrementData, dectementData } from './report-operations';
 
@@ -34,6 +44,14 @@ const reportData = {
 const date = createReducer(reportData, {
   [incrementMonthPicker]: incrementData,
   [dectementMonthPicker]: dectementData,
+});
+
+const stateCash = true
+
+const cashIncomeReducer = createReducer(stateCash, {
+  [PickerCash]: (state, _) => {
+    return !state
+  }
 });
 
 const report = createReducer((reportData, []), {
@@ -68,6 +86,19 @@ const cashOutSixMonth = createReducer([], {
   },
 });
 
+const cashInOneMonth = createReducer([], {
+  [fetchReportCashInOneMonthSuccess]: (_, { payload }) => payload,
+  [fetchReportCashInOneMonthError]: (_, { payload }) => {
+    return null;
+  },
+});
+
+const cashOutOneMonth = createReducer([], {
+  [fetchReportCashOutOneMonthSuccess]: (_, { payload }) => payload,
+  [fetchReportCashOutOneMonthError]: (_, { payload }) => {
+    return null;
+  },
+});
 
 const loading = createReducer(false, {
   [fetchAllTransactionRequest]: () => true,
@@ -82,6 +113,17 @@ const loading = createReducer(false, {
   [fetchReportCashOutSixMonthRequest]: () => true,
   [fetchReportCashOutSixMonthSuccess]: () => false,
   [fetchReportCashOutSixMonthError]: () => false,
+
+  
+  [fetchReportCashInOneMonthRequest]: () => true,
+  [fetchReportCashInOneMonthSuccess]: () => false,
+  [fetchReportCashInOneMonthError]: () => false,
+
+  [fetchReportCashOutOneMonthRequest]: () => true,
+  [fetchReportCashOutOneMonthSuccess]: () => false,
+  [fetchReportCashOutOneMonthError]: () => false,
+
+
 });
 
 const reportReducer = combineReducers({
@@ -90,7 +132,10 @@ const reportReducer = combineReducers({
   loading,
   test,
   cashInSixMonth, 
-  cashOutSixMonth
+  cashOutSixMonth,
+  cashInOneMonth,
+  cashOutOneMonth,
+  cashIncomeReducer,
 });
 
 export default reportReducer;

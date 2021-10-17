@@ -43,7 +43,7 @@ class Summary extends Component {
                 </li>
               );
             })}
-            {cashOutSixMonth && cashIncome && cashInSixMonth.map(({ Total: value, _id: {month} }) => {
+            {cashInSixMonth && cashIncome && cashInSixMonth.map(({ Total: value, _id: {month} }) => {
               return (
                 <li key={month}  className={s.item}>
                   <span className={s.text}>{arrMonthRU[Number(month)]}</span>
