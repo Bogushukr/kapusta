@@ -1,13 +1,21 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import ItemReport from '../ItemReport';
+import {
+  fetchReportCashInOneMonth,
+  fetchReportCashOutOneMonth,
+} from '../../Redux/report/report-operations';
 // cashIncome
 import s from './GeneratorItemReport.module.scss';
 class GeneratorItemReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      year: props.year,
+      month: props.month,
       cashIncome: props.cashIncome,
+      onFetchReportCashIn: props.fetchReportCashIn,
+      onFetchReportCashOut: props.fetchReportCashOut,
       activeChaterIdx: 0,
       data: [
         {
@@ -69,6 +77,33 @@ class GeneratorItemReport extends Component {
     };
   }
 
+  componentDidMount() {
+    const {
+      year,
+      month,
+      cashIncome,
+      onFetchReportCashIn,
+      onFetchReportCashOut,
+    } = this.state;
+    if (cashIncome) {
+      onFetchReportCashIn({ year, month });
+    } else {
+      onFetchReportCashOut({ year, month });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { year, month, cashIncome } = this.props;
+    const { onFetchReportCashIn, onFetchReportCashOut } = this.state;
+    if (cashIncome !== prevProps.cashIncome || month !== prevProps.month) {
+      if (cashIncome) {
+        onFetchReportCashIn({ year, month });
+      } else {
+        onFetchReportCashOut({ year, month });
+      }
+    }
+  }
+
   setActiveIdx = index => {
     this.setState({ activeChaterIdx: index });
   };
@@ -95,18 +130,20 @@ class GeneratorItemReport extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
+    year: state.report.date.currentReportYear,
+    month: state.report.date.currentReportMonth,
     cashIncome: state.report.cashIncomeReducer,
   };
 };
-
 const mapDispatchProps = dispatch => {
   return {
     // HandleMonthUp: () => dispatch(reportActions.incrementMonthPicker(1)),
     // HandleMonthdown: () => dispatch(reportActions.dectementMonthPicker(1)),
-    // fetchReportCashIn: props => dispatch(fetchReportCashInOneMonth(props)),
-    // fetchReportCashOut: props => dispatch(fetchReportCashOutOneMonth(props)),
+    fetchReportCashIn: props => dispatch(fetchReportCashInOneMonth(props)),
+    fetchReportCashOut: props => dispatch(fetchReportCashOutOneMonth(props)),
   };
 };
 

@@ -5,8 +5,6 @@ import { PickerCash } from '../../Redux/report/report-actions';
 import s from './PickerExpensesIncome.module.scss';
 import Icons from '../../Icons/IconsPicker.svg';
 
-import { arrMonthRU } from '../../Utils/arrMonth';
-
 const PickerExpensesIncome = ({cashIncome, HandleСash}) => {
   console.log(cashIncome);
   
@@ -48,9 +46,6 @@ const mapStateToProps = state => {
 const mapDispatchProps = dispatch => {
   return {
     HandleСash: () => dispatch(PickerCash()),
-    // HandleMonthdown: () => dispatch(reportActions.dectementMonthPicker(1)),
-    // fetchReportCashIn: props => dispatch(fetchReportCashInOneMonth(props)),
-    // fetchReportCashOut: props => dispatch(fetchReportCashOutOneMonth(props)),
   };
 };
 
