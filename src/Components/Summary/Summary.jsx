@@ -27,8 +27,8 @@ class Summary extends Component {
   }
 
   render() {
-    const {cashInSixMonth, cashOutSixMonth} = this.props
-    const {cashIncome} = this.state
+    // const {cashInSixMonth, cashOutSixMonth} = this.props
+    const {cashIncome, cashInSixMonth, cashOutSixMonth} = this.props
     
     return (
       <>
