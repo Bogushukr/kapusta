@@ -90,7 +90,7 @@ const cashOutSixMonth = createReducer([], {
   },
 });
 
-const cashInOneMonth = createReducer([], {
+const cashInOneMonth = createReducer({}, {
   [fetchReportCashInOneMonthSuccess]: (_, { payload }) => payload,
   [fetchReportCashInOneMonthError]: (_, { payload }) => {
     return null;

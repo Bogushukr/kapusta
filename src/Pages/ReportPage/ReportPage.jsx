@@ -28,7 +28,7 @@ class ReportPage extends Component {
       <button type="button" onClick={this.handleClick}/>
         <div className={s.wrapper}>
         <Summary cashIncome={true}/>
-        {/* <Summary cashIncome={false}/> */}
+        <Summary cashIncome={false}/>
           <Comeback />
           <MonthPIcker />
           <div className={s.menu}>

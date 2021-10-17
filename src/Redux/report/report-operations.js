@@ -60,11 +60,11 @@ export const fetchReportCashOutSixMonth = () => async dispatch => {
 
   try {
     const { data } = await axios.get('/reports/cash-out/last-six-month');
-    const obj = data
+    const obj = data.data
     if (Array.isArray(obj)) {
       dispatch(fetchReportCashOutSixMonthSuccess(obj));
     } else {
-      dispatch(fetchReportCashOutSixMonthSuccess(null));
+      dispatch(fetchReportCashOutSixMonthSuccess(obj.result));
     }
   } catch (error) {
     dispatch(fetchReportCashOutSixMonthError(error.message));
@@ -75,8 +75,12 @@ export const fetchReportCashInSixMonth = () => async dispatch => {
   dispatch(fetchReportCashInSixMonthRequest());
   try {
     const { data } = await axios.get('/reports/cash-in/last-six-month');
-    console.log(Array.isArray(data.data));
-    dispatch(fetchReportCashInSixMonthSuccess(data.data));
+    const obj = data.data
+    if (Array.isArray(obj)) {
+      dispatch(fetchReportCashInSixMonthSuccess(obj));
+    } else {
+      dispatch(fetchReportCashInSixMonthSuccess(obj.result));
+    }
   } catch (error) {
     dispatch(fetchReportCashInSixMonthError(error.message));
   }
@@ -86,9 +90,11 @@ export const fetchReportCashInSixMonth = () => async dispatch => {
 export const fetchReportCashInOneMonth = ({year, month}) => async dispatch => {
   dispatch(fetchReportCashInOneMonthRequest());
   try {
-    const { data } = await axios.get(`/reports/cash-in/${year}/${month}`);
-
-    dispatch(fetchReportCashInOneMonthSuccess(data.data));
+    const { data } = await axios.get(`/reports/cash-in/${year}/${month + 1}`);
+    const cashInMonth = data.data.cashInMonth; // cashOutMonth
+    const cashOutMonth = data.data.cashOutMonth; // cashOutMonth
+    const arrCategories = data.data.details.categoriesAndDescription    
+    dispatch(fetchReportCashInOneMonthSuccess({cashInMonth, arrCategories, cashOutMonth}));
   } catch (error) {
     dispatch(fetchReportCashInOneMonthError(error.message));
   }
@@ -97,9 +103,11 @@ export const fetchReportCashInOneMonth = ({year, month}) => async dispatch => {
 export const fetchReportCashOutOneMonth = ({year, month}) => async dispatch => {
   dispatch(fetchReportCashOutOneMonthRequest());
   try {
-    const { data } = await axios.get(`/reports/cash-out/${year}/${month}`);
-
-    dispatch(fetchReportCashOutOneMonthSuccess(data.data));
+    const { data } = await axios.get(`/reports/cash-out/${year}/${month + 1}`);
+    const cashInMonth = data.data.cashInMonth; // cashOutMonth
+    const cashOutMonth = data.data.cashOutMonth; // cashOutMonth
+    const arrCategories = data.data.details.categoriesAndDescription   
+    dispatch(fetchReportCashOutOneMonthSuccess({cashOutMonth, arrCategories, cashInMonth}));
   } catch (error) {
     dispatch(fetchReportCashOutOneMonthError(error.message));
   }
