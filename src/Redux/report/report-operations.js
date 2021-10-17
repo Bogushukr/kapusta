@@ -92,8 +92,9 @@ export const fetchReportCashInOneMonth = ({year, month}) => async dispatch => {
   try {
     const { data } = await axios.get(`/reports/cash-in/${year}/${month + 1}`);
     const cashInMonth = data.data.cashInMonth; // cashOutMonth
+    const cashOutMonth = data.data.cashOutMonth; // cashOutMonth
     const arrCategories = data.data.details.categoriesAndDescription    
-    dispatch(fetchReportCashInOneMonthSuccess({cashInMonth, arrCategories}));
+    dispatch(fetchReportCashInOneMonthSuccess({cashInMonth, arrCategories, cashOutMonth}));
   } catch (error) {
     dispatch(fetchReportCashInOneMonthError(error.message));
   }
@@ -104,8 +105,9 @@ export const fetchReportCashOutOneMonth = ({year, month}) => async dispatch => {
   try {
     const { data } = await axios.get(`/reports/cash-out/${year}/${month + 1}`);
     const cashInMonth = data.data.cashInMonth; // cashOutMonth
+    const cashOutMonth = data.data.cashOutMonth; // cashOutMonth
     const arrCategories = data.data.details.categoriesAndDescription   
-    dispatch(fetchReportCashOutOneMonthSuccess({cashInMonth, arrCategories}));
+    dispatch(fetchReportCashOutOneMonthSuccess({cashOutMonth, arrCategories, cashInMonth}));
   } catch (error) {
     dispatch(fetchReportCashOutOneMonthError(error.message));
   }
