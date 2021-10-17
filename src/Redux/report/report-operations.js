@@ -44,12 +44,10 @@ export const dectementData = (state, { payload }) => {
 };
 
 export const getAllTransactions = () => async dispatch => {
-  console.log('asd');
   dispatch(fetchAllTransactionRequest());
 
   try {
     const { data } = await axios.get('/transactions');
-
     dispatch(fetchAllTransactionSuccess(data.transactions));
   } catch (error) {
     dispatch(fetchAllTransactionError(error.message));
@@ -57,25 +55,23 @@ export const getAllTransactions = () => async dispatch => {
 };
 
 export const fetchReportCashOutSixMonth = () => async dispatch => {
-  console.log('asd');
   dispatch(fetchReportCashOutSixMonthRequest());
 
   try {
     const { data } = await axios.get('/reports/cash-out/last-six-month');
-
-    dispatch(fetchReportCashOutSixMonthSuccess(data.data.result));
+    dispatch(fetchReportCashOutSixMonthSuccess(data.data));
   } catch (error) {
     dispatch(fetchReportCashOutSixMonthError(error.message));
   }
 };
 
 export const fetchReportCashInSixMonth = () => async dispatch => {
-  console.log('asd');
   dispatch(fetchReportCashInSixMonthRequest());
   try {
-    const { data } = await axios.get('/reports/cash-in/');
+    const { data } = await axios.get('/reports/cash-in/last-six-month');
+    console.log(data.data);
 
-    dispatch(fetchReportCashInSixMonthSuccess(data));
+    dispatch(fetchReportCashInSixMonthSuccess(data.data));
   } catch (error) {
     dispatch(fetchReportCashInSixMonthError(error.message));
   }

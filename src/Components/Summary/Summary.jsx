@@ -12,6 +12,8 @@ import s from './Summary.module.scss';
 class Summary extends Component {
   state = {
     cashIncome: this.props.cashIncome,
+    cashOutSixMonth: this.props.cashOutSixMonth,
+    cashInSixMonth: this.props.cashInSixMonth
   };
   static defaultProps = {
     cashOutSixMonth: null,
@@ -47,7 +49,7 @@ class Summary extends Component {
               return (
                 <li key={month}  className={s.item}>
                   <span className={s.text}>{arrMonthRU[Number(month)]}</span>
-                  <span className={s.text}>{value}</span>
+                  <span className={s.text}>{numberWithSpace(value)}</span>
                 
                 </li>
               );
