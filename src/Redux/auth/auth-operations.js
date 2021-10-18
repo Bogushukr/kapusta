@@ -120,4 +120,6 @@ const setBalance = balance => dispatch => {
     .catch(error => dispatch(authActions.setBalanceError(error.message)));
 };
 
-export default { register, logIn, logOut, getCurrentUser, setBalance };
+const operations = { register, logIn, logOut, getCurrentUser, setBalance };
+
+export default operations;

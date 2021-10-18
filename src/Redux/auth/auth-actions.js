@@ -20,7 +20,7 @@ const setBalanceRequest = createAction('auth/setBalanceRequest');
 const setBalanceSuccess = createAction('auth/setBalanceSuccess');
 const setBalanceError = createAction('auth/setBalanceError');
 
-export default {
+const actions = {
   registerRequest,
   registerSuccess,
   registerError,
@@ -37,3 +37,5 @@ export default {
   setBalanceSuccess,
   setBalanceError,
 };
+
+export default actions;

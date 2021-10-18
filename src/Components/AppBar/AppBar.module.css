@@ -9,3 +9,8 @@
   background-color: #ffffff;
   height: 56px;
 }
+
+.btn {
+  border: none;
+  background-color: transparent;
+}
