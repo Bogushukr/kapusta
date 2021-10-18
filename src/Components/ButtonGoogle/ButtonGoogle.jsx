@@ -9,6 +9,7 @@ const ButtonGoogle = ({ responseGoogle }) => {
         <button
           onClick={renderProps.onClick}
           disabled={renderProps.disabled}
+          type="button"
           style={{
             backgroundColor: '#F6F7FB',
             width: '122px',

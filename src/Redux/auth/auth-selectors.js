@@ -4,8 +4,10 @@ const getUsername = state => state.auth.user.name;
 
 const getUserBalance = state => state.auth.user.currentBalance;
 
-export default {
+const authSelectors = {
   getIsAuthenticated,
   getUsername,
   getUserBalance,
 };
+
+export default authSelectors;

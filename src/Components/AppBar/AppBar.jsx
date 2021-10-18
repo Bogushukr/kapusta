@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import style from './AppBar.module.css';
 import UserMenu from '../UserMenu';
@@ -10,7 +11,12 @@ const AppBar = () => {
   const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
   return (
     <header className={style.header}>
-      <Logo />
+      <NavLink to="/" exact>
+        <button type="button" className={style.btn}>
+          <Logo />
+        </button>
+      </NavLink>
+
       {isAuthenticated ? <UserMenu /> : null}
     </header>
   );

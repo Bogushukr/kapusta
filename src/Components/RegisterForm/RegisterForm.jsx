@@ -65,7 +65,8 @@ export default function RegisterForm({ handleSubmitRegister, responseGoogle }) {
           <ErrorMessage name="name" />
         </div>
         <label htmlFor="email" className="formReg_label">
-          <span className="formReg_redStar">*</span>Электронная почта:{' '}
+          {/* <span className="formReg_redStar">*</span> */}
+          Электронная почта:{' '}
         </label>
         <div className="formReg_input">
           <Field
@@ -77,7 +78,8 @@ export default function RegisterForm({ handleSubmitRegister, responseGoogle }) {
           <ErrorMessage name="email" />
         </div>
         <label htmlFor="password" className="formReg_label">
-          <span className="formReg_redStar">*</span>Пароль:{' '}
+          {/* <span className="formReg_redStar">*</span> */}
+          Пароль:{' '}
         </label>
         <div className="formReg_input_last">
           <Field
