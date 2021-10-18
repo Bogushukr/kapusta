@@ -1,10 +1,10 @@
 import React from 'react'
-import { useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router'
+import { Link } from 'react-router-dom'
 import Balance from '../../Components/Balance'
 import SectionExpense from '../../Sections/SectionExpense/SectionExpense'
 import SectionIncome from '../../Sections/SectionIncome/SectionIncome'
-import Calendar from '../../Components/Calendar/Calendar';
+// import Calendar from '../../Components/Calendar/Calendar'
 
 const HomeView = () => {
   const path = useLocation().pathname

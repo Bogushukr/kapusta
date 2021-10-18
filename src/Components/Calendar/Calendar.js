@@ -4,7 +4,9 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { useDispatch } from 'react-redux'
 import styles from './Calendar.module.css'
 
-import expenseOperations from '../../Redux/Operations/expenseOperations'
+import transactionActions from '../../Redux/Actions/transactionActions'
+
+import { format } from 'date-fns'
 
 const Calendar = () => {
     const [startDate, setStartDate] = useState(new Date())
@@ -14,9 +16,10 @@ const Calendar = () => {
         {value}
       </button>
     ))
-    const handleChange = date => {
+    const handleChange = date => {      
+      const formatedDate = format(date, 'dd.MM.yyyy')
       setStartDate(date)
-      dispatch(expenseOperations.selectedDate(date))
+      dispatch(transactionActions.selectedDate(formatedDate))
     }
     return (
       <DatePicker
@@ -29,3 +32,9 @@ const Calendar = () => {
 }
 
 export default Calendar
+
+// const mapStateToProps = (state, props) => ({
+//     date: state.startDate
+// })
+
+// export default connect(mapStateToProps, null)(Calendar)

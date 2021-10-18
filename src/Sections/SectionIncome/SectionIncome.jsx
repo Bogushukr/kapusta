@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import TableSection from '../../Components/TableSection/TableSection'
+import TableSectionIncome from '../../Components/TableSection/TableSectionIncome'
+import transactionOperations from '../../Redux/Operations/transactionOperations'
 import Calendar from '../../Components/Calendar/Calendar'
 
 import styles from './SectionIncome.module.css'
 
 const INITIAL_STATE = {
-    description: '',
-    category: '',
-    sum: ''
+    desc: '',
+    value: '',
+    cashIncome: true,
+    expenseCategories: 'null',
+    incomeCategories: '',
+    year: '',
+    month: '',
+    day: ''
 }
 
 class SectionIncome extends Component {
@@ -18,34 +24,51 @@ class SectionIncome extends Component {
 
     state = {...INITIAL_STATE}
 
-    handleChange = e => {
-        const {name, value} = e.target
-        this.setState({[name]: value})
+    // handleChange = e => {
+    //     const {name, value} = e.target
+    //     this.setState({[name]: value})
+    // }
+
+    handleChangeDesc = e => {
+        this.setState({desc: e.target.value})
+        console.log('state in handleChange: ', this.state);
+    }
+
+    handleChangeSelect = e => {
+        this.setState({incomeCategories: e.target.value})
+        console.log('state in handleChange: ', this.state);
+    }
+
+    handleChangeValue = e => {
+        this.setState({value: Number(e.target.value)})
+        console.log('state in handleChange: ', this.state);
     }
 
     handleSubmit = e => {
         e.preventDefault()
-        this.props.onAddExpense( {...this.state} )
+        const [day, month, year] = this.props.dateFromCalendar.split('.')
+        this.props.onAddTransaction( {...this.state, day, month, year} )
+        // console.log('this.state income: ', this.state);
         this.reset()
     }
 
     reset = () => this.setState( {...INITIAL_STATE} )
 
     render() {
-        const { description, category, sum } = this.state
+        const { desc, incomeCategories, value } = this.state
         return (
             <div className={styles.formContainer}>
                 <div className={styles.datePickerWrp}><Calendar /></div> 
                 <form onSubmit={this.handleSubmit} className={styles.formBody}>
                     <div className={styles.formFields}>
-                        <input type='text' placeholder='Описание дохода' name='description' 
-                            value={description} onChange={this.handleChange} className={styles.formDescription} required/>
-                        <select size='1' name='category' value={category} onChange={this.handleChange} className={styles.formCategory} required>
+                        <input type='text' placeholder='Описание дохода' name='desc' 
+                            value={desc} onChange={this.handleChangeDesc} className={styles.formDescription} required/>
+                        <select size='1' name='incomeCategories' value={incomeCategories} onChange={this.handleChangeSelect} className={styles.formCategory} required>
                             <option value='' defaultValue>Категория дохода</option>
                             <option>ЗП</option>
                             <option>Доп. доход</option>
                         </select>
-                        <input placeholder='0.00' name='sum' value={sum} onChange={this.handleChange} className={styles.formSum} required/>
+                        <input placeholder='0.00' name='value' value={value} onChange={this.handleChangeValue} className={styles.formSum} required/>
                         {/* <Calculator /> */}
                     </div>
                     <div className={styles.buttonsWrp}>
@@ -53,11 +76,20 @@ class SectionIncome extends Component {
                         <button className={styles.clearBTN}>Очистить</button>
                     </div>
                 </form>
-                <TableSection description={description} category={category} sum={sum}/>
+                <TableSectionIncome items={this.state.items}/>
                 {/* <Summary /> */}
             </div>
         )
     }
 }
 
-export default SectionIncome
+const mapStateToProps = (state, props) => ({    
+    dateFromCalendar:  state.transactions.date
+})
+
+const mapDispatchToProps = {
+    onAddTransaction: transactionOperations.addTransaction,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SectionIncome)

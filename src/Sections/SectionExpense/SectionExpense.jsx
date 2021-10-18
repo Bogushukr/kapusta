@@ -1,71 +1,73 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import TableSection from '../../Components/TableSection/TableSection'
-import expenseOperations from '../../Redux/Operations/expenseOperations'
+import TableSectionExpense from '../../Components/TableSection/TableSectionExpense'
+import transactionOperations from '../../Redux/Operations/transactionOperations'
 import Calendar from '../../Components/Calendar/Calendar'
 
 import styles from './SectionExpense.module.css'
 
 const INITIAL_STATE = {
-    description: '',
-    category: '',
-    sum: '',
-    items: []
+    desc: '',
+    value: '',
+    cashIncome: false,
+    expenseCategories: '',
+    incomeCategories: 'null',
+    year: '',
+    month: '',
+    day: ''
 }
 
 class SectionExpense extends Component {
 
-    constructor() {
-        super()
-        this.state = {...INITIAL_STATE}
-    }
-
     static defaultProps = {}
 
-    // state = {...INITIAL_STATE}
+    state = {...INITIAL_STATE}
 
-    handleChange = e => {
-        const {name, value} = e.target
-        this.setState({[name]: value})
+    // handleChange = e => {
+    //     // const {name, value} = e.target
+    //     // this.setState({[name]: value})
+    //     console.log('state in handleChange: ', this.state);
+    // }
+
+    handleChangeDesc = e => {
+        this.setState({desc: e.target.value})
+        console.log('state in handleChange: ', this.state);
+    }
+
+    handleChangeSelect = e => {
+        this.setState({expenseCategories: e.target.value})
+        console.log('state in handleChange: ', this.state);
+    }
+
+    handleChangeValue = e => {
+        this.setState({value: Number(e.target.value)})
         console.log('state in handleChange: ', this.state);
     }
 
     handleSubmit = e => {
         e.preventDefault()
-        let items = [...this.state.items]
-        items.push({
-            description: this.state.description,
-            category: this.state.category,
-            sum: this.state.sum,
-        })
-        this.setState({
-            items,
-            description: '',
-            category: '',
-            sum: '',
-        })
-        console.log('items in handleSubmit: ', items)
-        // this.props.items(itemsNew)
-        // this.props.onAddExpense( {...this.state} )
-        console.log('state.items:', this.state.items)
-        // this.reset()
+        const [day, month, year] = this.props.dateFromCalendar.split('.')
+        console.log('day: ', day)
+        this.props.onAddTransaction( {...this.state, day, month, year} )
+        // console.log('this.state expense: ', this.state);
+        this.reset()
     }
 
     reset = () => this.setState( {...INITIAL_STATE} )
 
     render() {
-        const { description, category, sum } = this.state
+        const { desc, expenseCategories, value } = this.state
         return (
             <div className={styles.formContainer}>
                 <div className={styles.datePickerWrp}><Calendar /></div> 
-                {/* <div className={styles.calendarFormWrp}>                                    */}
+                {/* <div className={styles.calendarFormWrp}> */}
                     <form onSubmit={this.handleSubmit} className={styles.formBody}>                    
-                        <div className={styles.formFieldsWrp}>
+                        <div className={styles.formFieldsWrp}>                            
                             <div className={styles.formFields}>
-                                <input type='text' placeholder='Описание товара' name='description' 
-                                    value={description} onChange={this.handleChange} className={styles.formDescription} required/>
-                                <select size='1' name='category' value={category} onChange={this.handleChange} className={styles.formCategory} required>
+                                <input type='text' placeholder='Описание товара' name='desc' 
+                                    value={desc} onChange={this.handleChangeDesc} className={styles.formDescription} required/>
+                                <select size='1' name='expenseCategories' value={expenseCategories} onChange={this.handleChangeSelect} className={styles.formCategory} required>
                                     <option value='' defaultValue>Категория товара</option>
                                     <option>Транспорт</option>
                                     <option>Продукты</option>
@@ -79,7 +81,7 @@ class SectionExpense extends Component {
                                     <option>Образование</option>
                                     <option>Прочее</option>
                                 </select>
-                                <input placeholder='0.00' name='sum' value={sum} onChange={this.handleChange} className={styles.formSum} required/>
+                                <input placeholder='0.00' name='value' value={value} onChange={this.handleChangeValue} className={styles.formSum} required/>
                                 {/* <Calculator /> */}
                             </div>
                         </div>
@@ -89,20 +91,19 @@ class SectionExpense extends Component {
                         </div>
                     </form>
                 {/* </div> */}
-                <TableSection items={this.state.items}/>
-                {/* <TableSection description={description} category={category} sum={sum}/> */}
+                <TableSectionExpense items={this.state.items}/>
                 {/* <Summary /> */}
             </div>
         )
     }
 }
 
-// const mapStateToProps = (state, props) => ({
-//     items: state.items
-// })
+const mapStateToProps = (state, props) => ({    
+    dateFromCalendar:  state.transactions.date
+})
 
 const mapDispatchToProps = {
-    onAddExpense: expenseOperations.addExpense,
+    onAddTransaction: transactionOperations.addTransaction,
 }
 
-export default connect(null, mapDispatchToProps)(SectionExpense)
+export default connect(mapStateToProps, mapDispatchToProps)(SectionExpense)

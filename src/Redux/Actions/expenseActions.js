@@ -12,7 +12,7 @@ const selectedDateRequest = createAction('date/selectRequest')
 const selectedDateSuccess = createAction('date/selectSuccess')
 const selectedDateError = createAction('date/selectError')
 
-// const selectedDate = createAction('date/select')
+const selectedDate = createAction('date/select')
 
 // const fetchTasksRequest = createAction('tasks/fetchRequest')
 // const fetchTasksSuccess = createAction('tasks/fetchSuccess')
@@ -38,7 +38,7 @@ export default {
     selectedDateSuccess,
     selectedDateError,
 
-    // selectedDate,
+    selectedDate,
 
 //   toggleCompletedRequest,
 //   toggleCompletedSuccess,
