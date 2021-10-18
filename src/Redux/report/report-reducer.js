@@ -1,9 +1,5 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-import { sortedArrCashFetch } from '../../Utils/CategoriesMap';
-import { arrCashIn, arrCashOut } from '../../Utils/category';
 
 import {
   sortedArrCashIn,
@@ -33,8 +29,6 @@ import {
   fetchReportCashOutOneMonthError,
 } from './report-actions';
 import { incrementData, dectementData } from './report-operations';
-
-axios.defaults.baseURL = 'https://kapusta-organizer.herokuapp.com/api';
 
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth();

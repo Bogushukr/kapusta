@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
 import Media from 'react-media';
 
 import s from './GeneratorScheduleReport.module.scss';
@@ -17,52 +18,56 @@ import {
 } from 'recharts';
 
 class GeneratorScheduleReport extends Component {
-  state = {
-    data: [
-      {
-        name: 'Page E',
-        uv: 200,
-      },
-      {
-        name: 'Page E',
-        uv: 800,
-      },
-      {
-        name: 'Page E',
-        uv: 900,
-      },
-      {
-        name: 'Page E',
-        uv: 1890,
-      },
-      {
-        name: 'Page E',
-        uv: 180,
-      },
-      {
-        name: 'Page E',
-        uv: 890,
-      },
-      {
-        name: 'Page E',
-        uv: 180,
-      },
-      {
-        name: 'Page E',
-        uv: 1900,
-      },
-      {
-        name: 'Page E',
-        uv: 800,
-      },
-      {
-        name: 'Page E',
-        uv: 1800,
-      },
-    ],
-    activeIndex: 0,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      sortedArrCashOut: props.sortedArrCashOut,
+      cashIncome: props.cashIncome,
+      sortedArrCashIn: props.sortedArrCashIn,
+      activeIndex: 0,
+      data: [],
+    };
+  }
 
+  componentDidMount() {}
+
+  componentDidUpdate(prevProps, prevState) {
+    const {
+      activeOfArrCashOut,
+      activeOfArrCashIn,
+      cashIncome,
+      sortedArrCashOut,
+      sortedArrCashIn,
+    } = this.props;
+    if (cashIncome !== prevProps.cashIncome) {
+      if(cashIncome) {
+        this.setState({
+          data: sortedArrCashIn[activeOfArrCashIn].desc,
+        })
+      }
+      if (!cashIncome) {
+        this.setState({
+          data: sortedArrCashOut[activeOfArrCashOut].desc,
+        })
+      }
+    }
+    if (
+      sortedArrCashIn !== prevProps.sortedArrCashIn ||
+      activeOfArrCashIn !== prevProps.activeOfArrCashIn
+    ) {
+      this.setState({
+        data: sortedArrCashIn[activeOfArrCashIn].desc,
+      });
+    }
+    if (
+      sortedArrCashOut !== prevProps.sortedArrCashOut ||
+      activeOfArrCashOut !== prevProps.activeOfArrCashOut
+    ) {
+      this.setState({
+        data: sortedArrCashOut[activeOfArrCashOut].desc,
+      });
+    }
+  }
   handleClick = (data, index) => {
     this.setState({
       activeIndex: index,
@@ -71,13 +76,11 @@ class GeneratorScheduleReport extends Component {
 
   render() {
     const { activeIndex, data } = this.state;
-
-    const tabletimeHeight = this.state.data.length * 60;
+    const tabletimeHeight = data.length * 60;
     let tabletimeWidth = '100%';
-    if (this.state.data.length < 8) {
-      tabletimeWidth = this.state.data.length * 90;
+    if (data.length < 4) {
+      tabletimeWidth = data.length * 150;
     }
-
 
     return (
       <Media
@@ -104,20 +107,20 @@ class GeneratorScheduleReport extends Component {
                   >
                     <XAxis type="number" axisLine={false} hide={true} />
                     <YAxis
-                      dataKey="name"
+                      dataKey="desc"
                       type="category"
                       axisLine={false}
                       hide={true}
                       padding={{ top: 20 }}
                     />
                     <Bar
-                      dataKey="uv"
+                      dataKey="total"
                       fill="#FFDAC0"
                       barSize={15}
                       radius={[0, 10, 10, 0]}
                       onClick={this.handleClick}
                     >
-                      <LabelList dataKey="name" position="insideLeft" />
+                      <LabelList dataKey="desc" position="insideLeft" />
                       {data.map((entry, index) => (
                         <Cell
                           cursor="pointer"
@@ -141,20 +144,20 @@ class GeneratorScheduleReport extends Component {
                 >
                   <ResponsiveContainer width="100%" height={422}>
                     <BarChart
-                      data={this.state.data}
+                      data={data}
                       margin={{
                         top: 20,
                         bottom: 20,
                       }}
                     >
                       <Bar
-                        dataKey="uv"
+                        dataKey="total"
                         fill="red"
                         barSize={38}
                         radius={[10, 10, 0, 0]}
                         onClick={this.handleClick}
                       >
-                        <LabelList dataKey="uv" position="insideTop" />
+                        <LabelList dataKey="total" position="insideTop" />
                         {data.map((entry, index) => (
                           <Cell
                             cursor="pointer"
@@ -172,7 +175,7 @@ class GeneratorScheduleReport extends Component {
                         domain={[0, 'dataMax +600']}
                       />
                       <XAxis
-                        dataKey="name"
+                        dataKey="desc"
                         angle={0}
                         tickSize={0}
                         padding={{ left: 20, right: 20 }}
@@ -191,4 +194,14 @@ class GeneratorScheduleReport extends Component {
   }
 }
 
-export default GeneratorScheduleReport;
+const mapStateToProps = state => {
+  return {
+    cashIncome: state.report.cashIncomeReducer,
+    sortedArrCashOut: state.report.sortedArrCashOutReducer,
+    sortedArrCashIn: state.report.sortedArrCashInReducer,
+    activeOfArrCashOut: state.report.activeOfArrCashOutReducer,
+    activeOfArrCashIn: state.report.activeOfArrCashInReducer,
+  };
+};
+
+export default connect(mapStateToProps)(GeneratorScheduleReport);
