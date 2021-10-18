@@ -1,0 +1,9 @@
+.summaryContainer {
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1280px) {
+  .summaryContainer {
+    width: 1060px;
+  }
+}
