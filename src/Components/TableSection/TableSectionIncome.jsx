@@ -5,6 +5,21 @@ import Summary from '../Summary/Summary'
 
 import styles from './TableSection.module.css'
 
+function emptyTable(){
+    let table = []
+    for(let i=0; i<8; i++) {
+        table.push(
+            <tr className={styles.tableBodyRow}>
+                <td className={styles.tableBodyDate}>{}</td>
+                <td className={styles.tableBodyDescription}>{}</td>
+                <td className={styles.tableBodyCategory}>{}</td>
+                <td className={styles.tableBodySum}>{}</td>
+            </tr>
+        )
+    }
+    return table
+}
+
 const TableSectionIncome = ( props ) => {
     const path = useLocation().pathname
     // const {items} = props
@@ -23,6 +38,7 @@ const TableSectionIncome = ( props ) => {
                     </tr>
                 </thead>
                 <tbody className={styles.tableBody}>
+                    {transactions.length === 0 && emptyTable()}
                     {`${path}`==='/home/income' && transactions.map(transaction => {
                         return (
                             <tr className={styles.tableBodyRow}>
