@@ -26,11 +26,30 @@ export const testRequest = createAction("report/testRequest");
 export const incrementMonthPicker = createAction("report/IncrementMonthPicker")
 export const dectementMonthPicker = createAction("report/DectementMonthPicker")
 
+
+export const sortedArrCashIn = createAction("report/sortedArrCashIn")
+export const sortedArrCashOut = createAction("report/sortedArrCashOut")
+
+export const activeOfArrCashIn = createAction("report/activeOfArrCashIn")
+export const activeOfArrCashOut = createAction("report/activeOfArrCashOut")
+
+export const activeSvgCashInPicker = createAction("report/activeSvgCashInPicker")
+export const activeSvgCashOutPicker = createAction("report/activeSvgCashOutPicker")
+
 export const PickerCash = createAction("report/PickerCash")
 
 export default {
+    sortedArrCashIn,
+    sortedArrCashOut,
+
+    activeOfArrCashIn,
+    activeOfArrCashOut,
+    
     incrementMonthPicker,
     dectementMonthPicker,
+
+    activeSvgCashInPicker,
+    activeSvgCashOutPicker,
 
     PickerCash,
 

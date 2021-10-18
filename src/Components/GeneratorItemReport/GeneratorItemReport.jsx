@@ -6,6 +6,13 @@ import {
   fetchReportCashOutOneMonth,
 } from '../../Redux/report/report-operations';
 
+import {
+  sortedArrCashIn,
+  sortedArrCashOut,
+} from '../../Redux/report/report-actions';
+import { sortedArrCashFetch } from '../../Utils/CategoriesMap';
+import { arrCashInIdx, arrCashOutIdx } from '../../Utils/category.js';
+
 import s from './GeneratorItemReport.module.scss';
 class GeneratorItemReport extends Component {
   constructor(props) {
@@ -13,35 +20,43 @@ class GeneratorItemReport extends Component {
     this.state = {
       year: props.year,
       month: props.month,
-      cashIncome: props.cashIncome,
       onFetchReportCashIn: props.fetchReportCashIn,
       onFetchReportCashOut: props.fetchReportCashOut,
       activeChaterIdx: 0,
+      onSortedArrCashIn: props.onSortedArrCashIn,
+      onSortedArrCashOut: props.onSortedArrCashOut,
     };
   }
   static defaultProps = {
     arrCashIn: null,
-    arrCashOut: null
+    arrCashOut: null,
   };
 
   componentDidMount() {
-    const {
-      year,
-      month,
-      onFetchReportCashIn,
-      onFetchReportCashOut,
-    } = this.state;
+    const { year, month, onFetchReportCashIn, onFetchReportCashOut } =
+      this.state;
 
-      onFetchReportCashIn({ year, month });
-      onFetchReportCashOut({ year, month });
+    onFetchReportCashIn({ year, month });
+    onFetchReportCashOut({ year, month });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { year, month, cashIncome } = this.props;
-    const { onFetchReportCashIn, onFetchReportCashOut } = this.state;
-    if (cashIncome !== prevProps.cashIncome || month !== prevProps.month) {
-        onFetchReportCashIn({ year, month });
-        onFetchReportCashOut({ year, month });
+    const { year, month, arrCashIn, arrCashOut } = this.props;
+    const {
+      onFetchReportCashIn,
+      onFetchReportCashOut,
+      onSortedArrCashIn,
+      onSortedArrCashOut,
+    } = this.state;
+    if (month !== prevProps.month) {
+      onFetchReportCashIn({ year, month });
+      onFetchReportCashOut({ year, month });
+    }
+    if (arrCashIn !== prevProps.arrCashIn) {
+      onSortedArrCashIn(sortedArrCashFetch(arrCashInIdx, arrCashIn.arrCategories));
+    }
+    if (arrCashOut !== prevProps.arrCashOut) {
+      onSortedArrCashOut(sortedArrCashFetch(arrCashOutIdx, arrCashOut.arrCategories));
     }
   }
 
@@ -50,58 +65,48 @@ class GeneratorItemReport extends Component {
   };
 
   render() {
-    const { activeChaterIdx, data} = this.state;
-    const {arrCashIn, arrCashOut } = this.props;
+    const { activeChaterIdx } = this.state;
+    const {sortedArrCashOut, sortedArrCashIn, activeOfArrCashOut, activeOfArrCashIn} = this.props; 
     return (
       <>
-      {arrCashIn.arrCategories && 
-        <ul className={s.list}>
-             {arrCashIn.arrCategories.map(({ desc, _id, totalByCategory}, index) => (
-            <li key={_id} className={s.item}>
-              <ItemReport
-                chapter={_id}
-                value={totalByCategory}
-                desc={desc}
-                text={_id}
-                idx={index}
-                idxA={activeChaterIdx}
-                setActiveIdx={this.setActiveIdx}
-              />
-            </li>
-          ))}
-        </ul>
-      }
-      {arrCashOut.arrCategories && 
-        <ul className={s.list}>
-             {arrCashOut.arrCategories.map(({ desc, _id, totalByCategory}, index) => (
-            <li key={_id} className={s.item}>
-              <ItemReport
-                // chapter={chapter}
-                value={totalByCategory}
-                desc={desc}
-                text={_id}
-                idx={index}
-                idxA={activeChaterIdx}
-                setActiveIdx={this.setActiveIdx}
-              />
-            </li>
-          ))}
-        </ul>
-      }
-        {/* <ul className={s.list}>
-             {data.map(({ chapter, value, text }, index) => (
-            <li key={chapter} className={s.item}>
-              <ItemReport
-                chapter={chapter}
-                value={value}
-                text={text}
-                idx={index}
-                idxA={activeChaterIdx}
-                setActiveIdx={this.setActiveIdx}
-              />
-            </li>
-          ))}
-        </ul> */}
+        {sortedArrCashIn && (
+          <ul className={s.list}>
+            {sortedArrCashIn.map(
+              ({ desc, _id, totalByCategory }, index) => (
+                <li key={_id} className={s.item}>
+                  <ItemReport
+                    chapter={_id}
+                    value={totalByCategory}
+                    desc={desc}
+                    text={_id}
+                    idx={index}
+                    idxA={activeOfArrCashIn}
+                    CashIn={true}
+                  />
+                </li>
+              ),
+            )}
+          </ul>
+        )}
+        {sortedArrCashOut && (
+          <ul className={s.list}>
+            {sortedArrCashOut.map(
+              ({ desc, _id, totalByCategory }, index) => (
+                <li key={_id} className={s.item}>
+                  <ItemReport
+                    // chapter={chapter}
+                    value={totalByCategory}
+                    desc={desc}
+                    text={_id}
+                    idx={index}
+                    idxA={activeOfArrCashOut}
+                    CashIn={false}
+                  />
+                </li>
+              ),
+            )}
+          </ul>
+        )}
       </>
     );
   }
@@ -114,14 +119,18 @@ const mapStateToProps = state => {
     cashIncome: state.report.cashIncomeReducer,
     arrCashOut: state.report.cashOutOneMonth,
     arrCashIn: state.report.cashInOneMonth,
+    sortedArrCashOut: state.report.sortedArrCashOutReducer,
+    sortedArrCashIn: state.report.sortedArrCashInReducer,
+    activeOfArrCashOut: state.report.activeOfArrCashOutReducer,
+    activeOfArrCashIn: state.report.activeOfArrCashInReducer,
   };
 };
 const mapDispatchProps = dispatch => {
   return {
-    // HandleMonthUp: () => dispatch(reportActions.incrementMonthPicker(1)),
-    // HandleMonthdown: () => dispatch(reportActions.dectementMonthPicker(1)),
     fetchReportCashIn: props => dispatch(fetchReportCashInOneMonth(props)),
     fetchReportCashOut: props => dispatch(fetchReportCashOutOneMonth(props)),
+    onSortedArrCashIn: props => dispatch(sortedArrCashIn(props)),
+    onSortedArrCashOut: props => dispatch(sortedArrCashOut(props)), 
   };
 };
 
