@@ -13,8 +13,6 @@ const ReportPage = () => {
   return (
     <>
       <div className={s.wrapper}>
-      <Summary cashIncome={false}/>
-      <Summary cashIncome={true}/>
         <div className={s.reportBar}>
           <Comeback />
           <MonthPIcker />

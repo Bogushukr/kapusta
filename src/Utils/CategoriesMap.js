@@ -7,7 +7,7 @@ export const sortedArrCashFetch =  (arrStatic, updata) => {
     }
     const categories = new Map();
     for (const key of categoriesMap.keys()) {
-      categories.set(key, { _id: key, totalByCategory: 0, desc: [] });
+      categories.set(key, { _id: key, totalByCategory: 0, desc: [{desc: key, total: 0}] });
     }
     const map1 = new Map(categories);
     for (const someObject of updata) {

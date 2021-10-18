@@ -52,10 +52,14 @@ class GeneratorItemReport extends Component {
       onFetchReportCashOut({ year, month });
     }
     if (arrCashIn !== prevProps.arrCashIn) {
-      onSortedArrCashIn(sortedArrCashFetch(arrCashInIdx, arrCashIn.arrCategories));
+      onSortedArrCashIn(
+        sortedArrCashFetch(arrCashInIdx, arrCashIn.arrCategories),
+      );
     }
     if (arrCashOut !== prevProps.arrCashOut) {
-      onSortedArrCashOut(sortedArrCashFetch(arrCashOutIdx, arrCashOut.arrCategories));
+      onSortedArrCashOut(
+        sortedArrCashFetch(arrCashOutIdx, arrCashOut.arrCategories),
+      );
     }
   }
 
@@ -64,45 +68,47 @@ class GeneratorItemReport extends Component {
   };
 
   render() {
-    const {sortedArrCashOut, sortedArrCashIn, activeOfArrCashOut, activeOfArrCashIn, cashIncome} = this.props; 
+    const {
+      sortedArrCashOut,
+      sortedArrCashIn,
+      activeOfArrCashOut,
+      activeOfArrCashIn,
+      cashIncome,
+    } = this.props;
     return (
       <>
         {sortedArrCashIn && cashIncome && (
           <ul className={s.list}>
-            {sortedArrCashIn.map(
-              ({ desc, _id, totalByCategory }, index) => (
-                <li key={_id} className={s.item}>
-                  <ItemReport
-                    chapter={_id}
-                    value={totalByCategory}
-                    desc={desc}
-                    text={_id}
-                    idx={index}
-                    idxA={activeOfArrCashIn}
-                    CashIn={true}
-                  />
-                </li>
-              ),
-            )}
+            {sortedArrCashIn.map(({ desc, _id, totalByCategory }, index) => (
+              <li key={_id} className={s.item}>
+                <ItemReport
+                  chapter={_id}
+                  value={totalByCategory}
+                  desc={desc}
+                  text={_id}
+                  idx={index}
+                  idxA={activeOfArrCashIn}
+                  CashIn={true}
+                />
+              </li>
+            ))}
           </ul>
         )}
         {sortedArrCashOut && !cashIncome && (
           <ul className={s.list}>
-            {sortedArrCashOut.map(
-              ({ desc, _id, totalByCategory }, index) => (
-                <li key={_id} className={s.item}>
-                  <ItemReport
-                    // chapter={chapter}
-                    value={totalByCategory}
-                    desc={desc}
-                    text={_id}
-                    idx={index}
-                    idxA={activeOfArrCashOut}
-                    CashIn={false}
-                  />
-                </li>
-              ),
-            )}
+            {sortedArrCashOut.map(({ desc, _id, totalByCategory }, index) => (
+              <li key={_id} className={s.item}>
+                <ItemReport
+                  chapter={_id}
+                  value={totalByCategory}
+                  desc={desc}
+                  text={_id}
+                  idx={index}
+                  idxA={activeOfArrCashOut}
+                  CashIn={false}
+                />
+              </li>
+            ))}
           </ul>
         )}
       </>
@@ -128,7 +134,7 @@ const mapDispatchProps = dispatch => {
     fetchReportCashIn: props => dispatch(fetchReportCashInOneMonth(props)),
     fetchReportCashOut: props => dispatch(fetchReportCashOutOneMonth(props)),
     onSortedArrCashIn: props => dispatch(sortedArrCashIn(props)),
-    onSortedArrCashOut: props => dispatch(sortedArrCashOut(props)), 
+    onSortedArrCashOut: props => dispatch(sortedArrCashOut(props)),
   };
 };
 
