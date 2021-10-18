@@ -1,6 +1,8 @@
 import { connect, useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
 
+import Summary from '../Summary/Summary'
+
 import styles from './TableSection.module.css'
 
 const TableSectionExpense = ( props ) => {
@@ -33,6 +35,9 @@ const TableSectionExpense = ( props ) => {
                     })}
                 </tbody>
             </table>
+            <div className={styles.summaryWrp}>
+                <Summary />
+            </div>            
         </div>
     )
 }

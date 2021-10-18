@@ -184,7 +184,8 @@
   .formContainer {
     width: 1060px;
     height: 579px;
-    margin: 0 110px 83px 110px;
+    /* margin: 0 110px 83px 110px; */
+    margin: 0 110px 83px 0;
   }
 
   .datePickerWrp {
