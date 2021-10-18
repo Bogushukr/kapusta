@@ -22,7 +22,6 @@ class GeneratorItemReport extends Component {
       month: props.month,
       onFetchReportCashIn: props.fetchReportCashIn,
       onFetchReportCashOut: props.fetchReportCashOut,
-      activeChaterIdx: 0,
       onSortedArrCashIn: props.onSortedArrCashIn,
       onSortedArrCashOut: props.onSortedArrCashOut,
     };
@@ -65,11 +64,10 @@ class GeneratorItemReport extends Component {
   };
 
   render() {
-    const { activeChaterIdx } = this.state;
-    const {sortedArrCashOut, sortedArrCashIn, activeOfArrCashOut, activeOfArrCashIn} = this.props; 
+    const {sortedArrCashOut, sortedArrCashIn, activeOfArrCashOut, activeOfArrCashIn, cashIncome} = this.props; 
     return (
       <>
-        {sortedArrCashIn && (
+        {sortedArrCashIn && cashIncome && (
           <ul className={s.list}>
             {sortedArrCashIn.map(
               ({ desc, _id, totalByCategory }, index) => (
@@ -88,7 +86,7 @@ class GeneratorItemReport extends Component {
             )}
           </ul>
         )}
-        {sortedArrCashOut && (
+        {sortedArrCashOut && !cashIncome && (
           <ul className={s.list}>
             {sortedArrCashOut.map(
               ({ desc, _id, totalByCategory }, index) => (
