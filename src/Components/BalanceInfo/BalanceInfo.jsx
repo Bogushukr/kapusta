@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './BalanceInfo.scss';
 import ModalBalance from '../ModalBalance/ModalBalance';
-import { balanceSelectors, balanceOperations } from '../../Redux/balance';
+import { balanceOperations } from '../../Redux/balance';
+import authSelectors from '../../Redux/auth/auth-selectors';
 import { useSelector, useDispatch } from 'react-redux';
 
 const BalanceInfo = () => {
-  const balance = useSelector(balanceSelectors.getUserBalance);
+  const balance = useSelector(authSelectors.getUserBalance);
+
   const dispatch = useDispatch();
-  const [sum, setBalance] = useState('');
+  const [sum, setSum] = useState('');
 
   useEffect(() => {
-    setBalance(balance);
+    setSum(balance);
   }, [balance]);
 
   const onSubmit = e => {
@@ -18,7 +20,7 @@ const BalanceInfo = () => {
     dispatch(balanceOperations.setUserBalance(sum));
   };
 
-  const onHandleChange = e => setBalance(e.currentTarget.value);
+  const onHandleChange = e => setSum(e.currentTarget.value);
 
   return (
     <div className="balanceInfo">
@@ -45,7 +47,7 @@ const BalanceInfo = () => {
               {/* <p className="balanceState">{balance.toFixed(2)} UAH</p> */}
               <p className="balanceState balanceStateDisabled">{`${balance.toLocaleString(
                 'ru',
-              )}.00`}</p>
+              )}.00 UAH`}</p>
               <button className="setBalanceButtonDisabled" disabled>
                 Подтвердить
               </button>

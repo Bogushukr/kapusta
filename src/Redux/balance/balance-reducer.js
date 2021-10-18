@@ -4,7 +4,7 @@ import balanceActions from './balance-actions';
 import authActions from '../auth/auth-actions';
 
 const balance = createReducer(0, {
-  [authActions.getCurrentUserBalanceSuccess]: (_, { payload }) =>
+  [authActions.getCurrentUserSuccess]: (_, { payload }) =>
     payload.data.user.currentBalance,
   [balanceActions.setBalanceSuccess]: (_, { payload }) =>
     payload.data.user.currentBalance,
