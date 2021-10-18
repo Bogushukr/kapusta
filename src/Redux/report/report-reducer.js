@@ -134,11 +134,11 @@ const sortedArrCashOutReducer = createReducer([], {
   [sortedArrCashOut]: (_, { payload }) => payload,
 });
 
-const activeOfArrCashInReducer = createReducer(1, {
+const activeOfArrCashInReducer = createReducer(0, {
   [activeOfArrCashIn]: (_, { payload }) => payload,
   [activeSvgCashInPicker]: (_, { payload }) => payload,
 });
-const activeOfArrCashOutReducer = createReducer(1, {
+const activeOfArrCashOutReducer = createReducer(0, {
   [activeOfArrCashOut]: (_, { payload }) => payload,
   [activeSvgCashOutPicker]: (_, { payload }) => payload,
 });

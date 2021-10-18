@@ -6,7 +6,6 @@ import PickerExpensesIncome from '../../Components/PickerExpensesIncome';
 import CurrentCash from '../../Components/CurrentCash';
 
 import BalanceInfo from '../../Components/BalanceInfo/BalanceInfo';
-import Summary from '../../Components/Summary/'
 import s from './ReportPage.module.scss';
 
 const ReportPage = () => {
@@ -15,8 +14,8 @@ const ReportPage = () => {
       <div className={s.wrapper}>
         <div className={s.reportBar}>
           <Comeback />
-          <MonthPIcker />
           <BalanceInfo />
+          <MonthPIcker />
         </div>
         <div className={s.currentCash}>
           <CurrentCash />

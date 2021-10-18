@@ -50,4 +50,20 @@
       // border-radius: 30px;
     }
   }
+  .reportBar {
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media screen and(max-width: $bp-tablet  ) {
+      // height: 85px;
+      box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+      border-radius: 20px;
+    }
+    @media screen and(min-width: $bp-tablet  ) {
+      // height: 50px;
+      box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+      border-radius: 30px;
+    }
+  }
 }
