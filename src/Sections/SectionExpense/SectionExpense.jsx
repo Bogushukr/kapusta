@@ -92,7 +92,6 @@ class SectionExpense extends Component {
                     </form>
                 {/* </div> */}
                 <TableSectionExpense items={this.state.items}/>
-                {/* <Summary /> */}
             </div>
         )
     }

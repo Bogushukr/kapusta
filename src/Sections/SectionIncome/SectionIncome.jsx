@@ -77,7 +77,6 @@ class SectionIncome extends Component {
                     </div>
                 </form>
                 <TableSectionIncome items={this.state.items}/>
-                {/* <Summary /> */}
             </div>
         )
     }
