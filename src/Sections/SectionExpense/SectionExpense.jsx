@@ -48,7 +48,6 @@ class SectionExpense extends Component {
     handleSubmit = e => {
         e.preventDefault()
         const [day, month, year] = this.props.dateFromCalendar.split('.')
-        console.log('day: ', day)
         this.props.onAddTransaction( {...this.state, day, month, year} )
         // console.log('this.state expense: ', this.state);
         this.reset()
@@ -81,13 +80,13 @@ class SectionExpense extends Component {
                                     <option>Образование</option>
                                     <option>Прочее</option>
                                 </select>
-                                <input placeholder='0.00' name='value' value={value} onChange={this.handleChangeValue} className={styles.formSum} required/>
+                                <input placeholder='0.00' name='value' type='number' value={value} onChange={this.handleChangeValue} className={styles.formSum} required/>
                                 {/* <Calculator /> */}
                             </div>
                         </div>
                         <div className={styles.buttonsWrp}>
                             <button type='submit' className={styles.enterBTN}>Ввод</button>
-                            <button className={styles.clearBTN}>Очистить</button>
+                            <button type='button' className={styles.clearBTN} onClick={()=>this.setState({...INITIAL_STATE})}>Очистить</button>
                         </div>
                     </form>
                 {/* </div> */}
