@@ -4,9 +4,9 @@ const addTransactionRequest = createAction('transactions/addRequest')
 const addTransactionSuccess = createAction('transactions/addSuccess')
 const addTransactionError = createAction('transactions/addError')
 
-// const removeExpenseRequest = createAction('expenses/removeRequest')
-// const removeExpenseSuccess = createAction('expenses/removeSuccess')
-// const removeExpenseError = createAction('expenses/removeError')
+const removeTransactionRequest = createAction('transaction/removeRequest')
+const removeTransactionSuccess = createAction('transaction/removeSuccess')
+const removeTransactionError = createAction('transaction/removeError')
 
 // const selectedDateRequest = createAction('date/selectRequest')
 // const selectedDateSuccess = createAction('date/selectSuccess')
@@ -30,9 +30,9 @@ export default {
     addTransactionSuccess,
     addTransactionError,
 
-    // removeExpenseRequest,
-    // removeExpenseSuccess,
-    // removeExpenseError,
+    removeTransactionRequest,
+    removeTransactionSuccess,
+    removeTransactionError,
 
     // selectedDateRequest,
     // selectedDateSuccess,
@@ -43,5 +43,4 @@ export default {
 //   toggleCompletedRequest,
 //   toggleCompletedSuccess,
 //   toggleCompletedError,
-//   changeFilter,
 }
