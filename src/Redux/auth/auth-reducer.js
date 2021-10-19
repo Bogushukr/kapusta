@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import authActions from './auth-actions';
+import balanceActions from '../balance/balance-actions';
 
 const initialUserState = { name: null, email: null };
 
@@ -37,10 +38,16 @@ const isAuthenticated = createReducer(false, {
 
   [authActions.logoutSuccess]: () => false,
 });
+const balance = createReducer(0, {
+  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.data,
+  [balanceActions.setBalanceSuccess]: (_, { payload }) =>
+    payload.data.user.currentBalance,
+});
 
 export default combineReducers({
   user,
   isAuthenticated,
   token,
   error,
+  balance,
 });

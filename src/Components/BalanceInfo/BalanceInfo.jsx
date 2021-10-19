@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './BalanceInfo.scss';
 import ModalBalance from '../ModalBalance/ModalBalance';
 import { balanceOperations } from '../../Redux/balance';
-import { authSelectors } from '../../Redux/auth';
+import { authSelectors, authOperations } from '../../Redux/auth';
 import { useSelector, useDispatch } from 'react-redux';
 
 const BalanceInfo = () => {
-  const currentBalance = useSelector(authSelectors.getUserBalance);
+  const currentBalance = useSelector(authSelectors.getUserBalance) || 0;
 
   const dispatch = useDispatch();
   const [sum, setSum] = useState('');
@@ -17,7 +17,7 @@ const BalanceInfo = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    dispatch(balanceOperations.setUserBalance(sum));
+    dispatch(authOperations.setUserBalance(sum));
   };
 
   const onHandleChange = e => setSum(e.currentTarget.value);
@@ -27,7 +27,7 @@ const BalanceInfo = () => {
       <form className="setBalanceForm" onSubmit={onSubmit}>
         <p className="balanceSetting">Баланс:</p>
         <label htmlFor="balance" className="balanceLabel">
-          {!sum ? (
+          {sum === 0 ? (
             <>
               <input
                 type="number"
@@ -36,11 +36,13 @@ const BalanceInfo = () => {
                 placeholder="00.00 UAH"
                 onChange={onHandleChange}
                 className="balanceState"
-                // value={sum}
+                value={sum}
                 required
               />
               {sum <= 0 && <ModalBalance />}
-              <button className="setBalanceButton">Подтвердить</button>
+              <button className="setBalanceButton" type="submit">
+                Подтвердить
+              </button>
             </>
           ) : (
             <>

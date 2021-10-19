@@ -1,8 +1,8 @@
-const getIsAuthenticated = state => state.auth.isAuthenticated;
+// const getIsAuthenticated = state => state.auth.isAuthenticated;
 
-const getUserBalance = state => state.auth.user.currentBalance;
+// const getUserBalance = state => state.auth.user.currentBalance;
 
-export default {
-  getIsAuthenticated,
-  getUserBalance,
-};
+// export default {
+//   getIsAuthenticated,
+//   getUserBalance,
+// };
