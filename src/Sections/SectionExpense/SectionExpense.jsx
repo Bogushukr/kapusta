@@ -24,12 +24,6 @@ class SectionExpense extends Component {
 
     state = {...INITIAL_STATE}
 
-    // handleChange = e => {
-    //     // const {name, value} = e.target
-    //     // this.setState({[name]: value})
-    //     console.log('state in handleChange: ', this.state);
-    // }
-
     handleChangeDesc = e => {
         this.setState({desc: e.target.value})
         console.log('state in handleChange: ', this.state);
@@ -47,9 +41,9 @@ class SectionExpense extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
+        const token = this.props.token
         const [day, month, year] = this.props.dateFromCalendar.split('.')
-        this.props.onAddTransaction( {...this.state, day, month, year} )
-        // console.log('this.state expense: ', this.state);
+        this.props.onAddTransaction( {...this.state, day, month, year}, token )
         this.reset()
     }
 
@@ -60,7 +54,6 @@ class SectionExpense extends Component {
         return (
             <div className={styles.formContainer}>
                 <div className={styles.datePickerWrp}><Calendar /></div> 
-                {/* <div className={styles.calendarFormWrp}> */}
                     <form onSubmit={this.handleSubmit} className={styles.formBody}>                    
                         <div className={styles.formFieldsWrp}>                            
                             <div className={styles.formFields}>
@@ -89,7 +82,6 @@ class SectionExpense extends Component {
                             <button type='button' className={styles.clearBTN} onClick={()=>this.setState({...INITIAL_STATE})}>Очистить</button>
                         </div>
                     </form>
-                {/* </div> */}
                 <TableSectionExpense items={this.state.items}/>
             </div>
         )
@@ -97,7 +89,8 @@ class SectionExpense extends Component {
 }
 
 const mapStateToProps = (state, props) => ({    
-    dateFromCalendar:  state.transactions.date
+    dateFromCalendar:  state.transactions.date,
+    token: state.auth.token
 })
 
 const mapDispatchToProps = {
