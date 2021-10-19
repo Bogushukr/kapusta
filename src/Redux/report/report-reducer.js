@@ -8,13 +8,9 @@ import {
   activeOfArrCashOut,
   activeSvgCashInPicker,
   activeSvgCashOutPicker,
-  testRequest,
   incrementMonthPicker,
   dectementMonthPicker,
   PickerCash,
-  fetchAllTransactionRequest,
-  fetchAllTransactionSuccess,
-  fetchAllTransactionError,
   fetchReportCashInSixMonthRequest,
   fetchReportCashInSixMonthSuccess,
   fetchReportCashInSixMonthError,
@@ -49,24 +45,6 @@ const cashIncomeReducer = createReducer(stateCash, {
   [PickerCash]: (state, _) => {
     return !state;
   },
-});
-
-const report = createReducer((reportData, []), {
-  [incrementMonthPicker]: incrementData,
-  [dectementMonthPicker]: dectementData,
-  [fetchAllTransactionSuccess]: (_, { payload }) => {
-    return {
-      allTran: payload,
-    };
-  },
-  [fetchAllTransactionError]: (_, { payload }) => {
-    alert(`Error : ${payload}`);
-    return payload;
-  },
-});
-
-const test = createReducer([], {
-  [testRequest]: dectementData,
 });
 
 const cashInSixMonth = createReducer([], {
@@ -144,10 +122,6 @@ const activeOfArrCashOutReducer = createReducer(0, {
 });
 
 const loading = createReducer(false, {
-  [fetchAllTransactionRequest]: () => true,
-  [fetchAllTransactionSuccess]: () => false,
-  [fetchAllTransactionError]: () => false,
-
   [fetchReportCashInSixMonthRequest]: () => true,
   [fetchReportCashInSixMonthSuccess]: () => false,
   [fetchReportCashInSixMonthError]: () => false,
@@ -167,9 +141,7 @@ const loading = createReducer(false, {
 
 const reportReducer = combineReducers({
   date,
-  report,
   loading,
-  test,
   cashInSixMonth,
   cashOutSixMonth,
   cashInOneMonth,

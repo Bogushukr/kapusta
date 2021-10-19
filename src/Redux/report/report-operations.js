@@ -1,9 +1,6 @@
 import axios from 'axios';
 
 import {
-  fetchAllTransactionRequest,
-  fetchAllTransactionSuccess,
-  fetchAllTransactionError,
   fetchReportCashInSixMonthRequest,
   fetchReportCashInSixMonthSuccess,
   fetchReportCashInSixMonthError,
@@ -41,17 +38,6 @@ export const dectementData = (state, { payload }) => {
     ...state,
     currentReportMonth: state.currentReportMonth - payload,
   };
-};
-
-export const getAllTransactions = () => async dispatch => {
-  dispatch(fetchAllTransactionRequest());
-
-  try {
-    const { data } = await axios.get('/transactions');
-    dispatch(fetchAllTransactionSuccess(data.transactions));
-  } catch (error) {
-    dispatch(fetchAllTransactionError(error.message));
-  }
 };
 
 export const fetchReportCashOutSixMonth = () => async dispatch => {

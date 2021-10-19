@@ -22,7 +22,7 @@ const ReportPage = () => {
       {matches => (
         <>
           {matches.small && (
-            <section>
+            <section className={s.global}>
               <h1 hidden>Oтчетная страница</h1>
               <div className={s.wrapperFirst}>
                 <Comeback />
@@ -49,7 +49,7 @@ const ReportPage = () => {
             </section>
           )}
           {matches.medium && (
-            <section>
+            <section className={s.global}>
             <h1 hidden>Oтчетная страница</h1>
               <div className={s.wrapperFirst}>
                 <div className={s.reportBar}>

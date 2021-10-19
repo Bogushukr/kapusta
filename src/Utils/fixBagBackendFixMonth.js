@@ -3,10 +3,6 @@ import { arrFixMonthNumber } from './category';
 export const fixBagBackendFixMonth = updata => {
   const currentMonth = new Date().getMonth();
   const currentArrMonth = arrFixMonthNumber[currentMonth - 1];
-  console.log(currentMonth);
-  
-  console.log(currentArrMonth);
-  
   const categoriesMap = new Map();
   for (let i = 0; i < currentArrMonth.length; i++) {
     categoriesMap.set(currentArrMonth[i], i);

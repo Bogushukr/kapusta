@@ -41,8 +41,12 @@
 }
 
 .svg {
-  width: 5px;
+  width: 10px;
   height: 10px;
   display: flex;
   align-items: center;
+
+  &:focus, &:hover {
+    cursor: pointer;
+  }
 }

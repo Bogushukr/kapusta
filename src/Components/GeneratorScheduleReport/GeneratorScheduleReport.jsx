@@ -41,13 +41,11 @@ class GeneratorScheduleReport extends Component {
     } = this.props;
     if (cashIncome !== prevProps.cashIncome) {
       if (!cashIncome) {
-        console.log(activeOfArrCashOut);
         this.setState({
           data: sortedArrCashOut[activeOfArrCashOut].desc,
         });
       }
       if (cashIncome) {
-        console.log(activeOfArrCashIn);
         this.setState({
           data: sortedArrCashIn[activeOfArrCashIn].desc,
         });
@@ -57,7 +55,6 @@ class GeneratorScheduleReport extends Component {
       (cashIncome && sortedArrCashIn !== prevProps.sortedArrCashIn) ||
       (cashIncome && activeOfArrCashIn !== prevProps.activeOfArrCashIn)
     ) {
-      console.log(activeOfArrCashIn);
       this.setState({
         data: sortedArrCashIn[activeOfArrCashIn].desc,
       });
@@ -66,8 +63,6 @@ class GeneratorScheduleReport extends Component {
       (!cashIncome && sortedArrCashOut !== prevProps.sortedArrCashOut) ||
       (!cashIncome && activeOfArrCashOut !== prevProps.activeOfArrCashOut)
     ) {
-      console.log(activeOfArrCashOut);
-      
       this.setState({
         data: sortedArrCashOut[activeOfArrCashOut].desc,
       });
@@ -125,7 +120,7 @@ class GeneratorScheduleReport extends Component {
                       radius={[0, 10, 10, 0]}
                       onClick={this.handleClick}
                     >
-                          <LabelList dataKey="total" position="insideTopRight" />
+                      <LabelList dataKey="total" position="insideTopRight" />
                       <LabelList dataKey="desc" position="insideLeft" />
                       {data.map((entry, index) => (
                         <Cell
@@ -135,8 +130,7 @@ class GeneratorScheduleReport extends Component {
                         />
                       ))}
                     </Bar>
-                    <Bar>
-                    </Bar>
+                    <Bar></Bar>
                   </ComposedChart>
                 </ResponsiveContainer>
               </div>
@@ -201,8 +195,6 @@ class GeneratorScheduleReport extends Component {
     );
   }
 }
-
-{/* <LabelList dataKey="name" content={renderCustomizedLabel} /> */}
 
 const mapStateToProps = state => {
   return {
