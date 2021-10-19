@@ -38,6 +38,7 @@ const isAuthenticated = createReducer(false, {
 
   [authActions.logoutSuccess]: () => false,
 });
+
 const balance = createReducer(0, {
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.data,
   [balanceActions.setBalanceSuccess]: (_, { payload }) =>
