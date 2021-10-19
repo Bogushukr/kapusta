@@ -1,16 +1,13 @@
-export const sortedArrCashFetch = (arrStatic, updata) => {
-  if (typeof updata !== Object) {
+
+export const sortedArrCashFetch =  (arrStatic, updata) => {
+  if(typeof(updata) !== Object ) {
     const categoriesMap = new Map();
     for (let i = 0; i < arrStatic.length; i++) {
       categoriesMap.set(arrStatic[i], i);
     }
     const categories = new Map();
     for (const key of categoriesMap.keys()) {
-      categories.set(key, {
-        _id: key,
-        totalByCategory: 0,
-        desc: [{ desc: key, total: 0 }],
-      });
+      categories.set(key, { _id: key, totalByCategory: 0, desc: [{desc: key, total: 0}] });
     }
     const map1 = new Map(categories);
     for (const someObject of updata) {
@@ -33,25 +30,6 @@ export const sortedArrCashFetch = (arrStatic, updata) => {
         return 0;
       }
     });
+
   }
 };
-
-export const arrMonthRU = [
-  'Январь',
-  'Февраль',
-  'Март',
-  'Апрель',
-  'Май',
-  'Июнь',
-  'Июль',
-  'Август',
-  'Сентябрь',
-  'Октябрь',
-  'Ноябрь',
-  'Декабрь',
-];
-
-const currentYear = new Date().getFullYear();
-const currentMonth = new Date().getMonth();
-
-const staticMonth = currentMonth => {};
