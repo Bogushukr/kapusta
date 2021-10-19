@@ -3,7 +3,7 @@
   position: relative;
   width: 100%;
   @include for-size(mobile) {
-    min-height: 800px;
+    min-height: 800px;  
   }
   @include for-size(tablet) {
     min-height: 968px;

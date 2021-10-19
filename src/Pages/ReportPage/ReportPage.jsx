@@ -72,6 +72,7 @@ const ReportPage = () => {
                   <GeneratorScheduleReport />
                 </div>
               </div>
+              <div className={s.decor}></div>
             </section>
           )}
         </>
