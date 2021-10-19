@@ -28,13 +28,14 @@ const ItemReport = ({ chapter, value, text, idx, idxA, CashIn, activeSvgCashIn, 
   ];
   const svgIcon = arrSvg.indexOf(chapter);
 
-
+  if (svgIcon === -1) {
+    console.log(`${chapter} = ${svgIcon}`)
+    console.log(arrSvg)
+  }
   let optionClasses = [s.svg];
   if (idx === idxA) {
     optionClasses.push(s.svg__action);
   }
-  console.log(`aas : ${chapter}`);
-  
   return (
     <button
       className={s.btn}

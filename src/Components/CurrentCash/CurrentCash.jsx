@@ -1,14 +1,10 @@
-import { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ValueCash from '../CurrentCashSpan'
-import { numberWithSpace } from '../../Utils/numberWithSpace';
 
 import s from './CurrentCash.module.scss';
 
 const CurrentCash = ({ cashIn, cashOut, cashInReserve, cashOutReserve }) => {
-  
-  console.log(cashIn === cashInReserve);
   return (
     <>
     <div className={s.wrapper}>

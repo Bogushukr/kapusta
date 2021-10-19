@@ -7,7 +7,9 @@
   margin-bottom: 5px;
 
   // не могу использувать _variables
-  &:hover {
+
+  &:hover, &:focus {
+    cursor: pointer;
     --color1: #ffdac0;
     --color2: #ff751d;
   }

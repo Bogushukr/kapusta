@@ -40,28 +40,28 @@ class GeneratorScheduleReport extends Component {
       sortedArrCashIn,
     } = this.props;
     if (cashIncome !== prevProps.cashIncome) {
-      if(cashIncome) {
-        this.setState({
-          data: sortedArrCashIn[activeOfArrCashIn].desc,
-        })
-      }
       if (!cashIncome) {
         this.setState({
           data: sortedArrCashOut[activeOfArrCashOut].desc,
-        })
+        });
+      }
+      if (cashIncome) {
+        this.setState({
+          data: sortedArrCashIn[activeOfArrCashIn].desc,
+        });
       }
     }
     if (
-      sortedArrCashIn !== prevProps.sortedArrCashIn ||
-      activeOfArrCashIn !== prevProps.activeOfArrCashIn
+      (cashIncome && sortedArrCashIn !== prevProps.sortedArrCashIn) ||
+      (cashIncome && activeOfArrCashIn !== prevProps.activeOfArrCashIn)
     ) {
       this.setState({
         data: sortedArrCashIn[activeOfArrCashIn].desc,
       });
     }
     if (
-      sortedArrCashOut !== prevProps.sortedArrCashOut ||
-      activeOfArrCashOut !== prevProps.activeOfArrCashOut
+      (!cashIncome && sortedArrCashOut !== prevProps.sortedArrCashOut) ||
+      (!cashIncome && activeOfArrCashOut !== prevProps.activeOfArrCashOut)
     ) {
       this.setState({
         data: sortedArrCashOut[activeOfArrCashOut].desc,
@@ -76,7 +76,7 @@ class GeneratorScheduleReport extends Component {
 
   render() {
     const { activeIndex, data } = this.state;
-    const tabletimeHeight = data.length * 60;
+    const tabletimeHeight = data.length * 70;
     let tabletimeWidth = '100%';
     if (data.length < 4) {
       tabletimeWidth = data.length * 150;
@@ -120,6 +120,7 @@ class GeneratorScheduleReport extends Component {
                       radius={[0, 10, 10, 0]}
                       onClick={this.handleClick}
                     >
+                      <LabelList dataKey="total" position="insideTopRight" />
                       <LabelList dataKey="desc" position="insideLeft" />
                       {data.map((entry, index) => (
                         <Cell
@@ -129,6 +130,7 @@ class GeneratorScheduleReport extends Component {
                         />
                       ))}
                     </Bar>
+                    <Bar></Bar>
                   </ComposedChart>
                 </ResponsiveContainer>
               </div>

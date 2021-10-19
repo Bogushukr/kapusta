@@ -8,13 +8,9 @@ import {
   activeOfArrCashOut,
   activeSvgCashInPicker,
   activeSvgCashOutPicker,
-  testRequest,
   incrementMonthPicker,
   dectementMonthPicker,
   PickerCash,
-  fetchAllTransactionRequest,
-  fetchAllTransactionSuccess,
-  fetchAllTransactionError,
   fetchReportCashInSixMonthRequest,
   fetchReportCashInSixMonthSuccess,
   fetchReportCashInSixMonthError,
@@ -49,24 +45,6 @@ const cashIncomeReducer = createReducer(stateCash, {
   [PickerCash]: (state, _) => {
     return !state;
   },
-});
-
-const report = createReducer((reportData, []), {
-  [incrementMonthPicker]: incrementData,
-  [dectementMonthPicker]: dectementData,
-  [fetchAllTransactionSuccess]: (_, { payload }) => {
-    return {
-      allTran: payload,
-    };
-  },
-  [fetchAllTransactionError]: (_, { payload }) => {
-    alert(`Error : ${payload}`);
-    return payload;
-  },
-});
-
-const test = createReducer([], {
-  [testRequest]: dectementData,
 });
 
 const cashInSixMonth = createReducer([], {
@@ -134,20 +112,16 @@ const sortedArrCashOutReducer = createReducer([], {
   [sortedArrCashOut]: (_, { payload }) => payload,
 });
 
-const activeOfArrCashInReducer = createReducer(1, {
+const activeOfArrCashInReducer = createReducer(0, {
   [activeOfArrCashIn]: (_, { payload }) => payload,
   [activeSvgCashInPicker]: (_, { payload }) => payload,
 });
-const activeOfArrCashOutReducer = createReducer(1, {
+const activeOfArrCashOutReducer = createReducer(0, {
   [activeOfArrCashOut]: (_, { payload }) => payload,
   [activeSvgCashOutPicker]: (_, { payload }) => payload,
 });
 
 const loading = createReducer(false, {
-  [fetchAllTransactionRequest]: () => true,
-  [fetchAllTransactionSuccess]: () => false,
-  [fetchAllTransactionError]: () => false,
-
   [fetchReportCashInSixMonthRequest]: () => true,
   [fetchReportCashInSixMonthSuccess]: () => false,
   [fetchReportCashInSixMonthError]: () => false,
@@ -167,9 +141,7 @@ const loading = createReducer(false, {
 
 const reportReducer = combineReducers({
   date,
-  report,
   loading,
-  test,
   cashInSixMonth,
   cashOutSixMonth,
   cashInOneMonth,
