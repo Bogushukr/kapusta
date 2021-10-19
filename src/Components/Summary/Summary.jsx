@@ -45,7 +45,7 @@ class Summary extends Component {
               cashOutSixMonth.map(({ Total: value, _id: { month } }) => {
                 return (
                   <li key={month} className={s.item}>
-                    <span className={s.text}>{arrMonthRU[Number(month)]}</span>
+                    <span className={s.text}>{arrMonthRU[Number(month - 1)]}</span>
                     <span className={s.text}>{numberWithSpace(value)}</span>
                   </li>
                 );
@@ -55,7 +55,7 @@ class Summary extends Component {
               cashInSixMonth.map(({ Total: value, _id: { month } }) => {
                 return (
                   <li key={month} className={s.item}>
-                    <span className={s.text}>{arrMonthRU[Number(month)]}</span>
+                    <span className={s.text}>{arrMonthRU[Number(month - 1)]}</span>
                     <span className={s.text}>{numberWithSpace(value)}</span>
                   </li>
                 );
