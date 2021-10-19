@@ -53,6 +53,9 @@ export default function RegisterForm({ handleSubmitRegister, responseGoogle }) {
           зарегистрировавшись:
         </p>
         <label htmlFor="name" className="formReg_label">
+          <ErrorMessage name="email">
+            {() => <span className="formReg_redStar">*</span>}
+          </ErrorMessage>
           Ваше имя:{' '}
         </label>
         <div className="formReg_input">
@@ -65,7 +68,9 @@ export default function RegisterForm({ handleSubmitRegister, responseGoogle }) {
           <ErrorMessage name="name" />
         </div>
         <label htmlFor="email" className="formReg_label">
-          {/* <span className="formReg_redStar">*</span> */}
+          <ErrorMessage name="email">
+            {() => <span className="formReg_redStar">*</span>}
+          </ErrorMessage>
           Электронная почта:{' '}
         </label>
         <div className="formReg_input">
@@ -78,7 +83,9 @@ export default function RegisterForm({ handleSubmitRegister, responseGoogle }) {
           <ErrorMessage name="email" />
         </div>
         <label htmlFor="password" className="formReg_label">
-          {/* <span className="formReg_redStar">*</span> */}
+          <ErrorMessage name="password">
+            {() => <span className="formReg_redStar">*</span>}
+          </ErrorMessage>
           Пароль:{' '}
         </label>
         <div className="formReg_input_last">

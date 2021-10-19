@@ -43,7 +43,9 @@ export default function LoginForm({ handleSubmitLogin, responseGoogle }) {
           зарегистрировавшись:
         </p>
         <label htmlFor="email" className="formLog_label">
-          {/* <span className="formLog_redStar">*</span> */}
+          <ErrorMessage name="email">
+            {() => <span className="formLog_redStar">*</span>}
+          </ErrorMessage>
           Электронная почта:
         </label>
         <div className="formLog_input">
@@ -56,7 +58,9 @@ export default function LoginForm({ handleSubmitLogin, responseGoogle }) {
           <ErrorMessage name="email" />
         </div>
         <label htmlFor="password" className="formLog_label">
-          {/* <span className="formLog_redStar">*</span> */}
+          <ErrorMessage name="password">
+            {() => <span className="formLog_redStar">*</span>}
+          </ErrorMessage>
           Пароль:
         </label>
         <div className="formLog_input_last">
