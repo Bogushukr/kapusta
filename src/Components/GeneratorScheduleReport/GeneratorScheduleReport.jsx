@@ -40,29 +40,34 @@ class GeneratorScheduleReport extends Component {
       sortedArrCashIn,
     } = this.props;
     if (cashIncome !== prevProps.cashIncome) {
-      if(cashIncome) {
-        this.setState({
-          data: sortedArrCashIn[activeOfArrCashIn].desc,
-        })
-      }
       if (!cashIncome) {
+        console.log(activeOfArrCashOut);
         this.setState({
           data: sortedArrCashOut[activeOfArrCashOut].desc,
-        })
+        });
+      }
+      if (cashIncome) {
+        console.log(activeOfArrCashIn);
+        this.setState({
+          data: sortedArrCashIn[activeOfArrCashIn].desc,
+        });
       }
     }
     if (
-      sortedArrCashIn !== prevProps.sortedArrCashIn ||
-      activeOfArrCashIn !== prevProps.activeOfArrCashIn
+      (cashIncome && sortedArrCashIn !== prevProps.sortedArrCashIn) ||
+      (cashIncome && activeOfArrCashIn !== prevProps.activeOfArrCashIn)
     ) {
+      console.log(activeOfArrCashIn);
       this.setState({
         data: sortedArrCashIn[activeOfArrCashIn].desc,
       });
     }
     if (
-      sortedArrCashOut !== prevProps.sortedArrCashOut ||
-      activeOfArrCashOut !== prevProps.activeOfArrCashOut
+      (!cashIncome && sortedArrCashOut !== prevProps.sortedArrCashOut) ||
+      (!cashIncome && activeOfArrCashOut !== prevProps.activeOfArrCashOut)
     ) {
+      console.log(activeOfArrCashOut);
+      
       this.setState({
         data: sortedArrCashOut[activeOfArrCashOut].desc,
       });

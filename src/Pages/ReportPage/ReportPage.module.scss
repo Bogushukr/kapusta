@@ -1,7 +1,29 @@
 @import '../../styles/main.scss';
 
+.wrapperFirst{
+  background-color: #f5f6fb;
+  border-bottom-left-radius: 110px;
+  @media screen and(max-width: $bp-tablet  ) {
+    padding-left: 19px;
+    padding-right: 19px;
+    padding-top: 15px;
+  }
+  @media screen and(min-width: $bp-tablet  ) and(max-width: $bp-desktop  ) {
+    padding-left: 52px;
+    padding-right: 52px;
+  }
+  @media screen and(min-width: $bp-desktop  ) {
+    padding-left: 110px;
+    padding-right: 110px;
+  }
+  @media screen and(min-width: $bp-tablet ) {
+    padding-top: 40px;
+  }
+}
+
 .wrapper {
   @media screen and(max-width: $bp-tablet  ) {
+    padding-top: 57px;
     padding-left: 19px;
     padding-right: 19px;
   }
@@ -13,20 +35,8 @@
     padding-left: 110px;
     padding-right: 110px;
   }
-
-  & .menu {
-    @media screen and(max-width: $bp-tablet  ) {
-      margin-bottom: 25px;
-    }
-    @media screen and(min-width: $bp-tablet  ) {
-      margin-bottom: 30px;
-      padding-top: 20px;
-      padding-bottom: 30px;
-
-      background: #ffffff;
-      box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-      border-radius: 30px;
-    }
+  @media screen and(min-width: $bp-tablet  ) {
+    padding-top: 56px;
   }
   & .timetable {
     @media screen and(min-width: $bp-tablet  ) {
@@ -35,35 +45,47 @@
       border-radius: 30px;
     }
   }
-
-  & .currentCash {
-    // background: #ffffff;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    @media screen and(max-width: $bp-tablet  ) {
-      // box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
-      // border-radius: 20px;
-    }
-    @media screen and(min-width: $bp-tablet  ) {
-      // box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-      // border-radius: 30px;
-    }
+}
+.reportBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  @media screen and(min-width: $bp-tablet  ) {
+    margin-bottom: 30px;
   }
-  .reportBar {
+}
+.monthPIcker {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.menu {
+  @media screen and(max-width: $bp-tablet  ) {
+    margin-bottom: 25px;
+
+  }
+  @media screen and(min-width: $bp-tablet  ) {
+    transform: translate(0, 26px);
+    margin-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+
     background: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    @media screen and(max-width: $bp-tablet  ) {
-      // height: 85px;
-      box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
-      border-radius: 20px;
-    }
-    @media screen and(min-width: $bp-tablet  ) {
-      // height: 50px;
-      box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-      border-radius: 30px;
-    }
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 30px;
+  }
+}
+
+.currentCash {
+  // margin-bottom: 30px;
+  @media screen and(max-width: $bp-tablet  ) {
+    margin-top: 13px;
+    transform: translate(0, 17px);
+  }
+  @media screen and(min-width: $bp-tablet -1  ) {
+    margin-top: 4px;
+    // box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    // border-radius: 30px;
   }
 }
