@@ -54,7 +54,7 @@ const TableSectionIncome = ( props ) => {
                 </tbody>
             </table>
             <div className={styles.summaryWrp}>
-                <Summary />
+            <Summary  cashIncome={true}/>
             </div>  
         </div>
     )
