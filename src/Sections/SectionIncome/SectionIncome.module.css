@@ -95,7 +95,7 @@
 }
 
 .buttonsWrp {
-  margin: 0 auto;
+  margin: 0 auto 170px;
 }
 
 .enterBTN {
@@ -137,13 +137,16 @@
 
 @media screen and (max-width: 767px) {
   .formContainer {
+    /* display: none; */
+  }
+  .datePickerWrp {
     display: none;
   }
 }
 
 /* ========================================== Tablet =========================================== */
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .formContainer {
     min-width: 665px;
     height: 626px;
