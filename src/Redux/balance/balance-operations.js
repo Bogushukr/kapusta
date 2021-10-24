@@ -38,12 +38,12 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-const setUserBalance = balance => async dispatch => {
+const setUserBalance = currentBalance => async dispatch => {
   dispatch(setBalanceRequest());
 
   try {
-    const response = await axios.patch('/users/setBalance', { balance });
-    dispatch(setBalanceSuccess(response.data.data.currentBalance));
+    const response = await axios.patch('/users/setBalance', { currentBalance });
+    dispatch(setBalanceSuccess(response.data.data));
   } catch (error) {
     dispatch(setBalanceError(error.message));
   }

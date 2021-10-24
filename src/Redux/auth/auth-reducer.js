@@ -38,17 +38,13 @@ const isAuthenticated = createReducer(false, {
 
   [authActions.logoutSuccess]: () => false,
 });
-
-const balance = createReducer(0, {
-  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.data,
-  [balanceActions.setBalanceSuccess]: (_, { payload }) =>
-    payload.data.user.currentBalance,
+const currentBalance = createReducer(0, {
+  [balanceActions.setBalanceSuccess]: (_, { payload }) => payload,
 });
-
 export default combineReducers({
   user,
   isAuthenticated,
   token,
   error,
-  balance,
+  currentBalance,
 });
