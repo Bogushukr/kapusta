@@ -8,11 +8,11 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
+} from "redux-persist"
+import storage from "redux-persist/lib/storage"
 import { transactionReducer } from './Reducers'
-import { reportReducer } from "./report";
-import { authReducer } from "./auth";
+import { reportReducer } from "./report"
+import { authReducer } from "./auth"
 
 
 const middleware = [
@@ -21,8 +21,7 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-];
-
+]
 
 const authPersistConfig = {
   key: "auth",
@@ -43,4 +42,4 @@ const store = configureStore({
 const persistor = persistStore(store)
 
 // eslint-disable-next-line
-export default { store, persistor };
+export default { store, persistor }

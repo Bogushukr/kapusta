@@ -26,17 +26,17 @@ class SectionIncome extends Component {
 
     handleChangeDesc = e => {
         this.setState({desc: e.target.value})
-        console.log('state in handleChange: ', this.state);
+        // console.log('state in handleChange: ', this.state)
     }
 
     handleChangeSelect = e => {
         this.setState({incomeCategories: e.target.value})
-        console.log('state in handleChange: ', this.state);
+        // console.log('state in handleChange: ', this.state)
     }
 
     handleChangeValue = e => {
         this.setState({value: Number(e.target.value)})
-        console.log('state in handleChange: ', this.state);
+        // console.log('state in handleChange: ', this.state)
     }
 
     handleSubmit = e => {
@@ -71,7 +71,7 @@ class SectionIncome extends Component {
                         <button className={styles.clearBTN}>Очистить</button>
                     </div>
                 </form>
-                <TableSectionIncome items={this.state.items}/>
+                <TableSectionIncome />
             </div>
         )
     }

@@ -1,4 +1,4 @@
-import { connect, useDispatch, useSelector } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 
 import transactionOperations from '../../Redux/Operations/transactionOperations'
@@ -6,12 +6,12 @@ import Summary from '../Summary/Summary'
 
 import styles from './TableSection.module.css'
 
-const TableSectionExpense = ( props ) => {
+const TableSectionExpense = ( { transactions } ) => {
     const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(transactionOperations.getAllTransactions())
-    }, [dispatch])    
-    const transactions = useSelector(state => state.transactions.transactions) 
+    useEffect(() => { 
+        dispatch(transactionOperations.getAllTransactions()) 
+    }, [dispatch])
+    // console.log('transactions: ', transactions)
     return (
         <div className={styles.tableContainer}>
             <table className={styles.table}>
@@ -24,7 +24,7 @@ const TableSectionExpense = ( props ) => {
                     </tr>
                 </thead>
                 <tbody className={styles.tableBody}>
-                    { transactions.transactions?.length > 0 && transactions.transactions.map(expense => { 
+                { transactions?.length > 0 && transactions.map(expense => {
                         return ( expense.cashIncome === false &&
                             <tr className={styles.tableBodyRow} key={expense._id}>
                                 <td className={styles.tableBodyDate}>{`${expense.day}.${expense.month}.${expense.year}`}</td>
@@ -42,10 +42,14 @@ const TableSectionExpense = ( props ) => {
                 </tbody>
             </table>
             <div className={styles.summaryWrp}>
-                <Summary />
+                <Summary cashIncome={false}/>
             </div>            
         </div>
     )
 }
 
-export default connect()(TableSectionExpense)
+const mapStateToProps = (state, props) => ({
+    transactions:  state.transactions.transactions,
+})
+
+export default connect(mapStateToProps)(TableSectionExpense)
