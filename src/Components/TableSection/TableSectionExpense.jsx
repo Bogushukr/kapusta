@@ -1,16 +1,17 @@
-import { connect, useSelector } from 'react-redux'
-import { useLocation } from 'react-router'
+import { connect, useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
+import transactionOperations from '../../Redux/Operations/transactionOperations'
 import Summary from '../Summary/Summary'
 
 import styles from './TableSection.module.css'
 
 const TableSectionExpense = ( props ) => {
-    const path = useLocation().pathname
-    // const {items} = props
-    const transactions = useSelector(state => state.transactions.transactions)
-    // let concatArr = items.map(item => item.concat(dateFromCalendar))
-    // let concatArr = items.map(item => Object.assign(item, {date: dateFromCalendar[0]}))
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(transactionOperations.getAllTransactions())
+    }, [dispatch])    
+    const transactions = useSelector(state => state.transactions.transactions) 
     return (
         <div className={styles.tableContainer}>
             <table className={styles.table}>
@@ -23,13 +24,18 @@ const TableSectionExpense = ( props ) => {
                     </tr>
                 </thead>
                 <tbody className={styles.tableBody}>
-                    {`${path}`==='/home/expense' && transactions.map(transaction => {
-                        return (
-                            <tr className={styles.tableBodyRow}>
-                                <td className={styles.tableBodyDate}>{`${transaction.day}.${transaction.month}.${transaction.year}`}</td>
-                                <td className={styles.tableBodyDescription}>{transaction.desc}</td>
-                                <td className={styles.tableBodyCategory}>{transaction.expenseCategories}</td>
-                                <td className={styles.tableBodySum}>{`${-transaction.value}`}</td>
+                    { transactions.transactions?.length > 0 && transactions.transactions.map(expense => { 
+                        return ( expense.cashIncome === false &&
+                            <tr className={styles.tableBodyRow} key={expense._id}>
+                                <td className={styles.tableBodyDate}>{`${expense.day}.${expense.month}.${expense.year}`}</td>
+                                <td className={styles.tableBodyDescription}>{expense.desc}</td>
+                                <td className={styles.tableBodyCategory}>{expense.expenseCategories}</td>
+                                <td className={styles.tableBodySum}>{`${-expense.value}`}</td>
+                                <td>
+                                    <button type='button' onClick={() => dispatch(transactionOperations.deleteTransaction(expense._id))} >
+                                        Delete
+                                    </button>
+                                </td>
                             </tr>
                         )
                     })}

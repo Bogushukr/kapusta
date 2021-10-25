@@ -24,12 +24,6 @@ class SectionExpense extends Component {
 
     state = {...INITIAL_STATE}
 
-    // handleChange = e => {
-    //     // const {name, value} = e.target
-    //     // this.setState({[name]: value})
-    //     console.log('state in handleChange: ', this.state);
-    // }
-
     handleChangeDesc = e => {
         this.setState({desc: e.target.value})
         console.log('state in handleChange: ', this.state);
@@ -47,10 +41,9 @@ class SectionExpense extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
+        const token = this.props.token
         const [day, month, year] = this.props.dateFromCalendar.split('.')
-        console.log('day: ', day)
-        this.props.onAddTransaction( {...this.state, day, month, year} )
-        // console.log('this.state expense: ', this.state);
+        this.props.onAddTransaction( {...this.state, day, month, year}, token )
         this.reset()
     }
 
@@ -61,7 +54,6 @@ class SectionExpense extends Component {
         return (
             <div className={styles.formContainer}>
                 <div className={styles.datePickerWrp}><Calendar /></div> 
-                {/* <div className={styles.calendarFormWrp}> */}
                     <form onSubmit={this.handleSubmit} className={styles.formBody}>                    
                         <div className={styles.formFieldsWrp}>                            
                             <div className={styles.formFields}>
@@ -81,16 +73,15 @@ class SectionExpense extends Component {
                                     <option>Образование</option>
                                     <option>Прочее</option>
                                 </select>
-                                <input placeholder='0.00' name='value' value={value} onChange={this.handleChangeValue} className={styles.formSum} required/>
+                                <input placeholder='0.00' name='value' type='number' value={value} onChange={this.handleChangeValue} className={styles.formSum} required/>
                                 {/* <Calculator /> */}
                             </div>
                         </div>
                         <div className={styles.buttonsWrp}>
                             <button type='submit' className={styles.enterBTN}>Ввод</button>
-                            <button className={styles.clearBTN}>Очистить</button>
+                            <button type='button' className={styles.clearBTN} onClick={()=>this.setState({...INITIAL_STATE})}>Очистить</button>
                         </div>
                     </form>
-                {/* </div> */}
                 <TableSectionExpense items={this.state.items}/>
             </div>
         )
@@ -98,7 +89,8 @@ class SectionExpense extends Component {
 }
 
 const mapStateToProps = (state, props) => ({    
-    dateFromCalendar:  state.transactions.date
+    dateFromCalendar:  state.transactions.date,
+    token: state.auth.token
 })
 
 const mapDispatchToProps = {

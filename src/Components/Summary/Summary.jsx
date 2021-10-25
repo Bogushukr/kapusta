@@ -13,13 +13,15 @@ import {
   cashInSixMonth,
 } from '../../Redux/report/report-selectors';
 
+import { fixBagBackendFixMonth } from '../../Utils/fixBagBackendFixMonth';
+
 import s from './Summary.module.scss';
 
 class Summary extends Component {
   state = {
     cashIncome: this.props.cashIncome,
-    cashOutSixMonth: this.props.cashOutSixMonth,
-    cashInSixMonth: this.props.cashInSixMonth,
+    arrOut: [],
+    arrIn: [],
   };
   static defaultProps = {
     cashOutSixMonth: null,
@@ -31,8 +33,23 @@ class Summary extends Component {
     this.props.onfetchReportCashOutSixMonth();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { cashOutSixMonth, cashInSixMonth } = this.props;
+    if (cashOutSixMonth !== prevProps.cashOutSixMonth) {
+      this.setState({
+        arrOut: fixBagBackendFixMonth(cashOutSixMonth),
+      });
+    }
+    if (cashInSixMonth !== prevProps.cashInSixMonth) {
+      this.setState({
+        arrIn: fixBagBackendFixMonth(cashInSixMonth),
+      });
+    }
+  }
+
   render() {
-    // const {cashInSixMonth, cashOutSixMonth} = this.props
+    const { arrIn, arrOut } = this.state;
+
     const { cashIncome, cashInSixMonth, cashOutSixMonth } = this.props;
 
     return (
@@ -42,20 +59,24 @@ class Summary extends Component {
           <ul className={s.list}>
             {cashOutSixMonth &&
               !cashIncome &&
-              cashOutSixMonth.map(({ Total: value, _id: { month } }) => {
+              arrOut.map(({ Total: value, _id: { month } }) => {
                 return (
                   <li key={month} className={s.item}>
-                    <span className={s.text}>{arrMonthRU[Number(month)]}</span>
+                    <span className={s.text}>
+                      {arrMonthRU[Number(month - 1)]}
+                    </span>
                     <span className={s.text}>{numberWithSpace(value)}</span>
                   </li>
                 );
               })}
             {cashInSixMonth &&
               cashIncome &&
-              cashInSixMonth.map(({ Total: value, _id: { month } }) => {
+              arrIn.map(({ Total: value, _id: { month } }) => {
                 return (
                   <li key={month} className={s.item}>
-                    <span className={s.text}>{arrMonthRU[Number(month)]}</span>
+                    <span className={s.text}>
+                      {arrMonthRU[Number(month - 1)]}
+                    </span>
                     <span className={s.text}>{numberWithSpace(value)}</span>
                   </li>
                 );

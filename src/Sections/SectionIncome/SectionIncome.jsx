@@ -24,11 +24,6 @@ class SectionIncome extends Component {
 
     state = {...INITIAL_STATE}
 
-    // handleChange = e => {
-    //     const {name, value} = e.target
-    //     this.setState({[name]: value})
-    // }
-
     handleChangeDesc = e => {
         this.setState({desc: e.target.value})
         console.log('state in handleChange: ', this.state);
@@ -46,9 +41,9 @@ class SectionIncome extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
+        const token = this.props.token
         const [day, month, year] = this.props.dateFromCalendar.split('.')
-        this.props.onAddTransaction( {...this.state, day, month, year} )
-        // console.log('this.state income: ', this.state);
+        this.props.onAddTransaction( {...this.state, day, month, year}, token )
         this.reset()
     }
 
@@ -83,7 +78,8 @@ class SectionIncome extends Component {
 }
 
 const mapStateToProps = (state, props) => ({    
-    dateFromCalendar:  state.transactions.date
+    dateFromCalendar:  state.transactions.date,
+    token: state.auth.token
 })
 
 const mapDispatchToProps = {

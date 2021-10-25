@@ -4,25 +4,18 @@ const addTransactionRequest = createAction('transactions/addRequest')
 const addTransactionSuccess = createAction('transactions/addSuccess')
 const addTransactionError = createAction('transactions/addError')
 
-// const removeExpenseRequest = createAction('expenses/removeRequest')
-// const removeExpenseSuccess = createAction('expenses/removeSuccess')
-// const removeExpenseError = createAction('expenses/removeError')
-
-// const selectedDateRequest = createAction('date/selectRequest')
-// const selectedDateSuccess = createAction('date/selectSuccess')
-// const selectedDateError = createAction('date/selectError')
+const removeTransactionRequest = createAction('transaction/removeRequest')
+const removeTransactionSuccess = createAction('transaction/removeSuccess')
+const removeTransactionError = createAction('transaction/removeError')
 
 const selectedDate = createAction('date/select')
 
-// const fetchTasksRequest = createAction('tasks/fetchRequest')
-// const fetchTasksSuccess = createAction('tasks/fetchSuccess')
-// const fetchTasksError = createAction('tasks/fetchError')
+const filteredExpenses = createAction('transactions/filtered')
 
-// const toggleCompletedRequest = createAction('tasks/toggleCompletedRequest')
-// const toggleCompletedSuccess = createAction('tasks/toggleCompletedSuccess')
-// const toggleCompletedError = createAction('tasks/toggleCompletedError')
+const getAllTransactionsRequest = createAction('transaction/getAllRequest')
+const getAllTransactionsSuccess = createAction('transaction/getAllSuccess')
+const getAllTransactionsError = createAction('transaction/getAllError')
 
-// const changeFilter = createAction('tasks/changeFilter')
 
 // eslint-disable-next-line
 export default {
@@ -30,18 +23,15 @@ export default {
     addTransactionSuccess,
     addTransactionError,
 
-    // removeExpenseRequest,
-    // removeExpenseSuccess,
-    // removeExpenseError,
+    removeTransactionRequest,
+    removeTransactionSuccess,
+    removeTransactionError,
 
-    // selectedDateRequest,
-    // selectedDateSuccess,
-    // selectedDateError,
+    getAllTransactionsRequest,
+    getAllTransactionsSuccess,
+    getAllTransactionsError,
 
     selectedDate,
 
-//   toggleCompletedRequest,
-//   toggleCompletedSuccess,
-//   toggleCompletedError,
-//   changeFilter,
+    filteredExpenses,
 }

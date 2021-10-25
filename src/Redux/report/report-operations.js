@@ -1,9 +1,6 @@
 import axios from 'axios';
 
 import {
-  fetchAllTransactionRequest,
-  fetchAllTransactionSuccess,
-  fetchAllTransactionError,
   fetchReportCashInSixMonthRequest,
   fetchReportCashInSixMonthSuccess,
   fetchReportCashInSixMonthError,
@@ -43,24 +40,12 @@ export const dectementData = (state, { payload }) => {
   };
 };
 
-export const getAllTransactions = () => async dispatch => {
-  dispatch(fetchAllTransactionRequest());
-
-  try {
-    const { data } = await axios.get('/transactions');
-    dispatch(fetchAllTransactionSuccess(data.transactions));
-  } catch (error) {
-    dispatch(fetchAllTransactionError(error.message));
-  }
-};
-
 export const fetchReportCashOutSixMonth = () => async dispatch => {
   dispatch(fetchReportCashOutSixMonthRequest());
-  
 
   try {
     const { data } = await axios.get('/reports/cash-out/last-six-month');
-    const obj = data.data
+    const obj = data.data;
     if (Array.isArray(obj)) {
       dispatch(fetchReportCashOutSixMonthSuccess(obj));
     } else {
@@ -75,7 +60,7 @@ export const fetchReportCashInSixMonth = () => async dispatch => {
   dispatch(fetchReportCashInSixMonthRequest());
   try {
     const { data } = await axios.get('/reports/cash-in/last-six-month');
-    const obj = data.data
+    const obj = data.data;
     if (Array.isArray(obj)) {
       dispatch(fetchReportCashInSixMonthSuccess(obj));
     } else {
@@ -86,29 +71,46 @@ export const fetchReportCashInSixMonth = () => async dispatch => {
   }
 };
 
+export const fetchReportCashInOneMonth =
+  ({ year, month }) =>
+  async dispatch => {
+    dispatch(fetchReportCashInOneMonthRequest());
+    try {
+      const { data } = await axios.get(`/reports/cash-in/${year}/${("0" + (month + 1)).slice(-2)}`);
+      const cashInMonth = data.data.cashInMonth; // cashOutMonth
+      const cashOutMonth = data.data.cashOutMonth; // cashOutMonth
+      const arrCategories = data.data.details.categoriesAndDescription;
+      dispatch(
+        fetchReportCashInOneMonthSuccess({
+          cashOutMonth,
+          cashInMonth,
+          arrCategories,
+        }),
+      );
+    } catch (error) {
+      dispatch(fetchReportCashInOneMonthError(error.message));
+    }
+  };
 
-export const fetchReportCashInOneMonth = ({year, month}) => async dispatch => {
-  dispatch(fetchReportCashInOneMonthRequest());
-  try {
-    const { data } = await axios.get(`/reports/cash-in/${year}/${month + 1}`);
-    const cashInMonth = data.data.cashInMonth; // cashOutMonth
-    const cashOutMonth = data.data.cashOutMonth; // cashOutMonth
-    const arrCategories = data.data.details.categoriesAndDescription    
-    dispatch(fetchReportCashInOneMonthSuccess({cashInMonth, arrCategories, cashOutMonth}));
-  } catch (error) {
-    dispatch(fetchReportCashInOneMonthError(error.message));
-  }
-};
-
-export const fetchReportCashOutOneMonth = ({year, month}) => async dispatch => {
-  dispatch(fetchReportCashOutOneMonthRequest());
-  try {
-    const { data } = await axios.get(`/reports/cash-out/${year}/${month + 1}`);
-    const cashInMonth = data.data.cashInMonth; // cashOutMonth
-    const cashOutMonth = data.data.cashOutMonth; // cashOutMonth
-    const arrCategories = data.data.details.categoriesAndDescription   
-    dispatch(fetchReportCashOutOneMonthSuccess({cashOutMonth, arrCategories, cashInMonth}));
-  } catch (error) {
-    dispatch(fetchReportCashOutOneMonthError(error.message));
-  }
-};
+export const fetchReportCashOutOneMonth =
+  ({ year, month }) =>
+  async dispatch => {
+    dispatch(fetchReportCashOutOneMonthRequest());
+    try {
+      const { data } = await axios.get(
+        `/reports/cash-out/${year}/${("0" + (month + 1)).slice(-2)}`,
+      );
+      const cashInMonth = data.data.cashInMonth; // cashOutMonth
+      const cashOutMonth = data.data.cashOutMonth; // cashOutMonth
+      const arrCategories = data.data.details.categoriesAndDescription;
+      dispatch(
+        fetchReportCashOutOneMonthSuccess({
+          cashOutMonth,
+          cashInMonth,
+          arrCategories,
+        }),
+      );
+    } catch (error) {
+      dispatch(fetchReportCashOutOneMonthError(error.message));
+    }
+  };

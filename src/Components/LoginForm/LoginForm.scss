@@ -71,9 +71,7 @@
 
   letter-spacing: 0.04em;
 
-  // color: #eb5757;
-
-  color: transparent;
+  color: #eb5757;
 
   @include for-size(mobile) {
     font-size: 10px;

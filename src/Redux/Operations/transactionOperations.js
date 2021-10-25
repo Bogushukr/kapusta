@@ -1,22 +1,41 @@
 import axios from 'axios'
+
 import transactionActions from '../Actions/transactionActions'
 
-axios.defaults.baseURL = 'https://kapusta-organizer.herokuapp.com/api'
-
-const addTransaction = transaction => async (dispatch) => {
+const addTransaction = (transaction, token) => async (dispatch) => {
+  console.log('token: ', token)
     dispatch(transactionActions.addTransactionRequest())
-    console.log('transaction: ', transaction)
-    const data = JSON.stringify(transaction)
-    console.log('data in trOperations: ', data)
-    // const dataParse = JSON.parse(data)
     await axios
-      .post('/transactions',  data)
-      // .then(({ data }) => console.log('data from BE: ', data))
-      .then(({ data }) => dispatch(transactionActions.addTransactionSuccess(data)))
+      .post('/transactions',  transaction, {headers: {'Authorization': `Bearer ${token}`},})
+      .then(({ data }) => {
+        dispatch(transactionActions.addTransactionSuccess(data))})
       .catch(error => dispatch(transactionActions.addTransactionError(error)))
   }
+
+const deleteTransaction = id => async (dispatch) => {
+  dispatch(transactionActions.removeTransactionRequest())
+  console.log('transaction id: ', id)
+  await axios
+    .delete(`/transactions/${id}`)
+    .then(({data}) => dispatch(transactionActions.removeTransactionSuccess(data)))
+    .catch(error => {
+      console.log('error: ', error)
+      dispatch(transactionActions.removeTransactionError(error))})
+    .finally(() => dispatch(transactionActions.getAllTransactionsSuccess()))
+}
+
+const getAllTransactions = () => async(dispatch) => {
+  dispatch(transactionActions.getAllTransactionsRequest())
+  await axios.get('/transactions')
+  .then(({data}) => dispatch(transactionActions.getAllTransactionsSuccess(data)))
+  .catch(error => {
+    console.log('error: ', error)
+    dispatch(transactionActions.getAllTransactionsError(error))})
+}
 
 // eslint-disable-next-line
 export default {
   addTransaction,
+  deleteTransaction,
+  getAllTransactions
 }

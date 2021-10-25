@@ -25,9 +25,11 @@ const middleware = [
   logger,
 ];
 
+
 // const middleware = getDefaultMiddleware({
 //     serializableCheck: false
 //   })
+
 
 const authPersistConfig = {
   key: 'auth',
@@ -48,4 +50,5 @@ const store = configureStore({
 
 const persistor = persistStore(store);
 
+// eslint-disable-next-line
 export default { store, persistor };

@@ -1,7 +1,10 @@
 @import '../../styles/main.scss';
 
-.wrapper {
+.wrapperFirst {
+  background-color: #f5f6fb;
+  border-bottom-left-radius: 110px;
   @media screen and(max-width: $bp-tablet  ) {
+    padding-top: 15px;
     padding-left: 19px;
     padding-right: 19px;
   }
@@ -14,19 +17,35 @@
     padding-right: 110px;
   }
 
-  & .menu {
-    @media screen and(max-width: $bp-tablet  ) {
-      margin-bottom: 25px;
-    }
-    @media screen and(min-width: $bp-tablet  ) {
-      margin-bottom: 30px;
-      padding-top: 20px;
-      padding-bottom: 30px;
+  @media screen and(min-width: $bp-tablet ) {
+    padding-top: 40px;
+  }
+}
 
-      background: #ffffff;
-      box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-      border-radius: 30px;
-    }
+.wrapper {
+  @media screen and(max-width: $bp-tablet  ) {
+    padding-top: 57px;
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+  @media screen and(min-width: $bp-tablet  ) and(max-width: $bp-desktop  ) {
+    padding-left: 52px;
+    padding-right: 52px;
+
+    // width: 100%;
+    // height: 100%;
+    // position: absolute;
+    // background-size: contain;
+    // background-image: url('../../Icons/cabbage/cabbage_tabl.svg');
+    // left: 10px;
+    // top: 28px;
+  }
+  @media screen and(min-width: $bp-desktop  ) {
+    padding-left: 110px;
+    padding-right: 110px;
+  }
+  @media screen and(min-width: $bp-tablet  ) {
+    padding-top: 56px;
   }
   & .timetable {
     @media screen and(min-width: $bp-tablet  ) {
@@ -35,19 +54,112 @@
       border-radius: 30px;
     }
   }
+}
+.reportBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  @media screen and(min-width: $bp-tablet  ) {
+    margin-bottom: 30px;
+  }
+}
+.monthPIcker {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.menu {
+  @media screen and(max-width: $bp-tablet  ) {
+    margin-bottom: 25px;
+  }
+  @media screen and(min-width: $bp-tablet  ) {
+    transform: translate(0, 26px);
+    margin-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 30px;
 
-  & .currentCash {
-    // background: #ffffff;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    @media screen and(max-width: $bp-tablet  ) {
-      // box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
-      // border-radius: 20px;
-    }
-    @media screen and(min-width: $bp-tablet  ) {
-      // box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-      // border-radius: 30px;
-    }
+    background: #ffffff;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 30px;
+  }
+}
+
+.currentCash {
+  // margin-bottom: 30px;
+  @media screen and(max-width: $bp-tablet  ) {
+    margin-top: 13px;
+    transform: translate(0, 17px);
+  }
+  @media screen and(min-width: $bp-tablet -1  ) {
+    margin-top: 4px;
+    // box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    // border-radius: 30px;
+  }
+}
+
+.decor {
+  position: absolute;
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-size: cover;
+
+  @media screen and(min-width: $bp-desktop) {
+    background-image: url('../../Images/kapusta x1.png');
+    bottom: 0;
+    height: 200px;
+    width: 100%;
+  }
+
+  @media screen  and(min-width: $bp-tablet  ) and(max-width: $bp-desktop){
+    background-size: contain;
+    background-image: url('../../Images/cabbage.png');
+    width: 200px;
+    height: 200px;
+    bottom: -90px;
+    right: 130px;
+  }
+}
+
+.global {
+  position: relative;
+  font-family: Roboto;
+  // & .wrapper {
+  //  background-repeat: no-repeat;
+  //     background-size: contain;
+  //     background-image: url('../../Icons/cabbage/cabbage_mob.svg');
+
+  //   // background-repeat: no-repeat;
+  //   // background-size: contain;
+
+  //   // @include for-size(mobile) {
+  //   //   position: fixed;
+  //   //   width: 83px;
+  //   //   height: 89px;
+  //   //   left: 354px;
+  //   //   top: 193px;
+
+  //   //   background-image: url('../../Icons/cabbage/cabbage_mob.svg');
+  //   // }
+  //   // @include for-size(tablet) {
+  //   //   width: 100%;
+  //   //   height: 100%;
+  //   //   position: absolute;
+  //   //   background-size: contain;
+  //   //   background-image: url('../../Icons/cabbage/cabbage_tabl.svg');
+  //   //   left: 10px;
+  //   //   top: 28px;
+  //   // }
+  //   // @include for-size(desktop) {
+  //   //   background-image: url('../../Icons/cabbage/cabbage.svg');
+  //   // }
+
+  // }
+
+  @media screen and(max-width: $bp-tablet  ) {
+    padding-bottom: 50px;
+  }
+  @media screen and(min-width: $bp-tablet ) {
+    padding-bottom: 76px;
   }
 }

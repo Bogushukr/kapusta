@@ -1,5 +1,4 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
+import Media from 'react-media';
 
 import GeneratorItemReport from '../../Components/GeneratorItemReport';
 import GeneratorScheduleReport from '../../Components/GeneratorScheduleReport/';
@@ -8,58 +7,78 @@ import Comeback from '../../Components/Comeback';
 import PickerExpensesIncome from '../../Components/PickerExpensesIncome';
 import CurrentCash from '../../Components/CurrentCash';
 
-import {
-  fetchReportCashOutSixMonth,
-  fetchReportCashInSixMonth,
-  fetchReportCashInOneMonth,
-  fetchReportCashOutOneMonth,
-} from '../../Redux/report/report-operations';
-
-import Summary from '../../Components/Summary';
-// import Balance from '../../Components/Balance';
-import Icon from '../../Icons/comeback.svg';
+import BalanceInfo from '../../Components/BalanceInfo/BalanceInfo';
 import s from './ReportPage.module.scss';
+import './styleFixBalanceInfo.scss';
 
-class ReportPage extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = props.handleClick.bind(this);
-  }
+const ReportPage = () => {
+  return (
+    <Media
+      queries={{
+        small: '(max-width: 767px)',
+        medium: '(min-width: 767px)',
+      }}
+    >
+      {matches => (
+        <>
+          {matches.small && (
+            <section className={s.global}>
+              <h1 hidden>Oтчетная страница</h1>
+              <div className={s.wrapperFirst}>
+                <Comeback />
+                <div className={s.monthPIcker}>
+                  <MonthPIcker />
+                </div>
+                <div className="balance-Info__wrapper">
+                  <BalanceInfo />
+                </div>
+                <div className={s.currentCash}>
+                  <CurrentCash />
+                </div>
+              </div>
 
-  render() {
-    return (
-      <>
-        <div className={s.wrapper}>
-          <div className={s.currentCash}>
-            <CurrentCash />
-          </div>
-          <Comeback />
-          <MonthPIcker />
-          <div className={s.menu}>
-            <PickerExpensesIncome />
-            <GeneratorItemReport />
-          </div>
-          <div className={s.timetable}>
-            <GeneratorScheduleReport />
-          </div>
-        </div>
-      </>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    year: state.report.date.currentReportYear,
-    month: state.report.date.currentReportMonth,
-    cashIncome: state.report.cashIncomeReducer,
-  };
+              <div className={s.wrapper}>
+                <div className={s.menu}>
+                  <PickerExpensesIncome />
+                  <GeneratorItemReport />
+                </div>
+                <div className={s.timetable}>
+                  <GeneratorScheduleReport />
+                </div>
+              </div>
+            </section>
+          )}
+          {matches.medium && (
+            <section className={s.global}>
+            <h1 hidden>Oтчетная страница</h1>
+              <div className={s.wrapperFirst}>
+                <div className={s.reportBar}>
+                  <Comeback />
+                  <div className="balance-Info__wrapper">
+                    <BalanceInfo />
+                  </div>
+                  <MonthPIcker />
+                </div>
+                <div className={s.currentCash}>
+                  <CurrentCash />
+                </div>
+                <div className={s.menu}>
+                  <PickerExpensesIncome />
+                  <GeneratorItemReport />
+                </div>
+              </div>
+              <div className={s.wrapper}>
+                <div className={s.timetable}>
+                  <GeneratorScheduleReport />
+                </div>
+              </div>
+              <div className={s.decor}></div>
+            </section>
+          )}
+        </>
+      )}
+    </Media>
+  );
 };
 
-const mapDispatchProps = dispatch => {
-  return {
-    handleClick: () => dispatch(fetchReportCashOutSixMonth()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchProps)(ReportPage);
+export default ReportPage;

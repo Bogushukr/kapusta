@@ -1,0 +1,36 @@
+@import '../../styles/main.scss';
+
+.balance-Info__wrapper {
+  & .balanceInfo {
+    padding: 0;
+
+    & .balanceSetting {
+      margin-bottom: 10px;
+      @media screen and(min-width: 767px  ) {
+        margin-right: 10px;
+      }
+    }
+
+    .setBalanceForm {
+      @media screen and(min-width: 767px  ) and(max-width: 768px  ) {
+        display: flex;
+        align-items: baseline;
+      }
+    }
+    & p {
+      margin: 0;
+      @media screen and(min-width: $bp-desktop  ) {
+        margin-right: 20px;
+      }
+    }
+    & .balanceStateDisabled {
+      border-top-right-radius: 22px;
+      border-bottom-right-radius: 22px;
+    }
+    & .setBalanceButtonDisabled {
+      @media screen and(max-width: $bp-desktop  ) {
+        display: none;
+      }
+    }
+  }
+}
