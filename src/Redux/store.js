@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -8,12 +8,13 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import { transactionReducer } from './Reducers'
-import { reportReducer } from "./report";
-import { authReducer } from "./auth";
-
+} from 'redux-persist';
+import logger from 'redux-logger';
+import storage from 'redux-persist/lib/storage';
+import { transactionReducer } from './Reducers';
+import { reportReducer } from './report';
+import { authReducer } from './auth';
+import { balanceReducer } from './balance';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -21,13 +22,19 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
+  logger,
 ];
 
 
+// const middleware = getDefaultMiddleware({
+//     serializableCheck: false
+//   })
+
+
 const authPersistConfig = {
-  key: "auth",
+  key: 'auth',
   storage,
-  whitelist: ["token"],
+  whitelist: ['token'],
 };
 
 const store = configureStore({
@@ -35,12 +42,13 @@ const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     transactions: transactionReducer,
     report: reportReducer,
+    balance: balanceReducer,
   },
   middleware: middleware,
-  devTools: process.env.NODE_ENV === "development",
+  devTools: process.env.NODE_ENV === 'development',
 });
 
-const persistor = persistStore(store)
+const persistor = persistStore(store);
 
 // eslint-disable-next-line
 export default { store, persistor };
