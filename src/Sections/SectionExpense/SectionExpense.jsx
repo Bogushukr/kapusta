@@ -26,17 +26,17 @@ class SectionExpense extends Component {
 
     handleChangeDesc = e => {
         this.setState({desc: e.target.value})
-        console.log('state in handleChange: ', this.state);
+        // console.log('state in handleChange: ', this.state)
     }
 
     handleChangeSelect = e => {
         this.setState({expenseCategories: e.target.value})
-        console.log('state in handleChange: ', this.state);
+        // console.log('state in handleChange: ', this.state)
     }
 
     handleChangeValue = e => {
         this.setState({value: Number(e.target.value)})
-        console.log('state in handleChange: ', this.state);
+        // console.log('state in handleChange: ', this.state)
     }
 
     handleSubmit = e => {
@@ -82,7 +82,7 @@ class SectionExpense extends Component {
                             <button type='button' className={styles.clearBTN} onClick={()=>this.setState({...INITIAL_STATE})}>Очистить</button>
                         </div>
                     </form>
-                <TableSectionExpense items={this.state.items}/>
+                <TableSectionExpense />
             </div>
         )
     }

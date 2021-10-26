@@ -4,9 +4,11 @@ import { combineReducers } from 'redux';
 import transactionActions from "../Actions/transactionActions"
 
 const transactions = createReducer([], {
-    [transactionActions.addTransactionSuccess]: (state, action) => state.push(action.payload.transaction),
-    [transactionActions.removeTransactionSuccess]: (state, { payload }) => state,
-    [transactionActions.getAllTransactionsSuccess]: (state, { payload }) => payload,
+    [transactionActions.addTransactionSuccess]: (state, action) => [...state, action.payload.transaction],
+    [transactionActions.removeTransactionSuccess]: (state, { payload }) => {
+        return state.filter(transaction => transaction._id !== payload.data.transaction._id)
+    },
+    [transactionActions.getAllTransactionsSuccess]: (state, { payload }) => payload.transactions,
 })
 
 const date = createReducer('', {

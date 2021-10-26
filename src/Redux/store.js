@@ -8,13 +8,12 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import logger from 'redux-logger';
-import storage from 'redux-persist/lib/storage';
-import { transactionReducer } from './Reducers';
-import { reportReducer } from './report';
-import { authReducer } from './auth';
-import { balanceReducer } from './balance';
+} from "redux-persist"
+import storage from "redux-persist/lib/storage"
+import { transactionReducer } from './Reducers'
+import { reportReducer } from "./report"
+import { authReducer } from "./auth"
+
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -22,8 +21,8 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  logger,
-];
+
+]
 
 
 // const middleware = getDefaultMiddleware({
@@ -51,4 +50,4 @@ const store = configureStore({
 const persistor = persistStore(store);
 
 // eslint-disable-next-line
-export default { store, persistor };
+export default { store, persistor }

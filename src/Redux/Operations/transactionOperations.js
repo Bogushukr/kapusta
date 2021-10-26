@@ -3,7 +3,7 @@ import axios from 'axios'
 import transactionActions from '../Actions/transactionActions'
 
 const addTransaction = (transaction, token) => async (dispatch) => {
-  console.log('token: ', token)
+  // console.log('token: ', token)
     dispatch(transactionActions.addTransactionRequest())
     await axios
       .post('/transactions',  transaction, {headers: {'Authorization': `Bearer ${token}`},})
@@ -14,14 +14,13 @@ const addTransaction = (transaction, token) => async (dispatch) => {
 
 const deleteTransaction = id => async (dispatch) => {
   dispatch(transactionActions.removeTransactionRequest())
-  console.log('transaction id: ', id)
+  // console.log('transaction id: ', id)
   await axios
     .delete(`/transactions/${id}`)
     .then(({data}) => dispatch(transactionActions.removeTransactionSuccess(data)))
     .catch(error => {
       console.log('error: ', error)
       dispatch(transactionActions.removeTransactionError(error))})
-    .finally(() => dispatch(transactionActions.getAllTransactionsSuccess()))
 }
 
 const getAllTransactions = () => async(dispatch) => {
