@@ -105,21 +105,6 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-/*
- * PATCH @ /users/balance
- * headers:
- *    Authorization: Bearer token
- */
-
-const setBalance = balance => dispatch => {
-  dispatch(authActions.setBalanceRequest());
-
-  axios
-    .patch('/users/setBalance', { balance })
-    .then(({ data }) => dispatch(authActions.setBalanceSuccess(data)))
-    .catch(error => dispatch(authActions.setBalanceError(error.message)));
-};
-
-const operations = { register, logIn, logOut, getCurrentUser, setBalance };
+const operations = { register, logIn, logOut, getCurrentUser };
 
 export default operations;

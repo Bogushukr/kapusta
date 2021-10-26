@@ -16,6 +16,10 @@ const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
 
+const getCurrentBalanceRequest = createAction('auth/getCurrentBalanceRequest');
+const getCurrentBalanceSuccess = createAction('auth/getCurrentBalanceSuccess');
+const getCurrentBalanceError = createAction('auth/getCurrentBalanceError');
+
 const setBalanceRequest = createAction('auth/setBalanceRequest');
 const setBalanceSuccess = createAction('auth/setBalanceSuccess');
 const setBalanceError = createAction('auth/setBalanceError');
@@ -33,6 +37,9 @@ const actions = {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  getCurrentBalanceRequest,
+  getCurrentBalanceSuccess,
+  getCurrentBalanceError,
   setBalanceRequest,
   setBalanceSuccess,
   setBalanceError,
