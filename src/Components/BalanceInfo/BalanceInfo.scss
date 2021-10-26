@@ -241,6 +241,11 @@ input[type='number']:focus {
     justify-content: flex-end;
     padding-right: 110px;
   }
+  .userBalance {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+  }
   .balanceSetting {
     margin-right: 40px;
   }
