@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from "redux-persist"
 import storage from "redux-persist/lib/storage"
+import logger from 'redux-logger';
 import { transactionReducer } from './Reducers'
 import { reportReducer } from "./report"
 import { authReducer } from "./auth"
@@ -21,7 +22,7 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-
+logger,
 ]
 
 
@@ -41,7 +42,7 @@ const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     transactions: transactionReducer,
     report: reportReducer,
-    balance: balanceReducer,
+    // balance: balanceReducer,
   },
   middleware: middleware,
   devTools: process.env.NODE_ENV === 'development',
