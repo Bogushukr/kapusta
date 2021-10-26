@@ -1,0 +1,7 @@
+.google_btn {
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 3px 3px 10px #6b6c6e33 !important;
+  }
+}

@@ -1,4 +1,5 @@
 import { GoogleLogin } from 'react-google-login';
+import './BtnGoogle.scss';
 
 const ButtonGoogle = ({ responseGoogle }) => {
   return (
@@ -10,6 +11,7 @@ const ButtonGoogle = ({ responseGoogle }) => {
           onClick={renderProps.onClick}
           disabled={renderProps.disabled}
           type="button"
+          className ="google_btn"
           style={{
             backgroundColor: '#F6F7FB',
             width: '122px',
@@ -20,7 +22,9 @@ const ButtonGoogle = ({ responseGoogle }) => {
             border: 'none',
             borderRadius: '26px',
             boxShadow: '1px 2px 3px 0px #AAB2C533',
+            cursor: 'pointer',
           }}
+          
         >
           <div
             style={{
