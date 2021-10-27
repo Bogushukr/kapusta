@@ -32,8 +32,7 @@ const TableSectionExpense = ( { transactions } ) => {
                                 <td className={styles.tableBodyCategory}>{expense.expenseCategories}</td>
                                 <td className={styles.tableBodySum}>{`${-expense.value}`}</td>
                                 <td>
-                                    <button type='button' onClick={() => dispatch(transactionOperations.deleteTransaction(expense._id))} >
-                                        Delete
+                                    <button className={styles.btnDel} type='button' onClick={() => dispatch(transactionOperations.deleteTransaction(expense._id))} >
                                     </button>
                                 </td>
                             </tr>
