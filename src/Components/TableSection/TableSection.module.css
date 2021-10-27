@@ -57,6 +57,31 @@
   border-left: 0px;
 }
 
+.btnDel {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+}
+
+.btnDel:hover {
+  background-color: #f5f6fb;
+}
+
+.btnDel::after {
+  position: relative;
+  top: 1px;
+  left: 2px;
+  display: inline-block;
+  content: '';
+  width: 15px;
+  height: 18px;
+  margin: 0 10px 0 0;
+  background: url('../../Icons/deleteBTN.svg');
+  background-repeat: no-repeat;
+}
+
 @media screen and (max-width: 768px) {
   .tableContainer {
     display: none;
