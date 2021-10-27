@@ -117,16 +117,21 @@
 }
 
 @media screen and (min-width: $bp-desktop) {
-  .balanceInfo {
+  .userBalance {
     display: flex;
     align-items: baseline;
-    justify-content: flex-end;
-    padding-right: 110px;
+    justify-content: center;
+  }
+  .balanceInfo {
+    margin-left: 30px;
   }
   .balanceSetting {
     margin-right: 40px;
     margin-left: 440px;
     margin-top: 0;
+  }
+  .toReport {
+    margin-left: 90px;
   }
   .consumptionButton,
   .incomeButton {
