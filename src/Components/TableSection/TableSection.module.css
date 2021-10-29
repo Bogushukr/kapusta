@@ -55,6 +55,25 @@
   text-align: left;
   border-right: 0px;
   border-left: 0px;
+  padding: 0 10px 0 20px;
+}
+
+.tableBodySumExp {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #e7192e;
+}
+
+.tableBodySumInc {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #407946;
 }
 
 .btnDel {
@@ -92,7 +111,7 @@
   .tableContainer {
     display: flex;
     flex-direction: column;
-    padding: 59px 0 0 30px;
+    padding: 0 0 0 30px;
   }
 
   .table {
@@ -101,9 +120,9 @@
     margin: 0 auto;
   }
 
-  .tableHeadSum {
+  /* .tableHeadSum {
     padding-right: 84px;
-  }
+  } */
 
   .tableBodyDescription {
     text-align: left;

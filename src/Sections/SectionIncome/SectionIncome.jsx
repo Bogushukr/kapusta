@@ -65,20 +65,23 @@ class SectionIncome extends Component {
             <div className={styles.formContainer}>
                 <div className={styles.datePickerWrp}><Calendar /></div> 
                 <form onSubmit={this.handleSubmit} className={styles.formBody}>
-                    <div className={styles.formFields}>
-                        <input type='text' placeholder='Описание дохода' name='desc' 
-                            value={desc} onChange={this.handleChangeDesc} className={styles.formDescription} required/>
-                        <select size='1' name='incomeCategories' value={incomeCategories} onChange={this.handleChangeSelect} className={styles.formCategory} required>
-                            <option value='' defaultValue>Категория дохода</option>
-                            <option>ЗП</option>
-                            <option>Доп. доход</option>
-                        </select>
-                        <input placeholder='0.00' name='value' value={value} onChange={this.handleChangeValue} className={styles.formSum} required/>
-                        {/* <Calculator /> */}
+                    <div className={styles.formFieldsWrp}>
+                        <div className={styles.formFields}>
+                            <input type='text' placeholder='Описание дохода' name='desc' 
+                                value={desc} onChange={this.handleChangeDesc} className={styles.formDescription} required/>
+                            <select size='1' name='incomeCategories' value={incomeCategories} onChange={this.handleChangeSelect} className={styles.formCategory} required>
+                                <option value='' defaultValue>Категория дохода</option>
+                                <option>ЗП</option>
+                                <option>Доп. доход</option>
+                            </select>
+                            <input placeholder='0.00' name='value' value={value} onChange={this.handleChangeValue} className={styles.formSum} required/>
+                            {/* <Calculator /> */}
+                        </div>
                     </div>
                     <div className={styles.buttonsWrp}>
-                        <button type='submit' className={styles.enterBTN}>Ввод</button>
-                        <button className={styles.clearBTN}>Очистить</button>
+                            <button type='submit' className={styles.enterBTN}>Ввод</button>
+                            <button type='button' className={styles.clearBTN}
+                                onClick={()=>this.setState({...INITIAL_STATE})}>Очистить</button>
                     </div>
                 </form>
                 <TableSectionIncome />

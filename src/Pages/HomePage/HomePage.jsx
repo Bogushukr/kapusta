@@ -18,14 +18,14 @@ const HomeView = () => {
         <div>{`${path}`==='/home/expense' ? <SectionExpense /> : <></>}</div>
         <div>{`${path}`==='/home' 
             ? <div>
-              <Balance />
-              <div className={styles.summaryContainer}>
-                <div className="summary">
-                      <Link to="/home/expense" className="consumptionButton">Расход</Link>
-                      <Link to="/home/income" className="incomeButton">Доход</Link>
+                <Balance />
+                <div className={styles.summaryContainer}>
+                  <div className="summary">
+                        <Link to="/home/expense" className="consumptionButton">Расход</Link>
+                        <Link to="/home/income" className="incomeButton">Доход</Link>
+                  </div>
                 </div>
-              </div>
-            </div> 
+              </div> 
             : <></>}
         </div>
       </MediaQuery>    
@@ -33,8 +33,14 @@ const HomeView = () => {
         <Balance />
         <div className={styles.summaryContainer}>
           <div className="summary">
-                <Link to="/home/expense" className="consumptionButton">Расход</Link>
-                <Link to="/home/income" className="incomeButton">Доход</Link>
+                <Link to="/home/expense"
+                  className={`${path}`==='/home/expense'
+                    ? 'consumptionButton consumptionButtonActive'
+                    : 'consumptionButton'}>Расход</Link>
+                <Link to="/home/income"
+                  className={`${path}`==='/home/income'
+                    ? 'incomeButton incomeButtonActive'
+                    : 'incomeButton'}>Доход</Link>
           </div>
           <div>{`${path}`==='/home/income' ? <SectionIncome /> : <SectionExpense />} </div>
         </div>

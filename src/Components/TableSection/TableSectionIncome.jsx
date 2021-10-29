@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 
 import transactionOperations from '../../Redux/Operations/transactionOperations'
 import Summary from '../Summary/Summary'
+import { numberWithSpace } from '../../Utils/numberWithSpace';
 
 import styles from './TableSection.module.css'
 
@@ -24,15 +25,16 @@ const TableSectionIncome = ( { transactions } ) => {
                     </tr>
                 </thead>
                 <tbody className={styles.tableBody}>
-                    {transactions?.length > 0 && transactions.map(income => {                        
+                    { transactions?.length > 0 && transactions.map(income => {                        
                         return ( income.cashIncome === true &&                           
                             <tr className={styles.tableBodyRow} key={income._id}>
                                 <td className={styles.tableBodyDate}>{`${income.day}.${income.month}.${income.year}`}</td>
                                 <td className={styles.tableBodyDescription}>{income.desc}</td>
                                 <td className={styles.tableBodyCategory}>{income.incomeCategories}</td>
-                                <td className={styles.tableBodySum}>{income.value}</td>
+                                <td className={styles.tableBodySumInc}>{`${numberWithSpace(Math.abs(income.value))}`} грн.</td>
                                 <td>
-                                    <button className={styles.btnDel} type='button' onClick={() => dispatch(transactionOperations.deleteTransaction(income._id))} >
+                                    <button className={styles.btnDel} type='button'
+                                        onClick={() => dispatch(transactionOperations.deleteTransaction(income._id))} >
                                     </button>
                                 </td>
                             </tr>

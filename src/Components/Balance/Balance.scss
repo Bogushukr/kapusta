@@ -96,6 +96,11 @@
     height: 40px;
     background-color: #fafbfd;
   }
+  .consumptionButtonActive,
+  .incomeButtonActive {
+    background-color: $active-button-color;
+    color: $background-light;
+  }
   .consumptionButton:hover,
   .incomeButton:hover {
     background-color: #fefefe;

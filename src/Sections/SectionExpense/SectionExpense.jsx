@@ -89,7 +89,8 @@ class SectionExpense extends Component {
                         </div>
                         <div className={styles.buttonsWrp}>
                             <button type='submit' className={styles.enterBTN}>Ввод</button>
-                            <button type='button' className={styles.clearBTN} onClick={()=>this.setState({...INITIAL_STATE})}>Очистить</button>
+                            <button type='button' className={styles.clearBTN}
+                                onClick={()=>this.setState({...INITIAL_STATE})}>Очистить</button>
                         </div>
                     </form>
                 <TableSectionExpense />
