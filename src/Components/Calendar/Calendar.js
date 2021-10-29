@@ -32,9 +32,3 @@ const Calendar = () => {
 }
 
 export default Calendar
-
-// const mapStateToProps = (state, props) => ({
-//     date: state.startDate
-// })
-
-// export default connect(mapStateToProps, null)(Calendar)

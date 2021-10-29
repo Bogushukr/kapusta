@@ -22,7 +22,12 @@ class SectionExpense extends Component {
 
     static defaultProps = {}
 
-    state = {...INITIAL_STATE}
+    state = {
+        ...INITIAL_STATE,
+        day: new Date().getDate().toString(),
+        month: (new Date().getMonth()+1).toString(),
+        year: new Date().getFullYear().toString()
+    }
 
     handleChangeDesc = e => {
         this.setState({desc: e.target.value})
@@ -43,6 +48,11 @@ class SectionExpense extends Component {
         e.preventDefault()
         const token = this.props.token
         const [day, month, year] = this.props.dateFromCalendar.split('.')
+        if (!day) {
+            this.props.onAddTransaction( {...this.state}, token )
+            this.setState({desc: '', value: '', expenseCategories: ''})
+            return
+        }
         this.props.onAddTransaction( {...this.state, day, month, year}, token )
         this.reset()
     }
