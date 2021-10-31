@@ -95,7 +95,7 @@
 }
 
 .buttonsWrp {
-  margin: 0 auto 170px;
+  margin: 0 auto 48px;
 }
 
 .enterBTN {
@@ -136,9 +136,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .formContainer {
-    /* display: none; */
-  }
   .datePickerWrp {
     display: none;
   }
